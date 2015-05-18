@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="cis234a.nsort.controller.AdminTestSetupController" project="nsort" 
     file="/nsort/src/cis234a/nsort/controller/AdminTestSetupController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="864" y="820"/>    
+    <position height="-1" width="-1" x="1211" y="827"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="cis234a.nsort.controller.RankingSystemController" project="nsort" 
     file="/nsort/src/cis234a/nsort/controller/RankingSystemController.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="225" y="515"/>    
+    <position height="-1" width="-1" x="572" y="522"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <interface id="3" language="java" name="cis234a.nsort.view.AdminTestSetupView" project="nsort" 
     file="/nsort/src/cis234a/nsort/view/AdminTestSetupView.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1045" y="1248"/>    
+    <position height="-1" width="-1" x="1392" y="1255"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </interface>  
   <class id="4" language="java" name="cis234a.nsort.view.AdminTestSetupFrame" project="nsort" 
     file="/nsort/src/cis234a/nsort/view/AdminTestSetupFrame.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1392" y="416"/>    
+    <position height="-1" width="-1" x="1739" y="423"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="cis234a.nsort.view.AdminTestSetupPanel" project="nsort" 
     file="/nsort/src/cis234a/nsort/view/AdminTestSetupPanel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1470" y="1152"/>    
+    <position height="-1" width="-1" x="1817" y="1159"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="cis234a.nsort.model.SqlUser_234a_t1" project="nsort" 
     file="/nsort/src/cis234a/nsort/model/SqlUser_234a_t1.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="235" y="1112"/>    
+    <position height="-1" width="-1" x="582" y="1119"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,73 +57,198 @@
   </class>  
   <class id="7" language="java" name="cis234a.nsort.model.AdminTestSetupModel" project="nsort" 
     file="/nsort/src/cis234a/nsort/model/AdminTestSetupModel.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="781" y="279"/>    
+    <position height="-1" width="-1" x="1128" y="286"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="8">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="9" name="sqlUser"/>      
-      <multiplicity id="10" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="11">    
+  <class id="8" language="java" name="cis234a.nsort.model.User" project="nsort" 
+    file="/nsort/src/cis234a/nsort/model/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="255" y="260"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="cis234a.nsort.model.ItemList" project="nsort" 
+    file="/nsort/src/cis234a/nsort/model/ItemList.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1706" y="119"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="10" language="java" name="cis234a.nsort.model.Role.UserAccessRole" project="nsort" 
+    file="/nsort/src/cis234a/nsort/model/Role.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-168" y="326"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="11" language="java" name="cis234a.nsort.model.Role" project="nsort" 
+    file="/nsort/src/cis234a/nsort/model/Role.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-135" y="160"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="cis234a.nsort.model.LoginState" project="nsort" 
+    file="/nsort/src/cis234a/nsort/model/LoginState.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-57" y="607"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="13">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="12" name="view"/>      
-      <multiplicity id="13" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="14">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="15" name="sqlUser"/>      
-      <multiplicity id="16" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="17">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="18" name="adminTestSetupPanel"/>      
-      <multiplicity id="19" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="20">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="21" name="controller"/>      
-      <multiplicity id="22" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="23">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="24" name="model"/>      
-      <multiplicity id="25" minimum="0" maximum="1"/>    
+      <attribute id="14" name="model">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </attribute>      
+      <multiplicity id="15" minimum="0" maximum="1">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="26">    
+  <association id="16">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="17" name="loginState"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="19">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="20" name="user"/>      
+      <multiplicity id="21" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="22">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="23" name="user"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="25">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="26" name="userAccessRole"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="28">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="29" name="view">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </attribute>      
+      <multiplicity id="30" minimum="0" maximum="1">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="31">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="32" name="sqlUser">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="1">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="35" name="testItemsList"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="37">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="38" name="sqlUser">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </attribute>      
+      <multiplicity id="39" minimum="0" maximum="1">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="40">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </nesting>  
+  <association id="41">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="42" name="controller">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </attribute>      
+      <multiplicity id="43" minimum="0" maximum="1">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="44">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="27" name="controller"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
+      <attribute id="45" name="controller">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </attribute>      
+      <multiplicity id="46" minimum="0" maximum="1">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="29">    
+  <association id="47">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="48" name="adminTestSetupPanel">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </attribute>      
+      <multiplicity id="49" minimum="0" maximum="1">        
+        <position height="0" width="0" x="347" y="7"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="50">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
   </realization>  
+  <association id="51">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="52" name="role"/>      
+      <multiplicity id="53" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
