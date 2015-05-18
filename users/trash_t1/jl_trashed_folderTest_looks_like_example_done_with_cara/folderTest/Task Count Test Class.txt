@@ -1,0 +1,28 @@
+@isTest 
+private class leadtaskcount_TestClass {
+     static testMethod void validateleadtaskcount() {
+     
+       Profile testProfile = [SELECT Id FROM Profile WHERE Name='Management'];
+     
+       User TestUser_a = new User(Alias = 'testUs_a', Email='testUser_a@testorg.com', 
+       EmailEncodingKey='UTF-8', LastName='Testing_a', LanguageLocaleKey='en_US', 
+       LocaleSidKey='en_US', ProfileId = testProfile.Id, 
+       TimeZoneSidKey='America/Los_Angeles', UserName='testUser_a@testorg.com');
+       insert TestUser_a;    
+                   
+        Lead l = new Lead(Company = 'test', lastname = 'Josh', Service_Marketed__c = 'ClassBug', Status = 'Open - Not Contacted');
+    
+        insert l;
+        
+        Task t = new Task (OwnerId = TestUser_a.Id, Subject = 'Call', Status = 'Completed', Priority = 'Normal');
+        
+        insert t;
+        
+        System.assertEquals(1, l.Total_Activities__c);
+        
+        delete l;
+        
+        System.assertEquals(0, l.Total_Activities__c);
+        
+        }
+}

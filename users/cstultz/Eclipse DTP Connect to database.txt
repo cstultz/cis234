@@ -1,0 +1,71 @@
+How To add the MS SQL Server 234a_t1 database to the Eclipse IDE
+
+FIRST you need to make sure you have the driver templates!!!!
+
+Go to HELP-> Install new software...
+
+in the work with text field place the following URL and then click the 'tab' key
+
+Luna - http://download.eclipse.org/releases/luna
+
+this will load all available software from that website
+
+Click Database Development and the item inside it
+(THESE ARE THE DRIVERS!!) CLICK NEXT
+
+Data Tools Platform Enablement Extender SDK
+
+When complete you then..
+
+Go to the Window-> Show view -> Other..
+
+Choose Database management -> Data Source Explorer
+
+Right click on Database Connections
+
+Click the 'SQL Server' Connection Profile Type
+
+Click the add driver icon to the right of the EMPTY Drivers drop down menu
+
+On the Name tab choose 'Microsoft SQL Server 2008 JDBC Driver'
+
+On the JAR List tab click the 'Add JAR/Zip button'
+
+Navigate in our project to the 'sqljdbc41.jar' and select it
+
+Remove the 'sqljdbc.jar' from the driver files list so only the newly added driver file exists
+
+Click the Name/Type and modify the "Driver Name" (I added "t1" to the end of the name), to enable the OK button, Then click OK.
+
+then enter the following information
+
+Database: 234a_t1
+Host: cisdbss.pcc.edu
+
+lave the PORT alone
+
+Username: 234a_t1
+Password: 1t_a432@#
+
+check the save password
+
+Click the Test Connection and you should get Ping succeeded!
+
+You can also select the checkbox for 'Connect everytime the workbench is started
+
+In order to run a query you right click on the 'New SQL Server' and choose
+'Open SQL scrapbook'
+
+in the drop down menus of the connection profile choose Type 'SQL Server_2008' Name 'New SQL Server' Database 234a_t1
+
+and then..... TYPE YOUR QUERY DUDE!
+
+example: select * from [User];
+
+ALT+X will run your selected text
+
+CTRL+ALT+X will run ALL of you text in the query window
+
+results are shown in the lower right hand window 'Result1'
+
+Enjoy!

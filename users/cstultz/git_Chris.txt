@@ -1,0 +1,81 @@
+Watched this video: https://www.youtube.com/watch?t=148&v=-Z0KZadnFQE
+
+Installed GitBash
+
+NOTE 1: right-click on the GitBash header bar to pull up the right-click menu. Goto Edit-> Paste
+NOTE 2: surround path with single quotes in order to handle spaces in path
+
+Command line:
+
+***************************************************Create local directory and Connect to Our Existing Repo MASTER*************************************************************************
+
+mkdir 'C:\Users\chris.stultz\Documents\CIS234A\jlorangeClone'		Makes a directory on your local computer
+cd 'C:\Users\chris.stultz\Documents\CIS234A\jlorangeClone'		Changes directory to created directory on your local computer
+git init								Initializes git tracking for the directory on your local computer (creates the hidden .git)
+git remote add origin https://github.com/jlorange/cis234			connect the repo to the directory on your local computer
+git pull origin master							pulls the files from the repo to your computer
+
+***************************************************Create local directory and Connect to Our Existing Repo MASTER*************************************************************************
+
+
+**********************************************Add untracked files to the above directory and push to the Repo MASTER**********************************************************************
+
+make changes in the directory as you see fit (add/delete/modify)
+
+git status								shows the new untracked files
+git add	-A								add all the untracked files to the commit
+git commit -m "commit files to repo"					commits the files to the repo
+git push -u origin master						pushes the files to the repo origin master
+
+**********************************************Add untracked files to the above directory and push to the Repo MASTER**********************************************************************
+
+
+NOTE: Eclipse copies the entire repo to the git\cis234 by default. Right-click on the project in Eclipse choose Team-> Commit in order to commit and push changes to the repo
+
+******************************************************************Use Eclipse IDE EGit plug in********************************************************************************************
+
+File->Import
+Choose Git->Projects from Git
+Clone URI
+
+Location
+URI:					https://github.com/jlorange/cis234
+HOST:					github.com
+Repository Path:		/jlorange/cis234
+
+Connection
+Protocol:				https
+Port:					'leave it blank'
+Authentication
+User:					'your username'
+Password:				'your password'
+Store in Secure Store	'checked'
+
+NEXT
+
+Choose which branch you want {master by default unless you are working on a branch}
+
+Destionation
+
+Directory:				C:\Users\firstname.lastname\git\cis234
+Initial branch:			master
+
+Configuration
+Remote name:			origin
+
+NEXT
+
+Wizard for project import
+Import existing Eclipse projects
+
+NEXT
+
+Projects:
+Deselect All 
+
+Choose which project you want to work on {projects\nsort by default}
+Add project to working sets????? {I have not been doing this}
+
+FINISH
+
+******************************************************************Use Eclipse IDE EGit plug in********************************************************************************************

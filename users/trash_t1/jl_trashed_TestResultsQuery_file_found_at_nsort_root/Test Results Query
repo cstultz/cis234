@@ -1,0 +1,32 @@
+/************************ Query ALL Test Session's To Choose From *******************************/
+SELECT [User].username
+      , TestSessions.testSessionID
+FROM [User] JOIN TestSessions ON [User].userID = TestSessions.user_ID
+ORDER BY [User].username, TestSessions.testSessionID;
+
+
+/****** Query ALL Test Results ******/
+SELECT [User].[username]
+     , [TestResults].[testSession_ID]
+     , Item.[value]
+     , [wins]
+     , [losses]
+     , [ties]
+FROM   [User] JOIN TestSessions ON [User].userID = TestSessions.user_ID 
+              JOIN TestResults ON TestSessions.testSessionID = TestResults.testSession_ID 
+              JOIN Item on TestResults.item_ID = Item.itemID
+ORDER BY testSession_ID, wins DESC, losses DESC, ties DESC
+
+
+/****** PREPAREDSTATEMENT Query Test Results based on the above selected username and testSessionID ******/
+SELECT [User].[username]
+     , [TestResults].[testSession_ID]
+     , Item.[value]
+     , [wins]
+     , [losses]
+     , [ties]
+FROM   [User] JOIN TestSessions ON [User].userID = TestSessions.user_ID 
+              JOIN TestResults ON TestSessions.testSessionID = TestResults.testSession_ID 
+              JOIN Item on TestResults.item_ID = Item.itemID
+WHERE  [User].username = ? AND TestSessions.testSessionID = ?
+ORDER BY testSession_ID, wins DESC, losses DESC, ties DESC
