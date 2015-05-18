@@ -1,0 +1,248 @@
+// I N D E X   VS   W O R K I N G   F U N C T I O N S
+git log -n 2
+git log --since 2012-06-15
+git log --until 2012-06-15
+
+git log --author="John"	// see log with author John
+git log --grep="Init" 	//jcl looks for any commit messag with str Init
+
+git diff --color-words contact.html
+git mv filenamea.txt filenameb.txt  // will rename in file structure AND in git
+git checkout -- index.html 			// -- means to use current branch (usually HEAD)
+git reset HEAD resources.html 		// unstages.  
+git --amend -m "new message"        // to last commit, amends staged file changes 
+									//   AND/OR commit msg
+git checkout 136572ca3e430f98cc141472a658f28a4985b3 -- resources.html
+// above will put that sha1 commit of resources.html into staging index.
+git diff --staged   // will show you diff between resources in staging and working.
+git revert 440a1047fffa118b6388ef650e8ca555db0171a7  // undoes that commit
+git reset --soft 440a1047fffa118b // move pointer to commit node
+git reset --mixed 440a1047fffa118b
+git reset --hard 440a1047fffa118b // move ptr, and make working+staging match. 
+git clean -n //test run on clean.  shows what would/woud not be removed.
+git clean -f //actually cleans f=force
+
+.gitignore file at project root contains lines like:
+# comment
+*.txt //jcl ignore all txt files
+bob.todo //ignore bob.todo
+!README.txt // don't ignore README.txt
+log/*.log[[0-9] //all log files in log directory with 0-9 at end. i.e log0,log1 etc
+!/assets/videos/tour_*.mp4.  // dont ignore tour vids matching.
+
+https://help.github.com/articles/ignoring-files // articles/howto
+https://github.com/github/gitignore  // sample files
+
+git ls-tree HEAD // looks at files in curr directory and gives shas.
+
+
+// L O G   A N D   D I F F 
+git log --oneline // short version of log file w/small sha and comments only.s----+
+git log --oneline -5 //go back 5 commits
+git log --since=2.weeks --until3.days
+git log 2707e12..acf8750 //range of commits
+git log c4b913.. index.html  // from sha c4 forward, what happened to index.html
+git log -p // shows us diffs on each commit
+git log -p c5b913e.. index.html // diffs sincd c5.
+git log --format=raw //shows format in raw - everything. 
+git log --format=email // shows in format good for emailing. 
+git log --format=oneline // like git log --oneline except shows full shas
+git log --format=short
+git log --format=medium
+git log --format=graph.  Shows a graph w/branches. 					--------------+
+git log --oneline --graph --all --decorate // useful general git log -------------+
+git show cdae0ed //shows full sha, date, and diff of commit-----------------------+
+
+git diff cf78db8..cdae0ed // shw me what changed between these commits for all files 
+git diff cf78db8..cdae0ed tours.html  // for file
+git diff --stat --summary 1506576..HEAD //shows nice summary and stats -----------+
+
+git diff -b cf78db8..cdae0ed  // ignore space changes i.e.' ' -w for all space
+
+B R A N C H I N G
+git branch // shows branches.
+git branch new_feature // add branch
+git checkout new_feature // switch to new feature
+git checkout master // switch back to master
+git status // shows which branch we are on + status
+git log --oneline // easy show of shas/recent commits. 
+git checkout -b shorten_title //check this out as a new branch AND checkout
+git log --graph --oneline --decorate --all
+
+  C O M P A R E 
+git diff master..new_feature // shows differences in most recent commit
+git diff --color-words new_feature..shorten_title
+git diff --color-words new_feature..shorten_title^ // compare new feature to 'previous commit to head of shorten_title'
+git branch --merged short shorter // shows us all branches that are completely enclosed in this branch.  we could delete short, and shorter would not be affected
+  R E N A M E   B R A N C H
+git branch -m new_feature seo_title // renames new_feature to seo_title
+  D E L E TE   B R A N C H
+git branch -d branch_to_delete //allows if fully merged - we wont lose anything
+git branch -D branch_to_delete // use with caution.  Will allow if branch not fully merged.   
+
+C H A N G E   C O M M A N D   P R O M P T
+//git-completion must be loaded.  It decalares function __git_ps1
+__git_ps1
+
+M E R G I N G   B R A N C H E S 
+git checkout master 	// checks out master. we want to merge new_feature in
+git merge new_feature 	// brings new_feature into master. will do ff merge if possible. 
+			// in the case of this merge, there was a conflict-on-merge in file mission.html
+
+git merge --abort 		// CHOICE1: aborts an in-process merge that failed.
+				// CHOICE2: hand edit mission.html, which will now have git a/b markers in it.
+				// so we took CHOICE2, fixed mission.html, now we stage+commit it into master.
+git status
+git add mission.html
+git status
+git commit   			// you don't need to supply message - it creates a message for you since merging
+git log --online -4
+git branch --merged     // shows branch new_feature is now all 'within' master. ok2delete new_feature
+git log --graph --oneline --all --decorate // will show you graph tree of merged tree-ish.		
+
+// if you wanted to use a professional merge tool
+git mergetool			// will show you available merge tools.			
+git mergetool --tool=   // will use named merge tool.
+
+S T A S H
+git stash save "I was in middle of changing page title"  //saves snapshot of changes. No SHA associated.
+git log --oneline -3 // will show you that after stash, it executed a 'git reset --hard HEAD' to pull 
+					 // HEAD into  directory. Takes whatever is in the repo and puts that in BOTH the 
+					 // index and the workdin directory, so they are exactly the same as where HEAD 
+					 // points now. 
+R E M O T E
+// general process when working on a remote branch is  
+//  do commits locally
+//  then fetch latest from remote server
+//  get your origin branch in sync. 
+//  merge any of new work the new work I did into what just came down from server
+//  push result back up to server 					 
+
+// A D D   Y O U R   W O R K   T O   G I T
+remote -v // see whats set up for push & fetch
+git remote add origin https://github.com/jlorange/howto.git
+git push -u origin master   // push to remote 'origin' our 'master'. The -u configures an 'upstream' or
+							// tracking branch
+
+// C L O N I N G   A   R E P O S I T O R Y   cloning a repository FROM git down to our machines:
+git clone https://github.com/jlorange/howto.git // creates new dir howto and puts howto.git repo into.
+git clone https://github.com/jlorange/howto.git MyHowto // creates dir MyHowto then puts repo
+
+// U P D A T I N G   T O   T H E   R E M O T E   S E R V E R
+vi git.txt // make trivial change
+git commit -am 'added trivial change'
+git log --oneline // see our local repo (master) showing change to git.txt
+git log --oneline origin/master // see remote branch.  Note that our change git.txt is not there. 
+git diff origin/master..master  //see diff of git.txt on remote (aka origin/master) and local (master).
+						        // origin/master older than master, so put first to create time range.
+cat .git/refs/remotes/origin/master  	// observe SHA pointed by head of REMOTE branch: origin/master
+cat .git/refs/heads/master				// observe SHA pointed by head of LOCAL  branch: master
+git push						// because it's a tracking branch we don't need 'git push origin master'
+git diff origin/master..master  		// should return nothing indicating they are the same.
+cat .git/refs/remotes/origin/master  	// observe SHA pointed by head of REMOTE branch: origin/master
+cat .git/refs/heads/master				// observe SHA pointed by head of LOCAL  branch: master
+
+git log --oneline origin/master -3 // shows commits on remote. Should now see sha for last local commit
+								   // Now goto github and observe sha as last commit. click to see diffs
+
+// F E T C H
+git fetch  // since we are a tracking branch, we can use this and it knows we refer to origin
+			// observe it says  3f7e0c1..a386d5b  master     -> origin/master
+			// It fetched missing sha 3f7 thru a38 from remote to our local origin/master
+
+// F E T C H   A N D   M E R G E
+go to git hub and observe SHA of last update on repository.
+git log --oneline master				// observe SHA of master
+git log --oneline origin/master			// observe SHA of origin/mastere
+cat .git/refs/remotes/origin/master  	// observe SHA pointed by head of REMOTE branch: origin/master
+cat .git/refs/heads/master				// observe SHA pointed by head of LOCAL  branch: master
+										// .. fetch will update origin/master with SHA from github
+git fetch						// bring updates from github origin/master to our local origin/master 
+								// "sync my origin/master from the origin/master on github"
+cat .git/refs/remotes/origin/master  	// observe SHA pointed by head of REMOTE branch: origin/master
+										// .. should match SHA from github
+cat .git/refs/heads/master				// observe SHA pointed by head of LOCAL  branch: master
+
+git log --oneline origin/master	// See list of commits on github aka origin/master
+git log --oneline master		// See list of commits on our master  
+git diff master..origin/master  // assuming master older than origin/master,shows diffs in local..remote
+git checkout master				// Now we have checked out local master (need todo before merge)
+git merge origin/master			// merge the newly fetched origin/master into our local master
+
+// R E M O T E   B R A N C H I N G
+git branch non_tracking origin/non_tracking  	// creates br non_tracking tracking origin/non_tracking	
+git checkout -b non_tracking origin/non_tracking //creat+ckout non_tracking tracking origin/non_tracking
+
+git branch -a 				// shows branches local and remote. Observe red remotes/origin/non_tracking
+git push origin :non_tracking	// (old way) deletes br non_tracking on server
+git branch -a                   // observe branch non_tracking is gone. 
+
+// workflow example between john & Lynda 
+// John clones CIS234 repository. This creates directory howto and puts everthing into it. 
+git clone https://github.com/jlorange/howto.git
+cd howto 
+git checkout master 			// so now we are working on master branch
+edit README.md                  // edit trivial local file README.md and add some text. save.
+git status						// you will see the status of git reflecting README.md as modified
+git add .						// adds all changed files. In this case it's just one file READM.md
+git status						// see README has moved to staging area.
+git commit -m'edited the README to add joke'	// commit all files in staging area.
+git status
+git log --oneline -3            // see last three commits. Note SHA for most recent commit.  
+								// This is the hex value you see   
+								// This is local only. Nothing on github yet.								
+git push -u origin master       // pushes our master branch up to github referenced by remote 
+								// identifier 'origin'.  The -u is critical to set up auto-stream
+								// commiting so that our local master branch tracks to origin/master 
+								// on GitHub
+
+// Now go up to github and see if your change made it. You can see the last commit	and verify that
+// it's SHA and message match what you just did. 
+
+// What we just did is basically set up git so we can read/write to the master, and we set up our 
+// master branch to auto-track to the master on Github.  The master on github is referred to as 
+// 'origin/master'. The master on our local is referred to as 'master'.
+
+// Now we can continue working directly on the master which in turn pushes to origin/master as such:
+
+git checkout master 		// (if not already done)  				
+git status					// see where we are.  
+.. work on stuff..
+git status					// see what is changed. Should see changed files id'd as 'Modified'
+git add .					// adds all changed files to git staging area.
+git status					// observe your changed files in staging. This is your 'change set'
+git fetch                   // Just before doing a push, you should always do a fetch.  This is to 
+							// pick up any changes that others made since your last push or fetch.							
+git merge origin/mastere    // merges stuff on origin/master to our local git.  Resolve changes here.
+git checkout -b new_taketest_screen  // creates a branch with the feature you wish to create. This 
+								     // creates the local branch, and checks it out.  
+git status						     // verify that you have new_taketest_screen checked out.
+       .. make changes..
+add .						// add your changed files to staging. 
+git commit -m "added few feature"
+git fetch 
+git merge origin/master
+git push
+
+// W O R K F L O W   N E W   B R A N C H   A N D   M E R G E
+git fetch
+git merge origin/master
+git checkout -b taketest		// creates branch taketest and checks us out into it.
+.. make changes...
+git commit -m "fixed screen label whodunnit"
+git fetch 							// see if any changes have come in that need work.
+								// do a git merge if needed.
+								// set up remote tracking. 
+.. make changes..
+git push -u origin taketest     // taketest branch is now on local and remote
+				// you will see it on github.
+									
+
+			
+
+
+
+
+
+
+
