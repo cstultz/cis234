@@ -1,6 +1,5 @@
 package cis234a.nsort.view;
 
-import javax.swing.DefaultListModel;
 import cis234a.nsort.model.*;
 import cis234a.nsort.controller.*;
 /**

@@ -1,7 +1,5 @@
 package cis234a.nsort.model;
 
-import javax.swing.JLabel;
-
 import cis234a.nsort.model.Answer.*;
 /**
  * The UserTestModel class captures the behavior of the user test independent of the user interface.   
@@ -116,14 +114,9 @@ public class UserTestModel {
 	 * @param JLabel for the left item of the question
 	 * @param JLabel for the right item of the question
 	 */
-	public void setupFirstQuestion(JLabel itemLeft, JLabel itemRight)
+	public Question getFirstQuestion()
 	{
-		Question question;
-		question = userTest.getCurrentQuestion();
-		Item item = question.getItemLeft();
-		itemLeft.setText(item.getValue());
-		item = question.getItemRight();
-		itemRight.setText(item.getValue());
+		return userTest.getCurrentQuestion();
 	}
 	
 	/**
@@ -133,22 +126,22 @@ public class UserTestModel {
 	 * @param itemLeft the question's left item
 	 * @param itemRight the question's right item
 	 */
-	public void recordAnswer(Answer.Value UserSelection, JLabel itemLeft, JLabel itemRight)
+	public void recordAnswer(Answer.Value userSelection)
 	{
 		//record answer to the question
 		Question question = userTest.getCurrentQuestion();
 		Answer answer = new Answer();
-		if (UserSelection == Answer.Value.LEFT)
+		if (userSelection == Answer.Value.LEFT)
 		{
 			answer.setValue(Value.LEFT);
 			question.setAnswer(answer);
 		}
-		if (UserSelection == Answer.Value.RIGHT)
+		if (userSelection == Answer.Value.RIGHT)
 		{
 			answer.setValue(Value.RIGHT);
 			question.setAnswer(answer);
 		}
-		if (UserSelection == Answer.Value.CANT_DECIDE)
+		if (userSelection == Answer.Value.CANT_DECIDE)
 		{
 			answer.setValue(Value.CANT_DECIDE);
 			question.setAnswer(answer);

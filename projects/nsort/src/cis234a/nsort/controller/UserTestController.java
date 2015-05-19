@@ -1,7 +1,5 @@
 package cis234a.nsort.controller;
 
-import javax.swing.JLabel;
-
 import cis234a.nsort.model.*;
 import cis234a.nsort.model.Answer.Value;
 import cis234a.nsort.view.*;
@@ -52,7 +50,11 @@ public class UserTestController {
 	 */
 	public void setupFirstQuestion()
 	{
-		model.setupFirstQuestion(view.getLeftItemLabel(), view.getRightItemLabel());
+		Question question = model.getFirstQuestion();
+		Item item = question.getItemLeft();
+		view.setLeftItemLabelValue(item.getValue());
+		item = question.getItemRight();
+		view.setRightItemLabelValue(item.getValue());
 	}
 	
 	/**
@@ -100,9 +102,9 @@ public class UserTestController {
 	 * @param itemLeft JLabel object for the left item
 	 * @param itemRight JLabel object for the right item
 	 */
-	public void recordAnswer(Answer.Value UserSelection, JLabel itemLeft, JLabel itemRight)
+	public void recordAnswer(Answer.Value UserSelection)
 	{
-		model.recordAnswer(UserSelection, itemLeft, itemRight);
+		model.recordAnswer(UserSelection);
 	}
 	
 	/**
@@ -112,7 +114,7 @@ public class UserTestController {
 	 * @param itemRight JLabel object of the right item
 	 * @return true if their is still another question on the test; false is all the questions on the test have been answered.
 	 */
-	public boolean getNextQuestion(JLabel itemLeft, JLabel itemRight)
+	public boolean getNextQuestion()
 	{
 		
 		Question question = model.getNextQuestion(); //get the next question from the model.
@@ -131,9 +133,10 @@ public class UserTestController {
 		{
 			//set the labels for the next question on the test
 			Item item = question.getItemLeft();
-			itemLeft.setText(item.getValue());
+			view.setLeftItemLabelValue(item.getValue());
 			item = question.getItemRight();
-			itemRight.setText(item.getValue());
+			view.setRightItemLabelValue(item.getValue());
+			
 			
 			return true;
 		}

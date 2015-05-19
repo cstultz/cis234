@@ -1,7 +1,5 @@
 package cis234a.nsort.view;
 
-import javax.swing.JLabel;
-
 import cis234a.nsort.controller.*;
 /**
  * The interface for a view of an UserTest model.
@@ -20,14 +18,14 @@ public interface UserTestView {
 	public boolean updateUserTestFrame(boolean UserTestFrameState);
 	
 	/**
-	 * get the left item label object
+	 * set the left item label object
 	 */
-	public JLabel getLeftItemLabel();
+	public void setLeftItemLabelValue(String itemLeftValue);
 	
 	/**
-	 * get the right item label object
+	 * set the right item label object
 	 */
-	public JLabel getRightItemLabel();
+	public void setRightItemLabelValue(String itemRightValue);
 	
 	/**
 	 * set the total questions on the user test
