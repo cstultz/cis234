@@ -43,7 +43,7 @@ public class UserTestController {
 	{
 		setupFirstQuestion();
 		updateTotalQuestions();
-		setProgressMeterSelectedState();
+		updateProgressMeterSelectedState();
 		view.updateUserTestFrame(model.getUserTestFrameState());                        
 	}
 	
@@ -191,14 +191,17 @@ public class UserTestController {
 	 */
 	public void updateTotalQuestions()
 	{
-		view.setTotalQuestions(model.getQuestionsCount());
+		int totalQuestions = model.getQuestionsCount();
+		view.setTotalQuestions(totalQuestions);
+		model.setProgressMeterUpperBound(totalQuestions);
 	}
 	
 	/**
 	 * sets the progress meter selected state in the view from the database
 	 */
-	public void setProgressMeterSelectedState()
+	public void updateProgressMeterSelectedState()
 	{
+		model.setProgressMeterSelectedState(sqlUser.getProgressMeterSelectedState());
 		view.updateProgressMeterSelectedState(model.getProgressMeterSelectedState());
 	}
 }

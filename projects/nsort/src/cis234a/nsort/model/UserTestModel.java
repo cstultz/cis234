@@ -23,6 +23,7 @@ public class UserTestModel {
 	 */
 	public UserTestModel()
 	{
+		progressMeter = new ProgressMeter();
 		setUserTestState(false);   //user is not done taking the test
 	}
 
@@ -270,5 +271,10 @@ public class UserTestModel {
 	public void setProgressMeterSelectedState(boolean selectedState)
 	{
 		progressMeter.setSelectedState(selectedState);
+	}
+	
+	public void setProgressMeterUpperBound(int totalQuestions)
+	{
+		
 	}
 }

@@ -205,16 +205,9 @@ public class AdminTestSetupController {
 	 */
 	public void updateProgressMeterCheckBoxSetSelected()
 	{
-		if (sqlUser.getProgressMeterSelectedState())
-		{
-			model.setProgressMeterSelectedState(1);
-			view.setProgressMeterSelectedState(true);
-		}
-		else
-		{
-			model.setProgressMeterSelectedState(0);
-			view.setProgressMeterSelectedState(false);
-		}
+		boolean selectedState = sqlUser.getProgressMeterSelectedState();
+		model.setProgressMeterSelectedState(selectedState);
+		view.setProgressMeterSelectedState(selectedState);
 	}
 	
 	/**
@@ -224,17 +217,8 @@ public class AdminTestSetupController {
 	 */
 	public void setProgressMeterSelectedState(boolean progressMeterSelectedState)
 	{
-		if(progressMeterSelectedState)
-		{
-			sqlUser.setProgressBarSelectedState(1);
-			model.setProgressMeterSelectedState(1);
-		}
-		else
-		{
-			sqlUser.setProgressBarSelectedState(0);
-			model.setProgressMeterSelectedState(1);
-		}
-		
+		sqlUser.setProgressBarSelectedState(progressMeterSelectedState);
+		model.setProgressMeterSelectedState(progressMeterSelectedState);
 	}
 	
 	/**

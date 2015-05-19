@@ -427,16 +427,23 @@ public class SqlUser_234a_t1 {
     }
     
     /**
-     * set the selected state of the progress meter. 1 for true, 2 for false
+     * set the selected state of the progress meter. 1 for true, 0 for false
      *   
-     * @param the selected state of the progress meter. 1 for true, 2 for false
+     * @param the selected state of the progress meter. 1 for true, 0 for false
      */
-    public void setProgressBarSelectedState(int selectedState)
+    public void setProgressBarSelectedState(boolean selectedState)
     {
     	try {
     		connect();
     		PreparedStatement preparedStmt = conn.prepareStatement(queryupdateProgressMeterSelectedState);
-			preparedStmt.setInt(1, selectedState);
+			if (selectedState)
+			{
+	    		preparedStmt.setInt(1, 1);
+			}
+			else
+			{
+	    		preparedStmt.setInt(1, 0);
+			}
 			preparedStmt.setInt(2, progressMeterSelectedStateID);
 			preparedStmt.execute();
 		} catch (SQLException e1) {
