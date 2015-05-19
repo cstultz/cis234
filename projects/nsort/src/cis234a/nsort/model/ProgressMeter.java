@@ -18,20 +18,16 @@ import javax.swing.JProgressBar;
 	private int upperBound;        //maximum value 
  	private int currentBound;      //current position
  	private boolean selectedState; //the on or off state set by the admin of the progress meter during the user test.
- 	
+
  	/**
 	 * Constructor for the class.
 	 * 
 	 * @param upperBound is the total questions that will be shown on the test
 	 * @param setVisible the selected state of the progress meter for the user test
 	 */
- 	public ProgressMeter (int upperBound, boolean setVisible) {
- 		//Need to call the super class constructor bc of the extender. This way JProgressBar gets implemented
- 		//and all the JProgressBar class elements are updated appropriately.
- 		
+ 	public ProgressMeter () 
+ 	{
  		this.lowerBound = 1;                   //set to first question static
- 		this.upperBound = upperBound;          //total questions
- 		this.selectedState = setVisible;       //initialize to the selectedState of the progress indicator
  		this.currentBound = 1;                 //set to first question static
  	}
 
@@ -40,7 +36,8 @@ import javax.swing.JProgressBar;
 	 * 
 	 * @return the minimum value of the progress meter
 	 */
- 	public int getLowerBound() {
+ 	public int getLowerBound() 
+ 	{
 		return lowerBound;
 	}
 
@@ -49,7 +46,8 @@ import javax.swing.JProgressBar;
  	 * 
  	 * @param minimum value of the progress meter
  	 */
-	public void setLowerBound(int lowerBound) {
+	public void setLowerBound(int lowerBound) 
+	{
 		this.lowerBound = lowerBound;
 	}
 
@@ -58,7 +56,8 @@ import javax.swing.JProgressBar;
 	 * 
 	 * @return the maximum value of the progress meter
 	 */
-	public int getUpperBound() {
+	public int getUpperBound() 
+	{
 		return upperBound;
 	}
 
@@ -67,7 +66,8 @@ import javax.swing.JProgressBar;
 	 * 
 	 * @param the maximum value of the progress meter
 	 */
-	public void setUpperBound(int upperBound) {
+	public void setUpperBound(int upperBound) 
+	{
 		this.upperBound = upperBound;
 	}
 
@@ -76,7 +76,8 @@ import javax.swing.JProgressBar;
 	 * 
 	 * @return the current question position of the progress meter  
 	 */
-	public int getCurrentBound() {
+	public int getCurrentBound() 
+	{
 		return currentBound;
 	}
 
@@ -85,7 +86,8 @@ import javax.swing.JProgressBar;
 	 * 
 	 * @param the question position of the progress meter
 	 */
-	public void setCurrentBound(int currentBound) {
+	public void setCurrentBound(int currentBound) 
+	{
 		this.currentBound = currentBound;
 	}
 
@@ -94,7 +96,8 @@ import javax.swing.JProgressBar;
 	 * 
 	 * @return the current selected state of the progress meter
 	 */
-	public boolean getSelectedState() {
+	public boolean getSelectedState() 
+	{
 		return selectedState;
 	}
 
