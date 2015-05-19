@@ -21,8 +21,8 @@ public class ReportView extends JFrame
 	/**
 	 * ReportView sets up all parameters for build and display of report panel
 	 */
-	RankingSystemController controller;
-	final static boolean shouldFill = true;
+	//RankingSystemController controller;
+	//final static boolean shouldFill = true;
 	private JScrollPane scrollPane;
 	private JPanel panel = new JPanel();
 	private JComboBox<String> userComboBox;

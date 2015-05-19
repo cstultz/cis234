@@ -12,58 +12,58 @@ import java.sql.*;
 
 public class Report 
 {
-	private String[] columnNames;
+	//private String[] columnNames;
 	private Object[][] columnData;
 	private SqlUser_234a_t1 resultSet = new SqlUser_234a_t1();;
 	private List userNames;
 	private List userTestID;
 	
-	public String[] queryColumnNames() throws SQLException
-	{
-		String query = "select (select value from Item where Item.itemID = TestItems.item_ID) AS 'COLUMN' from TestItems where test_ID = 1 ORDER BY item_ID";
-		try
-		{ 
-			ResultSet x = resultSet.sqlQuery(query);
-			x.last();
-			int rowCount = x.getRow();
-			x.beforeFirst();
-			columnNames = new String[rowCount];
-			int count = 0;
-			while (x.next())
-			{			
-				String value = x.getString("COLUMN");
-				if (value != null)
-				{
-					System.out.println(value);
-					if (columnNames.length >= 1)
-					{
-						columnNames[count] = value;
-					}
-					count++;
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			System.err.println("Got an exception! ");
-			System.err.println(e.getMessage());
-		}
-		finally
-		{
-			try
-			{
-				resultSet.closeConnection();
-				
-			}
-			catch (Exception e)
-			{
-					System.err.println("Got an exception! ");
-					System.err.println(e.getMessage());
-			}
-		}
-
-		return columnNames;
-	}
+//	public String[] queryColumnNames() throws SQLException
+//	{
+//		String query = "select (select value from Item where Item.itemID = TestItems.item_ID) AS 'COLUMN' from TestItems where test_ID = 1 ORDER BY item_ID";
+//		try
+//		{ 
+//			ResultSet x = resultSet.sqlQuery(query);
+//			x.last();
+//			int rowCount = x.getRow();
+//			x.beforeFirst();
+//			columnNames = new String[rowCount];
+//			int count = 0;
+//			while (x.next())
+//			{			
+//				String value = x.getString("COLUMN");
+//				if (value != null)
+//				{
+//					System.out.println(value);
+//					if (columnNames.length >= 1)
+//					{
+//						columnNames[count] = value;
+//					}
+//					count++;
+//				}
+//			}
+//		}
+//		catch (Exception e)
+//		{
+//			System.err.println("Got an exception! ");
+//			System.err.println(e.getMessage());
+//		}
+//		finally
+//		{
+//			try
+//			{
+//				resultSet.closeConnection();
+//				
+//			}
+//			catch (Exception e)
+//			{
+//					System.err.println("Got an exception! ");
+//					System.err.println(e.getMessage());
+//			}
+//		}
+//
+//		return columnNames;
+//	}
 	 
 	/**
 	 * queries the database for 

@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+
 import cis234a.nsort.model.*;
 /**
  * The LoginPanel Class contains the components for the LoginFrame.
@@ -26,13 +28,10 @@ import cis234a.nsort.model.*;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (4/25/2015)
  */
+@SuppressWarnings("serial")
 public class AdminTestSetupPanel extends JPanel
 {
-	/**
-	 * default serialization
-	 */
-	private static final long serialVersionUID = 1L;
-	
+
 	private static final Dimension DIM = new Dimension(692, 422);
 	
 	private JLabel existingItemsLabel;

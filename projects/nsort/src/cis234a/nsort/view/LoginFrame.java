@@ -16,12 +16,9 @@ import cis234a.nsort.controller.*;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (4/25/2015)
  */
+@SuppressWarnings("serial")
 public class LoginFrame extends JFrame implements LoginView
 {
-	/**
-	 * default serialization
-	 */
-	private static final long serialVersionUID = 1L;
 	private LoginPanel loginPanel;
 	private LoginController controller;
 	
@@ -113,7 +110,7 @@ public class LoginFrame extends JFrame implements LoginView
 			controller.login();
 			if(controller.checkUserAccessRoleForAdmin())
 			{
-				JOptionPane.showMessageDialog(null,"Welcome, " + controller.getFullUserName().trim() + "!","Login Successful - Administrator",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null,"Welcome, " + controller.getFullUserName().trim() + "!","Login Successful - Administrator",JOptionPane.PLAIN_MESSAGE);
 				controller.launchAdminTestSetup();
 			}
 			if (controller.checkUserAccessRoleForUser())
@@ -121,6 +118,8 @@ public class LoginFrame extends JFrame implements LoginView
 				JOptionPane.showMessageDialog(null,"Welcome, " + controller.getFullUserName().trim() +
                         "\r\n\r\n Next you will take a test whereby you will compare items in groups of 2." +
                         "\r\n Every item on the test will be compared to every other item on the test." + 
+                        "\r\n You must complete the test in order to save the results. " + 
+                        "\r\n Close the window at anytime during the test to exit without saving. " + 
                         "\r\n Click OK to start the test.","User Test - Welcome Message",JOptionPane.INFORMATION_MESSAGE);
 				controller.launchUserTestFrame();
 			}

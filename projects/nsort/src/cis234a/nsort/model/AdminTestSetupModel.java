@@ -135,14 +135,6 @@ public class AdminTestSetupModel {
 	public void setLoginState(boolean loginState) {
 		user.setLoginState(loginState);
 	}
-
-	/**
-	 * Get the login state of the user
-	 * @return true if user is logged in; false if not.
-	 */
-	public boolean getLoggedInState() {
-		return user.getLoginState();
-	}
 	
 	/**
 	 * get the user access role from the user in the model

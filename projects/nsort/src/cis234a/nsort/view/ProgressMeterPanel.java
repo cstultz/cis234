@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
@@ -15,12 +16,9 @@ import javax.swing.SwingConstants;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (4/25/2015)
  */
+@SuppressWarnings("serial")
 public class ProgressMeterPanel extends JPanel 
 {
-	/**
-	 * default serialization
-	 */
-	private static final long serialVersionUID = 1L;
 	private static final Dimension DIM = new Dimension(320,80);
 	
 	private JProgressBar progressMeter;

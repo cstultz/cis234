@@ -3,8 +3,10 @@ package cis234a.nsort.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import cis234a.nsort.controller.*;
 /**
  * The RegistrationFrame Class is the GUI of the user registration for the Ranking System.
@@ -12,12 +14,9 @@ import cis234a.nsort.controller.*;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (5/9/2015)
  */
+@SuppressWarnings("serial")
 public class RegistrationFrame extends JFrame implements RegistrationView
 {
-	/**
-	 * default serialization
-	 */
-	private static final long serialVersionUID = 1L;
 	private RegistrationPanel registrationPanel;
 	private RegistrationController controller;
 	/**
@@ -152,11 +151,11 @@ public class RegistrationFrame extends JFrame implements RegistrationView
 	}
 	
 	private void newUserWelcomeMessage(RegistrationPanel registrationPanel) {
-		JOptionPane.showMessageDialog(null,"Welcome " + registrationPanel.getFirstName() + " " + registrationPanel.getLastName(),"New User Registration Success",JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null,"Welcome " + registrationPanel.getFirstName() + " " + registrationPanel.getLastName(),"New User Registration Success",JOptionPane.PLAIN_MESSAGE);
 	}
 
 	private void cancelRegistrationMessage(RegistrationPanel registrationPanel) {
-		JOptionPane.showMessageDialog(null,"User Registration has been cancelled. Returning to the login screen.", "New User Registration Cancelled",JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(null,"User Registration has been cancelled. Returning to the login screen.", "New User Registration Cancelled",JOptionPane.PLAIN_MESSAGE);
 	}
 
 	private void usernameAlreadyTakenUsernameMessage(RegistrationPanel registrationPanel) {

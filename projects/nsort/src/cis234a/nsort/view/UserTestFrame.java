@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import cis234a.nsort.model.*;
 import cis234a.nsort.controller.*;
 
@@ -14,12 +15,9 @@ import cis234a.nsort.controller.*;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (4/25/2015)
  */
+@SuppressWarnings("serial")
 public class UserTestFrame extends JFrame implements UserTestView
 {
-	/**
-	 * default serialization
-	 */
-	private static final long serialVersionUID = 1L;
 	private UserTestPanel userTestPanel;
 	private UserTestController controller;
 	
@@ -127,7 +125,7 @@ public class UserTestFrame extends JFrame implements UserTestView
 	public void TestComplete()
 	{
 		setVisible(false);
-		JOptionPane.showMessageDialog(null,"You have completed the test! You will now be logged off and returned to the login screen.","User Test - Test Complete!",JOptionPane.WARNING_MESSAGE);
+		JOptionPane.showMessageDialog(null,"You have completed the test! You will now be logged off and returned to the login screen.","User Test - Test Complete!",JOptionPane.PLAIN_MESSAGE);
 		controller.logoutUser();
 		controller.launchLogin();
 	}

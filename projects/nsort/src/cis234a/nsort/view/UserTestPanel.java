@@ -6,6 +6,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,12 +19,9 @@ import javax.swing.SwingConstants;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (5/7/2015)
  */
+@SuppressWarnings("serial")
 public class UserTestPanel extends JPanel 
 {
-	/**
-	 * default serialization
-	 */
-	private static final long serialVersionUID = 1L;
 	private static final Dimension DIM = new Dimension(580, 374);
 	
 	private ProgressMeterPanel progressMeterPanel;

@@ -7,13 +7,9 @@ import javax.swing.JProgressBar;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (4/17/2015)
  * 
- */public class ProgressMeter extends JProgressBar{
+ */@SuppressWarnings("serial")
+public class ProgressMeter extends JProgressBar{
 
-  	/**
-	 * default serialization 
-	 */
-	private static final long serialVersionUID = 1L;
- 	
 	private int lowerBound;        //minimum value 
 	private int upperBound;        //maximum value 
  	private int currentBound;      //current position

@@ -20,12 +20,9 @@ import cis234a.nsort.model.*;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (4/25/2015)
  */
+@SuppressWarnings("serial")
 public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 {
-	/**
-	 * default serialization
-	 */
-	private static final long serialVersionUID = 1L;
 	private AdminTestSetupPanel adminTestSetupPanel;
 	private AdminTestSetupController controller;
 	
@@ -134,7 +131,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				
 				setVisible(false);
 
-				JOptionPane.showMessageDialog(null,"New test has been saved successfully to the database. You will now be logged off and returned to the login screen.","New Test Saved",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null,"New test has been saved successfully to the database. You will now be logged off and returned to the login screen.","New Test Saved",JOptionPane.PLAIN_MESSAGE);
 				
 				controller.hideAdminTestSetup();
 
@@ -150,7 +147,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			public void actionPerformed(ActionEvent ae) 
 			{
 				setVisible(false);
-				JOptionPane.showMessageDialog(null,"New test has been cancelled. Previous test has been preserved. You will now be logged off and returned to the login screen.","New Test Cancelled",JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null,"New test has been cancelled. Previous test has been preserved. You will now be logged off and returned to the login screen.","New Test Cancelled",JOptionPane.PLAIN_MESSAGE);
 				controller.hideAdminTestSetup();
 			}
 		});

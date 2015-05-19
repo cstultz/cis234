@@ -62,15 +62,6 @@ public class UserTestModel {
 	}
 
 	/**
-	 * Get the login state of the user
-	 * 
-	 * @return true if user is logged in; false if not.
-	 */
-	public boolean getLoggedInState() {
-		return user.getLoginState();
-	}
-
-	/**
 	 * get the access role of the user
 	 * 
 	 * @return the Role.UserAccessRole {Admin, User, Unassigned} 

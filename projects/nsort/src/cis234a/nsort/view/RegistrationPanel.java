@@ -2,11 +2,13 @@ package cis234a.nsort.view;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
@@ -19,12 +21,9 @@ import java.awt.Font;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (5/9/2015)
  */
+@SuppressWarnings("serial")
 public class RegistrationPanel extends JPanel 
 {
-	/**
-	 * default serialization
-	 */
-	private static final long serialVersionUID = 1L;
 	private static final Dimension DIM = new Dimension(463, 405);
 	
 	private JTextField firstNameTextField;
