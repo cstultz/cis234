@@ -1,6 +1,5 @@
 package cis234a.nsort.model;
 
-import javax.swing.DefaultListModel;
 /**
  * The AdminTestSetupModel class captures the behavior of the admin test setup independent of the user interface.   
  *  
@@ -48,40 +47,6 @@ public class AdminTestSetupModel {
 	}
 	
 	/**
-	 * populate the Existing Items List from the model for the view
-	 * 
-	 * @param JListModel the Default List Model from the view
-	 * @return the Updated Default List Model object for the view
-	 */
-	public DefaultListModel<String> populateExistingItemsToTheDefaultListModel(DefaultListModel<String> JListModel)
-	{
-		for (int i = 0; i < existingItemsList.getSize(); i++)
-		{
-			Item item = existingItemsList.getItem(i);
-			String value = item.getValue();
-			JListModel.addElement(value);                     //add each item to the DefaultListModel view
-		}
-		return JListModel;
-	}
-	
-	/**
-	 * populate the Test Items List from the model for the view
-	 * 
-	 * @param JListModel the Default List Model from the view
-	 * @return the Updated Default List Model object for the view
-	 */
-	public DefaultListModel<String> populateTestItemsToTheDefaultListModel(DefaultListModel<String> JListModel)
-	{
-		for (int i = 0; i < testItemsList.getSize(); i++)
-		{
-			Item item = testItemsList.getItem(i);
-			String value = item.getValue();
-			JListModel.addElement(value);                     //add each item to the DefaultListModel view
-		}
-		return JListModel;
-	}
-
-	/**
 	 * remove an item from the test items list
 	 * 
 	 * @param JListModel Default List Model Test Items List in the view
@@ -110,9 +75,9 @@ public class AdminTestSetupModel {
 	 * @param testItemsListModel the items on the test being checked
 	 * @return true if minimum requirements of the test are met; false if not.
 	 */
-	public boolean checkItemsListMeetsMinimumRequirements(DefaultListModel<String> testItemsListModel)
+	public boolean checkItemsListMeetsMinimumRequirements()
 	{
-		if (testItemsListModel.size() >= 2)
+		if (testItemsList.getSize() >= 2)
 		{
 			return true;
 		}
@@ -250,6 +215,12 @@ public class AdminTestSetupModel {
 		}
 	}
 	
+	/**
+	 * check to see if the the selectedValue is currently already on the test items list 
+	 * 
+	 * @param selectedValue being checked for on the test items list
+	 * @return true if item is found; false if not.
+	 */
 	public boolean checkTestItemsListMatch(String selectedValue)
 	{
 		if (testItemsList.getItem(selectedValue) != null)
@@ -262,6 +233,12 @@ public class AdminTestSetupModel {
 		}
 	}
 	
+	/**
+	 * check to see if the the selectedValue is currently already on the existing items list 
+	 * 
+	 * @param selectedValue being checked for on the existing items list
+	 * @return true if item is found; false if not.
+	 */
 	public boolean checkExistingItemsListMatch(String selectedValue)
 	{
 		if (existingItemsList.getItem(selectedValue) != null)
@@ -274,11 +251,21 @@ public class AdminTestSetupModel {
 		}
 	}
 	
+	/**
+	 * get the existing items list
+	 * 
+	 * @return the ItemList existing items list
+	 */
 	public ItemList getExistingItemsList()
 	{
 		return existingItemsList;
 	}
 
+	/**
+	 * get the test items list
+	 * 
+	 * @return the ItemList test items list
+	 */
 	public ItemList getTestItemsList()
 	{
 		return testItemsList;

@@ -256,18 +256,43 @@ public class UserTestModel {
 		return userTest.numberOfQuestions();
 	}
 	
+	/**
+	 * get the progress meter selected state
+	 * 
+	 * @return true if the progress meter is to be visible; false if not.
+	 */
 	public boolean getProgressMeterSelectedState()
 	{
 		return progressMeter.getSelectedState();
 	}
 	
+	/**
+	 * set the progress meter selected state
+	 * 
+	 * @param selectedState of the progress meter
+	 */
 	public void setProgressMeterSelectedState(boolean selectedState)
 	{
 		progressMeter.setSelectedState(selectedState);
 	}
 	
+	/**
+	 * set the upper bound of the progress meter (total questions on the test)
+	 * 
+	 * @param totalQuestions on the test
+	 */
 	public void setProgressMeterUpperBound(int totalQuestions)
 	{
-		
+		progressMeter.setUpperBound(totalQuestions);
+	}
+	
+	/**
+	 * get the progress meter upper bound (total questions on the test)
+	 * 
+	 * @return the upper bound (total questions on the test)
+	 */
+	public int getProgressMeterUpperBound()
+	{
+		return progressMeter.getUpperBound();
 	}
 }

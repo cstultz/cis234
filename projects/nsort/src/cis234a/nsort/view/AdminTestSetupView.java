@@ -32,14 +32,37 @@ public interface AdminTestSetupView {
 	 */
 	public void setTestItemsList(ItemList testItemsList);
 
+	/**
+	 * update the test items list with the new item value
+	 * 
+	 * @param selectedValue of the item being added to the test items list.
+	 */
 	public void updateTestItemsList(String selectedValue);
 	
+	/**
+	 * show the duplicate message of an item on the test items list to the user
+	 * 
+	 * @param selectedValue of the item already on the test items list.
+	 */
 	public void showDuplicateTestItemsMessage(String selectedValue);
 	
+	/**
+	 * show the empty item message when user tries to add an empty string to the existing items list.
+	 */
 	public void showEmptyItemMessage();
 	
+	/**
+	 * update the existing items list with the new item value
+	 * 
+	 * @param newItemValue of the item being added to the list.
+	 */
 	public void updateExistingItemsList(String newItemValue);
 	
+	/**
+	 * show user the existing item match message
+	 * 
+	 * @param match value if the item already in the list
+	 */
 	public void showExistingItemMatchMessage(String match);
 	
 	/**

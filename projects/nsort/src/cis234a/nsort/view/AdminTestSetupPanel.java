@@ -386,16 +386,31 @@ public class AdminTestSetupPanel extends JPanel
 		reportButton.addActionListener(al);
 	}
 	
+	/**
+	 * remove an item from the test items list
+	 * 
+	 * @param selectedValue of item being removed
+	 */
 	public void removeItemFromTestItemList(String selectedValue)
 	{
 		testItemsListModel.removeElement(selectedValue);
 	}
 	
+	/**
+	 * add an existing items list item to the test items list
+	 * 
+	 * @param selectedValue of the item being added to the test
+	 */
 	public void addSelectedExistingItemTotestItemsList(String selectedValue)
 	{
 		testItemsListModel.addElement(selectedValue);
 	}
 	
+	/**
+	 * show the duplicate message of an item on the test items list to the user
+	 * 
+	 * @param selectedValue of the item already on the test items list.
+	 */
 	public void showDuplicateTestItemsMessage(String selectedValue)
 	{
 		String input = "";
@@ -413,11 +428,21 @@ public class AdminTestSetupPanel extends JPanel
 		}
 	}
 	
+	/**
+	 * add a new item value to the existing items list
+	 * 
+	 * @param newItemValue of the item being added.
+	 */
 	public void addNewItemToExistingItemsList(String newItemValue)
 	{
 		existingItemsListModel.addElement(newItemValue);
 	}
 	
+	/**
+	 * update the test items list with the new item value
+	 * 
+	 * @param selectedValue of the item being added to the test items list.
+	 */
 	public void updateTestItemsList(String selectedValue)
 	{
 		testItemsListModel.addElement(selectedValue);

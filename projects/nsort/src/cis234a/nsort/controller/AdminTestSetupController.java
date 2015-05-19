@@ -1,6 +1,5 @@
 package cis234a.nsort.controller;
 
-import javax.swing.DefaultListModel;
 import cis234a.nsort.model.*;
 import cis234a.nsort.view.*;
 /**
@@ -65,8 +64,7 @@ public class AdminTestSetupController {
 	/**
 	 * remove an item from the Test Items list.
 	 * 
-	 * @param JListModel the Test Items List
-	 * @param value of the item being removed
+	 * @param selectedValue of the item being removed
 	 */
 	public void removeItemFromTestItemList(String selectedValue)
 	{
@@ -76,8 +74,7 @@ public class AdminTestSetupController {
 	/**
 	 * add an item from the Existing Items List to the Test Items List
 	 * 
-	 * @param JListModel the Test Items List
-	 * @param value being added from the Existing Items List
+	 * @param selectedValue being added to the Test Items List from the Existing Items List
 	 */
 	public void addExistingItemToTestItemsList(String selectedValue)
 	{
@@ -133,9 +130,9 @@ public class AdminTestSetupController {
 	 * @param testItemsListModel the items on the test being checked
 	 * @return true if minimum requirements of the test are met; false if not.
 	 */
-	public boolean checkItemsListMeetsMinimumRequirements(DefaultListModel<String> testItemsListModel)
+	public boolean checkItemsListMeetsMinimumRequirements()
 	{
-		return model.checkItemsListMeetsMinimumRequirements(testItemsListModel);
+		return model.checkItemsListMeetsMinimumRequirements();
 	}
 	
 	/**
@@ -185,7 +182,6 @@ public class AdminTestSetupController {
 			}
 			else
 			{
-				String match = getExistingItemsListModelMatch(newItemValue);
 				view.showExistingItemMatchMessage(model.getExistingItemsListModelMatch(newItemValue));
 			}
 		}

@@ -69,7 +69,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 					String selectedValue = adminTestSetupPanel.getTestItemsListSelectedValue();
 					controller.removeItemFromTestItemList(selectedValue);
 					adminTestSetupPanel.removeItemFromTestItemList(selectedValue);
-					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements(adminTestSetupPanel.getTestItemsListModel()));
+					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements());
 				}
 			}
 		});
@@ -86,8 +86,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 					String selectedValue = adminTestSetupPanel.getExistingItemsListSelectedValue();
 					controller.addExistingItemToTestItemsList(selectedValue);
-					//adminTestSetupPanel.addSelectedExistingItemTotestItemsList(selectedValue);
-					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements(adminTestSetupPanel.getTestItemsListModel()));
+					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements());
 				}
 			}
 		});
@@ -237,11 +236,21 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 		adminTestSetupPanel.setProgressMeterSelectedState(progressMeterSelectedState);
 	}
 	
+	/**
+	 * show the duplicate message of an item on the test items list to the user
+	 * 
+	 * @param selectedValue of the item already on the test items list.
+	 */
 	public void showDuplicateTestItemsMessage(String selectedValue)
 	{
 		adminTestSetupPanel.showDuplicateTestItemsMessage(selectedValue);
 	}
 
+	/**
+	 * update the test items list in the panel
+	 * 
+	 * @param selectedValue of the item being added to the list.
+	 */
 	@Override
 	public void updateTestItemsList(String selectedValue) 
 	{
@@ -267,16 +276,29 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 		return items;
 	}
 	
+	/**
+	 * show the empty item message when user tries to add an empty string to the existing items list.
+	 */
 	public void showEmptyItemMessage()
 	{
 		JOptionPane.showMessageDialog(null,"The item must contain at least 1 character and can not match another item on the list.","Empty item",JOptionPane.WARNING_MESSAGE);
 	}
 	
+	/**
+	 * update the existing items list with the new item value
+	 * 
+	 * @param newItemValue of the item being added to the list.
+	 */
 	public void updateExistingItemsList(String newItemValue)
 	{
 		adminTestSetupPanel.addNewItemToExistingItemsList(newItemValue);
 	}
 	
+	/**
+	 * show user the existing item match message
+	 * 
+	 * @param match value if the item already in the list
+	 */
 	public void showExistingItemMatchMessage(String match)
 	{
 		JOptionPane.showMessageDialog(null, "The item must contain at least 1 character and can not match another item on the list.", "'" + match + "' already exists on the list",JOptionPane.WARNING_MESSAGE);

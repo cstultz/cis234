@@ -194,9 +194,8 @@ public class UserTestController {
 	 */
 	public void updateTotalQuestions()
 	{
-		int totalQuestions = model.getQuestionsCount();
-		view.setTotalQuestions(totalQuestions);
-		model.setProgressMeterUpperBound(totalQuestions);
+		model.setProgressMeterUpperBound(model.getQuestionsCount());
+		view.setTotalQuestions(model.getProgressMeterUpperBound());
 	}
 	
 	/**
