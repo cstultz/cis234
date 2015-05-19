@@ -1,6 +1,7 @@
 package cis234a.nsort.controller;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 import cis234a.nsort.model.*;
 import cis234a.nsort.view.*;
@@ -52,9 +53,7 @@ public class AdminTestSetupController {
 	 */
 	public void populateExistingItemsToTheDefaultListModel()
 	{
-		DefaultListModel<String> existingItemsListModel  = new DefaultListModel<String>();
-		existingItemsListModel = model.populateExistingItemsToTheDefaultListModel(existingItemsListModel);
-		view.setExistingItemsList(existingItemsListModel);
+		view.setExistingItemsList(model.getExistingItemsList());
 	}
 	
 	/**
@@ -62,9 +61,7 @@ public class AdminTestSetupController {
 	 */
 	public void populateTestItemsToTheDefaultListModel()
 	{
-		DefaultListModel<String> testItemsListModel  = new DefaultListModel<String>();
-		testItemsListModel = model.populateTestItemsToTheDefaultListModel(testItemsListModel);
-		view.setTestItemsList(testItemsListModel);
+		view.setTestItemsList(model.getTestItemsList());
 	}
 
 	/**
@@ -73,9 +70,9 @@ public class AdminTestSetupController {
 	 * @param JListModel the Test Items List
 	 * @param value of the item being removed
 	 */
-	public void removeItemFromTestItemList(DefaultListModel<String> JListModel, String value)
+	public void removeItemFromTestItemList(String selectedValue)
 	{
-		model.removeItemFromTestItemList(JListModel, value);
+		model.removeItemFromTestItemList(selectedValue);
 	}
 	
 	/**
@@ -84,28 +81,21 @@ public class AdminTestSetupController {
 	 * @param JListModel the Test Items List
 	 * @param value being added from the Existing Items List
 	 */
-	public void addExistingItemToTestItemsList(DefaultListModel<String> JListModel, String value)
+	public void addExistingItemToTestItemsList(String selectedValue)
 	{
-		model.addExistingItemToTestItemsList(JListModel, value);
-	}
-	
-	/**
-	 * converts a default list model to an Item List object
-	 * 
-	 * @param JListModel default list model from the view
-	 * @return Item List created
-	 */
-	public ItemList DefaultListModelToItemList(DefaultListModel<String> JListModel)
-	{
-		ItemList items = new ItemList();
-		
-		for (int i = 0; i < JListModel.size(); i++)
+		if (! model.checkTestItemsListMatch(selectedValue))
 		{
-			Item item = new Item();
-			item.setValue(JListModel.getElementAt(i));
-			items.addItem(item);
+			Item item = new Item();                                     //create the new Item
+			item.setValue(selectedValue);                               //set the value of the item
+			
+			model.addExistingItemToTestItemsList(selectedValue);        //update the model
+			
+			view.updateTestItemsList(selectedValue);                    //update the view
 		}
-		return items;
+		else
+		{
+			view.showDuplicateTestItemsMessage(selectedValue);
+		}
 	}
 	
 	/**
@@ -169,9 +159,9 @@ public class AdminTestSetupController {
 	 * @param value of the item being added
 	 * @return true if the value of the item is unique; false if not.
 	 */
-	public boolean checkAddAnItemTextFieldIsUnique(DefaultListModel<String> existingItemsListModel, String value)
+	public boolean checkAddAnItemTextFieldIsUnique(String selectedValue)
 	{
-		if (model.listIsUnique(existingItemsListModel, value)) {return true;}
+		if (! model.checkExistingItemsListMatch(selectedValue)) {return true;}
 		else {return false;}
 	}
 	
@@ -181,11 +171,10 @@ public class AdminTestSetupController {
 	 * @param existingItemsListModel the value will be added to
 	 * @param value of the item being added
 	 */
-	public void addNewItemToExistingItemsList(DefaultListModel<String> existingItemsListModel, String value)
+	public void addNewItemToExistingItemsList(String newItemValue)
 	{
-		model.addNewItemToExistingItemsList(value);
-		existingItemsListModel.addElement(value);
-		sqlUser.addNewItem(value);
+		model.addNewItemToExistingItemsList(newItemValue);
+		sqlUser.addNewItem(newItemValue);
 	}
 	
 	/**

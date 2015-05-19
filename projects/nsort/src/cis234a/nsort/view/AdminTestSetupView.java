@@ -1,7 +1,7 @@
 package cis234a.nsort.view;
 
 import javax.swing.DefaultListModel;
-
+import cis234a.nsort.model.*;
 import cis234a.nsort.controller.*;
 /**
  * The interface for a view of an AdminTestSetup model   
@@ -24,14 +24,18 @@ public interface AdminTestSetupView {
 	 * 
 	 * @param the Existing Items List Default List Model 
 	 */
-	public void setExistingItemsList(DefaultListModel<String> JListModel);
+	public void setExistingItemsList(ItemList existingItemsList);
 	
 	/**
 	 * set the Test Items List in the view
 	 * 
 	 * @param the Test Items List Default List Model
 	 */
-	public void setTestItemsList(DefaultListModel<String> JListModel);
+	public void setTestItemsList(ItemList testItemsList);
+
+	public void updateTestItemsList(String selectedValue);
+	
+	public void showDuplicateTestItemsMessage(String selectedValue);
 	
 	/**
 	 * set the progress meter selected state in the view

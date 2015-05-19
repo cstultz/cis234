@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import cis234a.nsort.controller.*;
+import cis234a.nsort.model.*;
 
 /**
  * The AdminTestSetupFrame Class is the GUI of the admin test setup for the Ranking System.
@@ -65,7 +66,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			{
 				if (event.getClickCount() == 2)  //double click
 				{
-					controller.removeItemFromTestItemList(adminTestSetupPanel.getTestItemsListModel(), adminTestSetupPanel.getTestItemsListSelectedValue());
+					String selectedValue = adminTestSetupPanel.getTestItemsListSelectedValue();
+					controller.removeItemFromTestItemList(selectedValue);
+					adminTestSetupPanel.removeItemFromTestItemList(selectedValue);
 					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements(adminTestSetupPanel.getTestItemsListModel()));
 				}
 			}
@@ -81,7 +84,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			{
 				if (event.getClickCount() == 2)  //double click
 				{
-					controller.addExistingItemToTestItemsList(adminTestSetupPanel.getTestItemsListModel(), adminTestSetupPanel.getExistingItemsListSelectedValue());
+					String selectedValue = adminTestSetupPanel.getExistingItemsListSelectedValue();
+					controller.addExistingItemToTestItemsList(selectedValue);
+					//adminTestSetupPanel.addSelectedExistingItemTotestItemsList(selectedValue);
 					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements(adminTestSetupPanel.getTestItemsListModel()));
 				}
 			}
@@ -103,10 +108,11 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				}
 				else
 				{
-					
-					if (controller.checkAddAnItemTextFieldIsUnique(adminTestSetupPanel.getExistingItemsListModel(), adminTestSetupPanel.getAddAnItemTextField()))
+					String newItemValue = adminTestSetupPanel.getAddAnItemTextField();
+					if (controller.checkAddAnItemTextFieldIsUnique(newItemValue))
 					{
-						controller.addNewItemToExistingItemsList(adminTestSetupPanel.getExistingItemsListModel(), adminTestSetupPanel.getAddAnItemTextField());
+						controller.addNewItemToExistingItemsList(newItemValue);
+						adminTestSetupPanel.addNewItemToExistingItemsList(newItemValue);
 						adminTestSetupPanel.clearAddAnItemTextField();
 					}
 					else
@@ -146,7 +152,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			@Override
 			public void actionPerformed(ActionEvent ae) 
 			{
-				controller.saveTestItemsList(controller.DefaultListModelToItemList(adminTestSetupPanel.getTestItemsListModel()));
+				controller.saveTestItemsList(DefaultListModelToItemList(adminTestSetupPanel.getTestItemsListModel()));
 				
 				setVisible(false);
 
@@ -227,9 +233,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	 * 
 	 * @param the Existing Items List Default List Model 
 	 */
-	public void setExistingItemsList(DefaultListModel<String> JListModel)
+	public void setExistingItemsList(ItemList existingItemsList)
 	{
-		adminTestSetupPanel.setExistingItemsList(JListModel);
+		adminTestSetupPanel.setExistingItemsList(existingItemsList);
 	}
 	
 	/**
@@ -237,9 +243,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	 * 
 	 * @param the Test Items List Default List Model
 	 */
-	public void setTestItemsList(DefaultListModel<String> JListModel)
+	public void setTestItemsList(ItemList testItemsList)
 	{
-		adminTestSetupPanel.setTestItemsList(JListModel);
+		adminTestSetupPanel.setTestItemsList(testItemsList);
 	}
 	
 	/**
@@ -250,5 +256,35 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	public void setProgressMeterSelectedState(boolean progressMeterSelectedState)
 	{
 		adminTestSetupPanel.setProgressMeterSelectedState(progressMeterSelectedState);
+	}
+	
+	public void showDuplicateTestItemsMessage(String selectedValue)
+	{
+		adminTestSetupPanel.showDuplicateTestItemsMessage(selectedValue);
+	}
+
+	@Override
+	public void updateTestItemsList(String selectedValue) 
+	{
+		adminTestSetupPanel.updateTestItemsList(selectedValue);
+	}
+
+	/**
+	 * converts a default list model to an Item List object
+	 * 
+	 * @param JListModel default list model from the view
+	 * @return Item List created
+	 */
+	public ItemList DefaultListModelToItemList(DefaultListModel<String> JListModel)
+	{
+		ItemList items = new ItemList();
+		
+		for (int i = 0; i < JListModel.size(); i++)
+		{
+			Item item = new Item();
+			item.setValue(JListModel.getElementAt(i));
+			items.addItem(item);
+		}
+		return items;
 	}
 }
