@@ -15,7 +15,9 @@ public class AdminTestSetupModel {
 	private ItemList existingItemsList;
 	private ItemList testItemsList;
 	
-	private int progressMeterSelectedState;
+	//private int progressMeterSelectedState;
+	
+	private ProgressMeter progressMeter;
 	
 	private boolean adminTestSetupFrameState; 
 
@@ -269,9 +271,16 @@ public class AdminTestSetupModel {
 	 */
 	public void setProgressMeterSelectedState(int progressMeterSelectedState)
 	{
-		this.progressMeterSelectedState = progressMeterSelectedState;
-	}
-	
+		//this.progressMeterSelectedState = progressMeterSelectedState;
+		if (progressMeterSelectedState == 0)
+		{
+			progressMeter.setSelectedState(false);
+		}
+		if (progressMeterSelectedState == 1)
+		{
+			progressMeter.setSelectedState(true);
+		}
+	}	
 	/**
 	 * get the progress meter selected state
 	 * 
@@ -279,6 +288,14 @@ public class AdminTestSetupModel {
 	 */
 	public int getProgressMeterSelectedState()
 	{
-		return progressMeterSelectedState;
+		//return progressMeterSelectedState;
+		if (progressMeter.getSelectedState())
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 }

@@ -18,7 +18,7 @@ import javax.swing.JProgressBar;
 	private int upperBound;        //maximum value 
  	private int currentBound;      //current position
  	private boolean selectedState; //the on or off state set by the admin of the progress meter during the user test.
- 	
+
  	/**
 	 * Constructor for the class.
 	 * 

@@ -199,6 +199,6 @@ public class UserTestController {
 	 */
 	public void setProgressMeterSelectedState()
 	{
-		view.updateProgressMeterSelectedState(sqlUser.getProgressMeterSelectedState());
+		view.updateProgressMeterSelectedState(model.getProgressMeterSelectedState());
 	}
 }

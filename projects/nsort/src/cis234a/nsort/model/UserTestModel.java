@@ -12,11 +12,11 @@ import cis234a.nsort.model.Answer.*;
 public class UserTestModel {
 	
 	private User user;
-	
 	private ItemList testItemsList;	
 	private NTest userTest;	
-	
 	private boolean userTestFrameState; 
+	private ProgressMeter progressMeter;
+	
 
 	/**
 	 * Constructor for the class. Sets the user test state to false.
@@ -260,5 +260,15 @@ public class UserTestModel {
 	public int getQuestionsCount()
 	{
 		return userTest.numberOfQuestions();
+	}
+	
+	public boolean getProgressMeterSelectedState()
+	{
+		return progressMeter.getSelectedState();
+	}
+	
+	public void setProgressMeterSelectedState(boolean selectedState)
+	{
+		progressMeter.setSelectedState(selectedState);
 	}
 }
