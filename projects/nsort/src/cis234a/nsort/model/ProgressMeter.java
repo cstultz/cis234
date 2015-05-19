@@ -17,13 +17,12 @@ import javax.swing.JProgressBar;
 	private int lowerBound;        //minimum value 
 	private int upperBound;        //maximum value 
  	private int currentBound;      //current position
- 	private boolean selectedState; //the on or off state set by the admin of the progress meter during the user test.
-
+ 	
+ 	private boolean selectedState; //the selectedState of the checkbox on the admin test setup
+ 	                               //determines the visible state of the progress meter during the user test.
  	/**
 	 * Constructor for the class.
 	 * 
-	 * @param upperBound is the total questions that will be shown on the test
-	 * @param setVisible the selected state of the progress meter for the user test
 	 */
  	public ProgressMeter () 
  	{

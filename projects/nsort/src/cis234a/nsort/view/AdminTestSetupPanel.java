@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -18,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import cis234a.nsort.model.*;
 /**
  * The LoginPanel Class contains the components for the LoginFrame.
  *  
@@ -185,11 +187,11 @@ public class AdminTestSetupPanel extends JPanel
 	 * 
 	 * @param JListModel Existing Items Default List Model
 	 */
-	public void setExistingItemsList(DefaultListModel<String> JListModel)
+	public void setExistingItemsList(ItemList existingItemsList)
 	{
-		for (int i = 0; i < JListModel.getSize(); i++)
+		for (int i = 0; i < existingItemsList.getSize(); i++)
 		{
-			existingItemsListModel.addElement(JListModel.elementAt(i));                     
+			existingItemsListModel.addElement(existingItemsList.getItem(i).getValue());                     
 		}
 	}
 	
@@ -198,11 +200,11 @@ public class AdminTestSetupPanel extends JPanel
 	 * 
 	 * @param JListModel Test Items Default List Model
 	 */
-	public void setTestItemsList(DefaultListModel<String> JListModel)
+	public void setTestItemsList(ItemList testItemsList)
 	{
-		for (int i = 0; i < JListModel.getSize(); i++)
+		for (int i = 0; i < testItemsList.getSize(); i++)
 		{
-			testItemsListModel.addElement(JListModel.elementAt(i));                     
+			testItemsListModel.addElement(testItemsList.getItem(i).getValue());                     
 		}
 	}
 	
@@ -382,5 +384,42 @@ public class AdminTestSetupPanel extends JPanel
 	public void addReportButtonActionListener(ActionListener al)
 	{
 		reportButton.addActionListener(al);
+	}
+	
+	public void removeItemFromTestItemList(String selectedValue)
+	{
+		testItemsListModel.removeElement(selectedValue);
+	}
+	
+	public void addSelectedExistingItemTotestItemsList(String selectedValue)
+	{
+		testItemsListModel.addElement(selectedValue);
+	}
+	
+	public void showDuplicateTestItemsMessage(String selectedValue)
+	{
+		String input = "";
+		for (int i = 0; i < testItemsListModel.size(); i++)
+		{
+				if (testItemsListModel.getElementAt(i).equalsIgnoreCase(selectedValue))
+				{
+					input = testItemsListModel.getElementAt(i);
+							if (selectedValue.equalsIgnoreCase(input))
+							{
+								JOptionPane.showMessageDialog(null,"'" + input + "' item already exists in the Test Items List.","Duplicate item",JOptionPane.WARNING_MESSAGE);
+								break;
+							}
+				}
+		}
+	}
+	
+	public void addNewItemToExistingItemsList(String newItemValue)
+	{
+		existingItemsListModel.addElement(newItemValue);
+	}
+	
+	public void updateTestItemsList(String selectedValue)
+	{
+		testItemsListModel.addElement(selectedValue);
 	}
 }

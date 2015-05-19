@@ -88,11 +88,9 @@ public class AdminTestSetupModel {
 	 * @param JListModel Default List Model Test Items List in the view
 	 * @param value the value of the item being removed
 	 */
-	public void removeItemFromTestItemList(DefaultListModel<String> JListModel, String value)
+	public void removeItemFromTestItemList(String value)
 	{
-        //nothing is saved to the database at this time until the admin clicks the 'Finish' button.
-		JListModel.removeElement(value);     //update the view
-		testItemsList.removeItem(value);     //update the model
+		testItemsList.removeItem(value);     
 	}
 	
 	/**
@@ -101,31 +99,11 @@ public class AdminTestSetupModel {
 	 * @param JListModel the DefaultListModel Existing Items List object to be populated
 	 * @param value of the item being added
 	 */
-	public void addExistingItemToTestItemsList(DefaultListModel<String> JListModel, String value)
+	public void addExistingItemToTestItemsList(String selectedValue)
 	{
-		if (listIsUnique(JListModel, value))
-		{
-			JListModel.addElement(value);         //update the view
-			
 			Item item = new Item();               //create the new Item
-			item.setValue(value);                 //set the value of the item
-			
+			item.setValue(selectedValue);         //set the value of the item
 			testItemsList.addItem(item);          //update the model
-		}
-		else
-		{
-			String input = "";
-			for (int i = 0; i < JListModel.size(); i++)
-			{
-					if (JListModel.getElementAt(i).equalsIgnoreCase(value))
-					{
-						input = JListModel.getElementAt(i);
-								if (value.equalsIgnoreCase(input)) break;
-					}
-			}
-			
-			JOptionPane.showMessageDialog(null,"'" + input + "' item already exists in the Test Items List.","Duplicate item",JOptionPane.WARNING_MESSAGE);
-		}
 	}
 	/**
 	 * Checks to see if the Test Item List meets the minimum requirements for a test (test items list >= 2)
@@ -143,25 +121,6 @@ public class AdminTestSetupModel {
 		{
 			return false;
 		}
-	}
-	
-	/**
-	 * Checks to see if the user input value already exists on the specified list
-	 * 
-	 * @param jListModel the DefaultListModel object to be checked
-	 * @param value of the item being checked
-	 * @return true if list is unique; false if not.
-	 */
-	public boolean listIsUnique(DefaultListModel<String> JListModel, String value)
-	{
-		for (int i = 0; i < JListModel.size(); i++)
-		{
-				if (JListModel.getElementAt(i).equalsIgnoreCase(value))
-				{
-					return false;
-				}
-		}
-		return true;
 	}
 	
 	/**
@@ -290,5 +249,39 @@ public class AdminTestSetupModel {
 		{
 			return 0;
 		}
+	}
+	
+	public boolean checkTestItemsListMatch(String selectedValue)
+	{
+		if (testItemsList.getItem(selectedValue) != null)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+	
+	public boolean checkExistingItemsListMatch(String selectedValue)
+	{
+		if (existingItemsList.getItem(selectedValue) != null)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+	}
+	
+	public ItemList getExistingItemsList()
+	{
+		return existingItemsList;
+	}
+
+	public ItemList getTestItemsList()
+	{
+		return testItemsList;
 	}
 }
