@@ -171,8 +171,24 @@ public class AdminTestSetupController {
 	 */
 	public void addNewItemToExistingItemsList(String newItemValue)
 	{
-		model.addNewItemToExistingItemsList(newItemValue);
-		sqlUser.addNewItem(newItemValue);
+		if (checkAddAnItemTextFieldIsEmpty(newItemValue))
+		{
+			view.showEmptyItemMessage();
+		}
+		else
+		{
+			if (checkAddAnItemTextFieldIsUnique(newItemValue))
+			{
+				model.addNewItemToExistingItemsList(newItemValue);
+				sqlUser.addNewItem(newItemValue);
+				view.updateExistingItemsList(newItemValue);
+			}
+			else
+			{
+				String match = getExistingItemsListModelMatch(newItemValue);
+				view.showExistingItemMatchMessage(model.getExistingItemsListModelMatch(newItemValue));
+			}
+		}
 	}
 	
 	/**
@@ -182,7 +198,7 @@ public class AdminTestSetupController {
 	 * @param value of the new item being added
 	 * @return the value of the item match from the Existing Items List
 	 */
-	public String getExistingItemsListModelMatch(DefaultListModel<String> existingItemsListModel, String value)
+	public String getExistingItemsListModelMatch(String value)
 	{
 		return model.getExistingItemsListModelMatch(value);
 	}

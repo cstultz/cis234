@@ -36,6 +36,12 @@ public interface AdminTestSetupView {
 	
 	public void showDuplicateTestItemsMessage(String selectedValue);
 	
+	public void showEmptyItemMessage();
+	
+	public void updateExistingItemsList(String newItemValue);
+	
+	public void showExistingItemMatchMessage(String match);
+	
 	/**
 	 * set the progress meter selected state in the view
 	 * 

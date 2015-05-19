@@ -101,28 +101,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			public void actionPerformed(ActionEvent ae) 
 			{
 				//'SUBMIT' BUTTON CLICKED - USER ATTEMPTS TO ADD A NEW ITEM TO THE EXISTING ITEMS LIST
-				//entry can't be an empty string
-				if (controller.checkAddAnItemTextFieldIsEmpty(adminTestSetupPanel.getAddAnItemTextField()))
-				{
-					JOptionPane.showMessageDialog(null,"The item must contain at least 1 character and can not match another item on the list.","Empty item",JOptionPane.WARNING_MESSAGE);
-				}
-				else
-				{
-					String newItemValue = adminTestSetupPanel.getAddAnItemTextField();
-					if (controller.checkAddAnItemTextFieldIsUnique(newItemValue))
-					{
-						controller.addNewItemToExistingItemsList(newItemValue);
-						adminTestSetupPanel.addNewItemToExistingItemsList(newItemValue);
-						adminTestSetupPanel.clearAddAnItemTextField();
-					}
-					else
-					{ 
-						String match = controller.getExistingItemsListModelMatch(adminTestSetupPanel.getExistingItemsListModel(), adminTestSetupPanel.getAddAnItemTextField());
-						JOptionPane.showMessageDialog(null, "The item must contain at least 1 character and can not match another item on the list.", "'" + match + "' already exists on the list",JOptionPane.WARNING_MESSAGE);					
-					}
-					
-					
-				}
+				controller.addNewItemToExistingItemsList(adminTestSetupPanel.getAddAnItemTextField());
 			}
 		});
 		
@@ -286,5 +265,20 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			items.addItem(item);
 		}
 		return items;
+	}
+	
+	public void showEmptyItemMessage()
+	{
+		JOptionPane.showMessageDialog(null,"The item must contain at least 1 character and can not match another item on the list.","Empty item",JOptionPane.WARNING_MESSAGE);
+	}
+	
+	public void updateExistingItemsList(String newItemValue)
+	{
+		adminTestSetupPanel.addNewItemToExistingItemsList(newItemValue);
+	}
+	
+	public void showExistingItemMatchMessage(String match)
+	{
+		JOptionPane.showMessageDialog(null, "The item must contain at least 1 character and can not match another item on the list.", "'" + match + "' already exists on the list",JOptionPane.WARNING_MESSAGE);
 	}
 }
