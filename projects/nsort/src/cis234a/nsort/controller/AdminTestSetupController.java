@@ -1,8 +1,6 @@
 package cis234a.nsort.controller;
 
 import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
-
 import cis234a.nsort.model.*;
 import cis234a.nsort.view.*;
 /**

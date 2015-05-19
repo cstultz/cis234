@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import cis234a.nsort.model.*;
 import cis234a.nsort.controller.*;
@@ -60,9 +59,9 @@ public class UserTestFrame extends JFrame implements UserTestView
 			public void actionPerformed(ActionEvent ae) 
 			{
 				//icantDecideRadioButton selected
-				controller.recordAnswer(Answer.Value.CANT_DECIDE, userTestPanel.getLeftItemLabel(), userTestPanel.getRightItemLabel());
+				controller.recordAnswer(Answer.Value.CANT_DECIDE);
 				
-				if (controller.getNextQuestion(userTestPanel.getLeftItemLabel(), userTestPanel.getRightItemLabel()))
+				if (controller.getNextQuestion())
 				{
 					incrementProgressMeter();
 				}
@@ -83,9 +82,9 @@ public class UserTestFrame extends JFrame implements UserTestView
 			public void actionPerformed(ActionEvent ae) 
 			{
 				//icantDecideRadioButton selected
-				controller.recordAnswer(Answer.Value.RIGHT, userTestPanel.getLeftItemLabel(), userTestPanel.getRightItemLabel());
+				controller.recordAnswer(Answer.Value.RIGHT);
 				
-				if (controller.getNextQuestion(userTestPanel.getLeftItemLabel(), userTestPanel.getRightItemLabel()))
+				if (controller.getNextQuestion())
 				{
 					incrementProgressMeter();
 				}
@@ -106,9 +105,9 @@ public class UserTestFrame extends JFrame implements UserTestView
 			public void actionPerformed(ActionEvent ae) 
 			{
 				//icantDecideRadioButton selected
-				controller.recordAnswer(Answer.Value.LEFT, userTestPanel.getLeftItemLabel(), userTestPanel.getRightItemLabel());
+				controller.recordAnswer(Answer.Value.LEFT);
 				
-				if (controller.getNextQuestion(userTestPanel.getLeftItemLabel(), userTestPanel.getRightItemLabel()))
+				if (controller.getNextQuestion())
 				{
 					incrementProgressMeter();
 				}
@@ -169,7 +168,7 @@ public class UserTestFrame extends JFrame implements UserTestView
 	/**
 	 * set the right item label with the value
 	 * 
-	 * @param value to sdet the right item label
+	 * @param value to set the right item label
 	 */
 	public void setRightItemLabel(String value)
 	{
@@ -177,20 +176,20 @@ public class UserTestFrame extends JFrame implements UserTestView
 	}
 	
 	/**
-	 * get the left item label object
+	 * set the left item label object
 	 */
 	@Override
-	public JLabel getLeftItemLabel()
+	public void setLeftItemLabelValue(String itemLeftValue)
 	{
-		return userTestPanel.getLeftItemLabel();
+		userTestPanel.setLeftItemLabelValue(itemLeftValue);
 	}
 
 	/**
-	 * get the right item label object
+	 * set the right item label object
 	 */
 	@Override
-	public JLabel getRightItemLabel() {
-		return userTestPanel.getRightItemLabel();
+	public void setRightItemLabelValue(String itemRightValue) {
+		userTestPanel.setRightItemLabelValue(itemRightValue);
 	}
 	
 	/**

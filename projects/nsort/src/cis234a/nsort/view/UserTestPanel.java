@@ -227,23 +227,23 @@ public class UserTestPanel extends JPanel
 	}
 	
 	/**
-	 * get left item label
+	 * set left item label
 	 * 
-	 * @return return the left item label object
+	 * @param the left item label value
 	 */
-	public JLabel getLeftItemLabel()
+	public void setLeftItemLabelValue(String itemLeftValue)
 	{
-		return leftItemLabel;
+		leftItemLabel.setText(itemLeftValue);
 	}
 
 	/**
-	 * get the right item label
+	 * set the right item label
 	 * 
-	 * @return the right item label object
+	 * @param the right item label value
 	 */
-	public JLabel getRightItemLabel()
+	public void setRightItemLabelValue(String itemRightValue)
 	{
-		return rightItemLabel;
+		rightItemLabel.setText(itemRightValue);
 	}
 
 	/**
