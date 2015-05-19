@@ -10,10 +10,7 @@ package cis234a.nsort.view;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
-
 import javax.swing.*;
-
-import cis234a.nsort.controller.RankingSystemController;
 
 @SuppressWarnings("serial")
 public class ReportView extends JFrame 
