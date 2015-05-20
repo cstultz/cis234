@@ -20,7 +20,7 @@ public class RankingSystemController {
 	public RankingSystemController() 
 	{
 		user = new User();
-		sqlUser = new SqlUser_234a_t1();
+		sqlUser = SqlUser_234a_t1.INSTANCE;
 	}
 
 	/**

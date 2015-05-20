@@ -10,8 +10,10 @@ import java.util.ArrayList;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (4/17/2015)
  */
-public class SqlUser_234a_t1 {
+public enum SqlUser_234a_t1 {
 
+	INSTANCE();
+	
 	private Connection conn = null;
 	
 	/**********************************database connection URL*******************************************/
@@ -57,7 +59,7 @@ public class SqlUser_234a_t1 {
 	/**
      * Constructor for the class.
      */
-    public SqlUser_234a_t1()
+    SqlUser_234a_t1()
     {
     	//do nothing
     }
