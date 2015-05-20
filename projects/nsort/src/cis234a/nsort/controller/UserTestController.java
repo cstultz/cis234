@@ -29,7 +29,7 @@ public class UserTestController {
 		this.model = model;
 		this.view = view;
 
-		sqlUser = new SqlUser_234a_t1();
+		sqlUser = SqlUser_234a_t1.INSTANCE;
 		
 		updateView();   
 	}

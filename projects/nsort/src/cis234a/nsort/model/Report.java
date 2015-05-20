@@ -14,9 +14,14 @@ public class Report
 {
 	//private String[] columnNames;
 	private Object[][] columnData;
-	private SqlUser_234a_t1 resultSet = new SqlUser_234a_t1();;
+	private SqlUser_234a_t1 resultSet;
 	private List userNames;
 	private List userTestID;
+	
+	public Report()
+	{
+		resultSet = SqlUser_234a_t1.INSTANCE;
+	}
 	
 //	public String[] queryColumnNames() throws SQLException
 //	{
