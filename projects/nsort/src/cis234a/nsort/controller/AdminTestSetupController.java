@@ -229,6 +229,6 @@ public class AdminTestSetupController {
 		ReportView view = new ReportFrame();
 		@SuppressWarnings("unused")
 		ReportController controller = new ReportController(view, model);
-		view.setVisible(true);
+		//view.setVisible(true);
 	}
 }
