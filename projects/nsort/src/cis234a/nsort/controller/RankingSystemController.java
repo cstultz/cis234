@@ -9,7 +9,9 @@ import cis234a.nsort.view.*;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (5/8/2015)
  */
-public class RankingSystemController {
+public enum RankingSystemController {
+	
+	INSTANCE();
 	
 	private User user;
 	private SqlUser_234a_t1 sqlUser;             
@@ -17,7 +19,7 @@ public class RankingSystemController {
 	/**
 	 * Constructor for the class.
 	 */
-	public RankingSystemController() 
+	RankingSystemController() 
 	{
 		user = new User();
 		sqlUser = SqlUser_234a_t1.INSTANCE;
