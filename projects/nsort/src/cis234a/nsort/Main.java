@@ -10,6 +10,8 @@ import cis234a.nsort.controller.*;
  */
 public class Main {
 	
+	private static RankingSystemController controller;
+	
 	/**
 	 * Main starter method for entry point to the Ranking System application.
 	 * 
@@ -17,12 +19,14 @@ public class Main {
 	 */
 	public static void main(String[] args) 
 	{
+		
+		controller = RankingSystemController.INSTANCE;
+		
 		javax.swing.SwingUtilities.invokeLater(new Runnable()                                        
 		{
 			public void run() {
 				try 
 				{
-					RankingSystemController controller = new RankingSystemController();             
 					controller.launchLogin();                                                       
 				} 
 				catch (Exception e) 
