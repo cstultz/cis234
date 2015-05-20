@@ -226,9 +226,9 @@ public class AdminTestSetupController {
 	public void launchReport()
 	{
 		Report model = new Report();
-		ReportView view = new ReportView(model.getUsers());
+		ReportView view = new ReportFrame();
 		@SuppressWarnings("unused")
-		ReportController controlsler = new ReportController(view, model);
+		ReportController controller = new ReportController(view, model);
 		view.setVisible(true);
 	}
 }
