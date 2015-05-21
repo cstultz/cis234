@@ -196,7 +196,6 @@ public class AdminTestSetupModel {
 	 */
 	public int getProgressMeterSelectedState()
 	{
-		//return progressMeterSelectedState;
 		if (progressMeter.getSelectedState())
 		{
 			return 1;
