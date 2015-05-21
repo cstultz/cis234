@@ -5,8 +5,10 @@ package cis234a.nsort.model;
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (5/6/2015)
  */
-public class User
+public enum User
 {
+	INSTANCE;
+	
     private String firstName;
     private String lastName;
     private String eMail;
@@ -19,7 +21,7 @@ public class User
     /**
      * Constructor for the class. set the user access role. set the user login state.
      */
-    public User()
+    User()
     {
     	role = new Role();
     	loginState = new LoginState();
