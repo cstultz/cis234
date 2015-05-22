@@ -1,14 +1,7 @@
 package cis234a.nsort.controller;
 
-import java.awt.List;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
 import cis234a.nsort.model.Report;
 import cis234a.nsort.view.ReportView;
-import cis234a.nsort.view.ReportViewold;
 /**
  * The ReportController handles the logic for the test results reporting for all users.  
  *  
@@ -17,7 +10,6 @@ import cis234a.nsort.view.ReportViewold;
  */
 public class ReportController 
 {
-	private ReportView view;
 	private Report model;
 	private String[] x;
 	private Object[] tempObject;
@@ -29,7 +21,6 @@ public class ReportController
 	 */
 	public ReportController(ReportView view, Report model)
 	{
-		this.view = view;
 		this.model = model;
 	}
 	
@@ -44,7 +35,8 @@ public class ReportController
 		return x;
 	}
 	
-	public Object[] queryColumnData(String x, int y) {
+	public Object[] queryColumnData(String x, int y) 
+	{
 		return tempObject = model.queryColumnData(x, y);
 	}
 	

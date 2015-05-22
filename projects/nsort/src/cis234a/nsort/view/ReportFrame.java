@@ -95,5 +95,4 @@ public class ReportFrame extends JFrame implements ReportView
 	public void registerController(ReportController controller) {
 		this.controller = controller;
 	}
-	//extra methods go here
 }

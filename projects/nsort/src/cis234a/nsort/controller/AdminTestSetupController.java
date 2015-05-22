@@ -1,5 +1,7 @@
 package cis234a.nsort.controller;
 
+import java.util.List;
+
 import cis234a.nsort.model.*;
 import cis234a.nsort.view.*;
 /**
@@ -226,6 +228,7 @@ public class AdminTestSetupController {
 	public void launchReport()
 	{
 		Report model = new Report();
+		List users = model.getUsers();
 		ReportView view = new ReportFrame();
 		@SuppressWarnings("unused")
 		ReportController controller = new ReportController(view, model);

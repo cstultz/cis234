@@ -3,8 +3,6 @@ package cis234a.nsort.view;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
-import java.awt.event.KeyListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,8 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -107,6 +103,8 @@ public class ReportPanel extends JPanel
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.NORTH;
 		add(reportButton, c);
+		
+		setInitialVisibility();
 	}
 	
 	/**
