@@ -47,7 +47,7 @@ public class LoginModel {
 	/**
 	 * set the validated user info in the model
 	 * 
-	 * @param ArrayList<String> containg 4 elements of user info; 0 firstName; 1 lastName; 2 Email; 3 username. 
+	 * @param ArrayList<String> containing 4 elements of user info; 0 firstName; 1 lastName; 2 Email; 3 username. 
 	 */
 	public void setValidatedUser(ArrayList<String> user)
 	{

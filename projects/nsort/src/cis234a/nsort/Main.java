@@ -3,7 +3,7 @@ package cis234a.nsort;
 import cis234a.nsort.controller.*;
 /**
  * Main class for the Ranking System application following the MVC design pattern with interface implementation for the views.
- * The RankingSystemController is the parent controller for the 4 child controllers (Login, AdminTestSetup, UserTest, and Report). 
+ * The RankingSystemController is the parent controller for the 4 children controllers (Login, AdminTestSetup, UserTest, and Report). 
  * 
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (5/8/2015)
