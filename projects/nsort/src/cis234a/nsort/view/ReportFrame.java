@@ -1,5 +1,6 @@
 package cis234a.nsort.view;
 
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -28,12 +29,12 @@ public class ReportFrame extends JFrame implements ReportView
 	public ReportFrame()
 	{
 		super("Ranking System - Report"); 
+		setUserList(controller.getUserListData());
 		reportPanel = createReportPanel();
 		getContentPane().add(reportPanel);
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
-		setVisible(false);    
+		setVisible(true);    
 		setLocationRelativeTo(null);
 	}
 	
@@ -94,5 +95,11 @@ public class ReportFrame extends JFrame implements ReportView
 	@Override
 	public void registerController(ReportController controller) {
 		this.controller = controller;
+	}
+
+	@Override
+	public void setUserList(List userList) 
+	{
+		reportPanel.setUserList(userList);
 	}
 }

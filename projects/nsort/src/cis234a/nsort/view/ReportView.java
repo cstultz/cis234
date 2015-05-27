@@ -1,5 +1,7 @@
 package cis234a.nsort.view;
 
+import java.awt.List;
+
 import cis234a.nsort.controller.*;
 /**
  * The interface for a view of an Report model   
@@ -18,11 +20,19 @@ public interface ReportView {
 	public boolean updateReportFrameState(boolean reportFrameState);
 	
 	/**
+	 * test
+	 * @param userList
+	 */
+	public void setUserList(List userList);
+	
+	/**
 	 * Register the given controller with this view.
 	 * Methods on the controller are invoked when events in the view occur that could change the model.
 	 * 
 	 * @param controller to register with this view
 	 */
+		
 	public void registerController(ReportController controller);
+	
 	
 }

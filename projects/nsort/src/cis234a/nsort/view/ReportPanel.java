@@ -14,7 +14,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.List;
-
+import cis234a.nsort.model.*;
 /**
  * The ReportPanel Class contains the components for the ReportFrame.
  *  
@@ -24,7 +24,7 @@ import java.awt.List;
 @SuppressWarnings("serial")
 public class ReportPanel extends JPanel 
 {
-	private static final Dimension DIM = new Dimension(320, 104);
+	private static final Dimension DIM = new Dimension(600,600);
 	private JComboBox<String> userComboBox;
 	private JComboBox<String> userTestComboBox;
 	private JButton reportButton;
@@ -45,9 +45,8 @@ public class ReportPanel extends JPanel
 	 * in order to communicate back to the ReportController.
 	 * @param controller
 	 */
-	public ReportPanel()
+	public ReportPanel(List x)
 	{
-
 		setupPanel();
 		setupLayout();
 	}
@@ -71,6 +70,7 @@ public class ReportPanel extends JPanel
 		 * set up userComboBox
 		 */
 		userComboBox = new JComboBox<String>();
+		
 		setUsersComboBox();
 		c.gridx = 0;
 		c.gridy = 0;
@@ -218,11 +218,17 @@ public class ReportPanel extends JPanel
 		panelRefresh();
 	}
 	
+	public void setUserList(List x)
+	{
+		usersDDL = x;
+	}
+	
 	/**
 	 * sets the UserComboBox to be used for selecting the User/Test Taker
 	 */
 	public void setUsersComboBox()
 	{
+		
 		for (int i = 0; i < usersDDL.getItemCount(); i++)
 		{
 			Object temp  = usersDDL.getItem(i);
@@ -312,5 +318,4 @@ public class ReportPanel extends JPanel
 	{
 		reportButton.setEnabled(x);
 	}
-	
 }
