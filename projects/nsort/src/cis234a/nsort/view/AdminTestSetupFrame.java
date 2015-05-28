@@ -90,6 +90,8 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				
 				if (event.getClickCount() == 2)  //double click
 				{
+					adminTestSetupPanel.updateItemImageToBlank();
+					adminTestSetupPanel.setEditButtonCurrentState(false);
 					controller.removeItemFromTestItemList(selectedValue);
 					adminTestSetupPanel.removeItemFromTestItemList(selectedValue);
 					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements());

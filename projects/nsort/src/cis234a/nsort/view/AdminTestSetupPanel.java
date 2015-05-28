@@ -468,4 +468,9 @@ public class AdminTestSetupPanel extends JPanel
 	{
 		imagePanel.setImage(data);
 	}
+	
+	public void updateItemImageToBlank()
+	{
+		imagePanel.updateItemImageToBlank();
+	}
 }

@@ -14,25 +14,31 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
-public class ImagePanel extends JPanel{
+ public class ImagePanel extends JPanel{
 
     private static final Dimension DIM = new Dimension(250, 250);
     private Image graphic;
+    private Image blank;
+    private Image noImage;
     private JLabel imageLabel;
     private ClassLoader classLoader;
     private InputStream input;
 
     public ImagePanel() {
     	
-    	try {     
-    		classLoader = Thread.currentThread().getContextClassLoader();
-			input = classLoader.getResourceAsStream("blank.png");
-    		graphic = ImageIO.read(input);
-    	} catch (IOException ex) {
+		classLoader = Thread.currentThread().getContextClassLoader();
+
+		try {     
+    		input = classLoader.getResourceAsStream("no-image.png");
+    		noImage = ImageIO.read(input);
+    		input = classLoader.getResourceAsStream("blank.png");
+    		blank = ImageIO.read(input);
+    		graphic = blank;
+		} catch (IOException ex) {
 
     		JOptionPane.showMessageDialog(null,ex.getMessage(),"Error Message",JOptionPane.WARNING_MESSAGE);
-    	}
-
+    	}  	
+		
     	imageLabel = new JLabel(new ImageIcon(graphic));
     	
 		setupLayout();
@@ -80,22 +86,34 @@ public class ImagePanel extends JPanel{
     	
     	if (data == null)
     	{
-    		try {     
-        		//classLoader = Thread.currentThread().getContextClassLoader();
-    			input = classLoader.getResourceAsStream("no-image.png");
-        		graphic = ImageIO.read(input);
-        	} catch (IOException ex) {
-
-        		JOptionPane.showMessageDialog(null,ex.getMessage(),"Error Message",JOptionPane.WARNING_MESSAGE);
-        	}
+//			try {
+//				input = classLoader.getResourceAsStream("no-image.png");
+//				noImage = ImageIO.read(input);
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+    		updateImage(noImage);
     	}
     	else
     	{
 	    	graphic = Toolkit.getDefaultToolkit().createImage(data);
+	    	updateImage(graphic);
     	}
     	
-    	imageLabel.setIcon(new ImageIcon(graphic));
-    	paintComponent(getGraphics());
+    	
 
 	}
+    
+    public void updateItemImageToBlank()
+    {
+    	updateImage(blank);
+    }
+    
+    public void updateImage(Image graphic)
+    {
+    	this.graphic = graphic;
+    	imageLabel.setIcon(new ImageIcon(this.graphic));
+    	setupLayout();
+    	paintComponent(getGraphics());    }
 }
