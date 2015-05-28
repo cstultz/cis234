@@ -36,7 +36,7 @@ public class RegistrationFrame extends JFrame implements RegistrationView
 	
 	private RegistrationPanel createRegistrationPanel()
 	{
-		RegistrationPanel registrationPanel = new RegistrationPanel();
+		registrationPanel = new RegistrationPanel();
 		registrationPanel.addCheckAvailabilityButtonActionListener(new ActionListener()
 		{
 			@Override

@@ -25,7 +25,7 @@ import com.jgoodies.forms.layout.RowSpec;
 @SuppressWarnings("serial")
 public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 {
-	protected AdminTestSetupPanel adminTestSetupPanel;
+	private AdminTestSetupPanel adminTestSetupPanel;
 	private AdminTestSetupController controller;
 	
 	private String currentSelection = "";
@@ -55,7 +55,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	 */
 	private AdminTestSetupPanel createAdminTestSetupPanel()
 	{
-		AdminTestSetupPanel adminTestSetupPanel = new AdminTestSetupPanel();
+		adminTestSetupPanel = new AdminTestSetupPanel();
 		adminTestSetupPanel.setLayout(new FormLayout(new ColumnSpec[] {}, new RowSpec[] {}));
 		
 		/**

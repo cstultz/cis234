@@ -39,7 +39,7 @@ public class LoginFrame extends JFrame implements LoginView
 	
 	private LoginPanel createLoginPanel()
 	{
-		LoginPanel loginPanel = new LoginPanel();
+		loginPanel = new LoginPanel();
 		loginPanel.addLoginButtonActionListener(new ActionListener()
 		{
 			@Override
