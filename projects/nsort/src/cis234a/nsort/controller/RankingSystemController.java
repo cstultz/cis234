@@ -21,7 +21,7 @@ public enum RankingSystemController {
 	 */
 	RankingSystemController() 
 	{
-		user = User.INSTANCE;
+		user = new User();
 		sqlUser = SqlUser_234a_t1.INSTANCE;
 	}
 

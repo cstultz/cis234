@@ -6,13 +6,15 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
 import cis234a.nsort.controller.*;
 import cis234a.nsort.model.*;
+import java.awt.BorderLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
 
 /**
  * The AdminTestSetupFrame Class is the GUI of the admin test setup for the Ranking System.
@@ -23,8 +25,10 @@ import cis234a.nsort.model.*;
 @SuppressWarnings("serial")
 public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 {
-	private AdminTestSetupPanel adminTestSetupPanel;
+	protected AdminTestSetupPanel adminTestSetupPanel;
 	private AdminTestSetupController controller;
+	
+	private String currentSelection = "";
 	
 	/**
 	 * Constructor for the AdminTestSetupFrame. Must pass a parameter reference of the AdminTestSetupController to the frame
@@ -34,9 +38,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	 */
 	public AdminTestSetupFrame()
 	{
-		super("Ranking System - Administrator Test Setup"); 
+		super("Ranking System - Admin Test Setup"); 
 		adminTestSetupPanel = createAdminTestSetupPanel();
-		getContentPane().add(adminTestSetupPanel);
+		getContentPane().add(adminTestSetupPanel, BorderLayout.CENTER);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
@@ -52,18 +56,40 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	private AdminTestSetupPanel createAdminTestSetupPanel()
 	{
 		AdminTestSetupPanel adminTestSetupPanel = new AdminTestSetupPanel();
+		adminTestSetupPanel.setLayout(new FormLayout(new ColumnSpec[] {}, new RowSpec[] {}));
 		
 		/**
-		 * listener for the Test Items List Mouse double click
+		 * listener for the 'Edit' button click
+		 */
+		adminTestSetupPanel.addEditButtonActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent ae) 
+			{
+				//'EDIT' BUTTON CLICKED - USER ATTEMPTS TO ASSOCIATE A IMAGE TO THE CURRENTLY SELECTED ITEM IN THE EXISTING ITEMS LIST
+				controller.associateImageToExistingItem(currentSelection);
+				controller.updateItemImage(currentSelection);
+			}
+		});
+		
+		/**
+		 * listener for the Test Items List Mouse click
 		 */
 		adminTestSetupPanel.addTestItemsListMouseListener(new MouseAdapter()
 		{
 			@Override
 			public void mousePressed(MouseEvent event)
 			{
+				String selectedValue = adminTestSetupPanel.getTestItemsListSelectedValue();
+				
+				currentSelection = adminTestSetupPanel.getTestItemsListSelectedValue();
+				adminTestSetupPanel.setEditButtonCurrentState(true);
+				adminTestSetupPanel.clearExistingItemsListSelection();
+				
+				controller.updateItemImage(selectedValue);
+				
 				if (event.getClickCount() == 2)  //double click
 				{
-					String selectedValue = adminTestSetupPanel.getTestItemsListSelectedValue();
 					controller.removeItemFromTestItemList(selectedValue);
 					adminTestSetupPanel.removeItemFromTestItemList(selectedValue);
 					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements());
@@ -72,16 +98,24 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 		});
 		
 		/**
-		 * listener for the Existing Items List mouse double click
+		 * listener for the Existing Items List Mouse click
 		 */
 		adminTestSetupPanel.addExistingItemsListMouseListener(new MouseAdapter()
 		{
 			@Override
 			public void mousePressed(MouseEvent event)
 			{
+				
+				String selectedValue = adminTestSetupPanel.getExistingItemsListSelectedValue();
+				
+				currentSelection = adminTestSetupPanel.getExistingItemsListSelectedValue();
+				adminTestSetupPanel.setEditButtonCurrentState(true);
+				adminTestSetupPanel.clearTestItemsListSelection();
+
+				controller.updateItemImage(selectedValue);
+				
 				if (event.getClickCount() == 2)  //double click
 				{
-					String selectedValue = adminTestSetupPanel.getExistingItemsListSelectedValue();
 					controller.addExistingItemToTestItemsList(selectedValue);
 					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements());
 				}
@@ -299,5 +333,11 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	public void showExistingItemMatchMessage(String match)
 	{
 		JOptionPane.showMessageDialog(null, "The item must contain at least 1 character and can not match another item on the list.", "'" + match + "' already exists on the list",JOptionPane.WARNING_MESSAGE);
+	}
+
+	@Override
+	public void updateImage(byte[] data) 
+	{
+		adminTestSetupPanel.updateImage(data);
 	}
 }

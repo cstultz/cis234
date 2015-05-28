@@ -80,4 +80,5 @@ public interface AdminTestSetupView {
 	 */
 	public void registerController(AdminTestSetupController controller);
 	
+	public void updateImage(byte[] data);
 }

@@ -54,6 +54,13 @@ public enum SqlUser_234a_t1 {
 	private final static String queryPullTestSessionIDScopeIdentity = "SELECT DISTINCT IDENT_CURRENT('TestSessions') as [Test Session ID];";
 	private final static String queryInsertTestResults = "INSERT INTO TestResults(testSession_ID, item_ID, wins, losses, ties) VALUES (?, ?, ?, ?, ?);";
 	private final static String queryPullUserID = "SELECT userID FROM [User] WHERE username = ?;";
+	private final static String queryAddNewImage = "INSERT INTO [Image] ([name], [graphic]) VALUES (?, ?);";
+	private final static String queryAddItemToImage = "INSERT INTO ItemImages (item_ID, image_ID) VALUES (?,?);";
+	private final static String queryGetImageByItemID = "SELECT [graphic] FROM [Image] JOIN ItemImages ON Image.imageID = ItemImages.image_ID WHERE ItemImages.item_ID = ?;";
+	private final static String queryImageIDByName = "SELECT imageID FROM [Image] WHERE [Image].name = ?;";
+	@SuppressWarnings("unused")
+	private final static String queryPullAllImages = "SELECT [name], [graphic] FROM [Image]";
+	private final static String queryupdateImage = "UPDATE [Image] SET [graphic] = ? WHERE name = ?;";
 	/*************************************queries for Ranking System*************************************/
 
 	/**
@@ -624,6 +631,94 @@ public enum SqlUser_234a_t1 {
     		PreparedStatement preparedStmt = conn.prepareStatement(queryAddUserAccess);
 			preparedStmt.setInt(1, userID);
 			preparedStmt.setString(2, TheOneTheOnlyUserAccessRole);
+			preparedStmt.execute();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public byte[] getValueImageByteArray(String value)
+	{
+		int itemID = pullTestItemIDByValue(value);
+		byte[] data = null;
+		try {
+			connect();
+    		PreparedStatement preparedStmt = conn.prepareStatement(queryGetImageByItemID);
+    		preparedStmt.setInt(1, itemID);
+			ResultSet rs = preparedStmt.executeQuery();
+			while (rs.next())
+			{
+				data = rs.getBytes("graphic");
+				return data;
+			}
+		}
+		catch (SQLException e)
+		{
+			System.err.println("Got an exception! ");
+			System.err.println(e.getMessage());
+		}
+		return data;
+	}
+	
+	public void addImage(String value, byte[] data)
+	{
+		try {
+    		connect();
+    		PreparedStatement preparedStmt = conn.prepareStatement(queryAddNewImage);
+			preparedStmt.setString(1, value);
+			preparedStmt.setBytes(2, data);
+			preparedStmt.execute();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public void associateImageToExistingItem(String value)
+	{
+		int itemID = pullTestItemIDByValue(value);
+		int imageID = getImageIDByName(value);
+		try {
+    		connect();
+    		PreparedStatement preparedStmt = conn.prepareStatement(queryAddItemToImage);
+			preparedStmt.setInt(1, itemID);
+			preparedStmt.setInt(2, imageID);
+			preparedStmt.execute();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public int getImageIDByName(String name)
+	{
+		try {
+	    	connect();
+			PreparedStatement preparedStmt = conn.prepareStatement(queryImageIDByName);
+			preparedStmt.setString(1, name);
+	         // execute the preparedstatement
+	         ResultSet rs = preparedStmt.executeQuery();
+	         while (rs.next())
+	 			{
+	 				int input = rs.getInt("imageID");
+	 				return input;
+	 			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		return 0;
+	}
+	
+	public void updateImage(String value, byte[] data)
+	{
+		//queryupdateImage
+		try {
+    		connect();
+    		PreparedStatement preparedStmt = conn.prepareStatement(queryupdateImage);
+			preparedStmt.setBytes(1, data);
+			preparedStmt.setString(2, value);
 			preparedStmt.execute();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block

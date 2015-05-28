@@ -15,11 +15,9 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 
 import cis234a.nsort.model.*;
 /**
@@ -32,11 +30,11 @@ import cis234a.nsort.model.*;
 public class AdminTestSetupPanel extends JPanel
 {
 
-	private static final Dimension DIM = new Dimension(692, 422);
+	private static final Dimension DIM = new Dimension(700, 475);
 	
 	private JLabel existingItemsLabel;
-	private JList<String> existingItemsList;
-	private DefaultListModel<String> existingItemsListModel;
+	protected JList<String> existingItemsList;
+	protected DefaultListModel<String> existingItemsListModel;
 	private JScrollPane existingItemsScrollPane;
 
 	private JLabel addItemLabel;
@@ -44,10 +42,9 @@ public class AdminTestSetupPanel extends JPanel
 	private JButton submitButton;
 	
 	private JLabel testItemsLabel;
-	private JList<String> testItemsList;
-	private DefaultListModel<String> testItemsListModel;
+	protected JList<String> testItemsList;
+	protected DefaultListModel<String> testItemsListModel;
 	private JScrollPane testItemsScrollPane;
-	private JTextArea instructionsTextArea;
 	
 	private JButton finishButton;
 	private JLabel lblOr;
@@ -55,21 +52,30 @@ public class AdminTestSetupPanel extends JPanel
 	private JButton reportButton;
 	private JCheckBox progressMeterCheckBox;
 	
+	private ImagePanel imagePanel;
+	private JButton editButton;
+	
 	/**
 	 * Constructor for the AdminTestSetupPanel.
 	 */
 	public AdminTestSetupPanel()
 	{
-		instructionsTextArea = new JTextArea();
-		instructionsTextArea.setBounds(350, 52, 329, 244);
+		
+		imagePanel = new ImagePanel();
+		imagePanel.setSize(250, 237);
+		imagePanel.setLocation(417, 56);
 
+		editButton = new JButton("Edit");
+		editButton.setEnabled(false);
+		editButton.setBounds(498, 304, 89, 23);
+		
 		existingItemsListModel = new DefaultListModel<String>();
 
 		existingItemsLabel = new JLabel("Existing Items");
 		existingItemsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		existingItemsLabel.setBounds(35, 25, 129, 22);
+		existingItemsLabel.setBounds(0, 25, 200, 22);
 		existingItemsScrollPane = new JScrollPane();
-		existingItemsScrollPane.setBounds(35, 53, 129, 243);
+		existingItemsScrollPane.setBounds(36, 53, 129, 243);
 		existingItemsList = new JList<String>(existingItemsListModel);
 		existingItemsScrollPane.setViewportView(existingItemsList);
 		existingItemsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -78,37 +84,37 @@ public class AdminTestSetupPanel extends JPanel
 
 		testItemsLabel = new JLabel("Test Items");
 		testItemsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		testItemsLabel.setBounds(214, 25, 96, 22);
+		testItemsLabel.setBounds(200, 25, 200, 22);
 		testItemsScrollPane = new JScrollPane();
-		testItemsScrollPane.setBounds(198, 53, 129, 243);
+		testItemsScrollPane.setBounds(236, 53, 129, 243);
 		testItemsList = new JList<String>(testItemsListModel);
 		testItemsScrollPane.setViewportView(testItemsList);
 		testItemsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
 		addItemLabel = new JLabel("Add an item");
-		addItemLabel.setBounds(35, 310, 83, 17);
+		addItemLabel.setBounds(36, 309, 83, 17);
 		addItemTextField = new JTextField();
-		addItemTextField.setBounds(128, 308, 116, 20);
+		addItemTextField.setBounds(129, 308, 149, 20);
 		submitButton = new JButton("Submit");
 		submitButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		submitButton.setBounds(250, 307, 77, 23);
+		submitButton.setBounds(288, 307, 77, 23);
 		reportButton = new JButton("Test Results Reporting");
 		reportButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		reportButton.setBounds(35, 382, 180, 23);
+		reportButton.setBounds(110, 382, 180, 23);
 		progressMeterCheckBox = new JCheckBox("Display progress indicator during the User Test?");
 		progressMeterCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
 		progressMeterCheckBox.setFont(new Font("Arial", Font.PLAIN, 12));
-		progressMeterCheckBox.setBounds(35, 341, 292, 23);
+		progressMeterCheckBox.setBounds(54, 341, 292, 23);
 		finishButton = new JButton("Finish");
 		finishButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		finishButton.setBounds(261, 382, 77, 23);
+		finishButton.setBounds(105, 430, 77, 23);
 		finishButton.setEnabled(false);                                             
 		lblOr = new JLabel("OR");
 		lblOr.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblOr.setBounds(348, 387, 15, 14);
+		lblOr.setBounds(192, 435, 15, 14);
 		cancelButton = new JButton("Cancel");
 		cancelButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		cancelButton.setBounds(373, 382, 77, 23);
+		cancelButton.setBounds(217, 430, 77, 23);
 
 		setupLayout();
 		setupPanel();
@@ -126,30 +132,10 @@ public class AdminTestSetupPanel extends JPanel
 		existingItemsLabel.setFont(new Font("Arial", Font.BOLD, 16));
 		testItemsLabel.setFont(new Font("Arial", Font.BOLD, 16));
 		addItemLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		instructionsTextArea.setFont(new Font("Arial", Font.PLAIN, 12));
-		
-		//Include the instructions to be dynamic to the labels of the components on the panel.
-
-		instructionsTextArea.setBackground(UIManager.getColor("Panel.background"));
-		instructionsTextArea.setEditable(false);
-
-		instructionsTextArea.setText("INSTRUCTIONS:\r\n\u2022 To " + addItemLabel.getText() + " to the '" + existingItemsLabel.getText() + "' List:" +
-                "\r\n     1. Type a new item into the '" + addItemLabel.getText() + "' text field." + 
-                "\r\n     2. Click '" + submitButton.getText() + "'." + 
-                "\r\n\u2022 To add an item to the '" + testItemsLabel.getText() + "' List:" + 
-                "\r\n     1. Double-click an item in the '" + existingItemsLabel.getText() + "' List." + 
-                "\r\n\u2022 To remove an item from the '" + testItemsLabel.getText() + "' List:" + 
-                "\r\n     1. Double-click an item in the '" + testItemsLabel.getText() + "' List." + 
-                "\r\n\u2022 To discard the current changes to the '" + testItemsLabel.getText() + "' List:" + 
-                "\r\n     1. Click '" + cancelButton.getText() + "'." +
-                "\r\n\u2022 To keep the current changes to the '" + testItemsLabel.getText() + "' List:" +
-                "\r\n     1. Click '" + finishButton.getText() + "'." +
-                "\r\n\u2022 To view the Test Results:" +
-                "\r\n     1. Click '" + reportButton.getText() + "'." +
-                "\r\n\u2022 To show/hide the Progress Meter during the User Test:" +
-                "\r\n     1. Click the Display progress indicator check box:");
 		
 		lblOr.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		
 	}
 	
 	/**
@@ -170,7 +156,6 @@ public class AdminTestSetupPanel extends JPanel
 		add(testItemsLabel);
 		add(existingItemsScrollPane);
 		add(testItemsScrollPane);
-		add(instructionsTextArea);
 		add(addItemLabel);
 		add(addItemTextField);
 		add(submitButton);
@@ -178,7 +163,9 @@ public class AdminTestSetupPanel extends JPanel
 		add(progressMeterCheckBox);
 		add(finishButton);
 		add(lblOr);
-		add(cancelButton);	
+		add(cancelButton);
+		add(imagePanel);
+		add(editButton);
 	}
 
 	/**
@@ -445,5 +432,40 @@ public class AdminTestSetupPanel extends JPanel
 	public void updateTestItemsList(String selectedValue)
 	{
 		testItemsListModel.addElement(selectedValue);
+	}
+
+	public void clearTestItemsListSelection()
+	{
+		testItemsList.clearSelection();
+	}
+
+	public void clearExistingItemsListSelection()
+	{
+		existingItemsList.clearSelection();
+	}
+
+	/**
+	 * add an action listener to the 'Edit' button
+	 * 
+	 * @param al user has clicked the 'Edit' button
+	 */
+	public void addEditButtonActionListener(ActionListener al)
+	{
+		editButton.addActionListener(al);
+	}
+	
+	public boolean getEditButtonCurrentState()
+	{
+		return editButton.isEnabled();
+	}
+	
+	public void setEditButtonCurrentState(boolean currentState)
+	{
+		editButton.setEnabled(currentState);
+	}
+
+	public void updateImage(byte[] data)
+	{
+		imagePanel.setImage(data);
 	}
 }

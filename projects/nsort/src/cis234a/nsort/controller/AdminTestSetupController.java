@@ -1,5 +1,15 @@
 package cis234a.nsort.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import cis234a.nsort.model.*;
 import cis234a.nsort.view.*;
 /**
@@ -11,12 +21,12 @@ import cis234a.nsort.view.*;
  */
 public class AdminTestSetupController {
 	
-	private RankingSystemController controller;
+	protected RankingSystemController controller;
 	
-	private AdminTestSetupModel model;
-	private AdminTestSetupView view;
+	protected AdminTestSetupModel model;
+	protected AdminTestSetupView view;
 	
-	private SqlUser_234a_t1 sqlUser;
+	protected SqlUser_234a_t1 sqlUser;
 
 	/**
 	 * Constructor for the class.
@@ -230,5 +240,74 @@ public class AdminTestSetupController {
 		@SuppressWarnings("unused")
 		ReportController controlsler = new ReportController(view, model);
 		view.setVisible(true);
+	}
+	
+	public void updateItemImage(String value)
+	{
+		byte[] data = sqlUser.getValueImageByteArray(value);
+		view.updateImage(data);
+	}
+	
+	/**
+	 * populate the Items from the model to the Existing Items List in the view.
+	 */
+	public void associateImageToExistingItem(String currentSelection)
+	{
+		File selectedFile = null;
+		byte[] data = null;
+		JFileChooser openFile = new JFileChooser();
+		FileFilter filter = new FileNameExtensionFilter(".png, .jpg", new String[] {"png", "jpg"});
+		openFile.setFileFilter(filter);
+		openFile.addChoosableFileFilter(filter);
+		openFile.setCurrentDirectory(new File("User.dir"));;
+		int returnVal = openFile.showOpenDialog(null);
+		if(returnVal == JFileChooser.APPROVE_OPTION) {
+		  selectedFile = new File(openFile.getSelectedFile().getAbsolutePath());
+		}
+		
+		try {
+			data = convertFileToByteArray(selectedFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if (sqlUser.getValueImageByteArray(currentSelection) == null)
+		{
+			sqlUser.addImage(currentSelection, data);
+			sqlUser.associateImageToExistingItem(currentSelection);
+		}
+		else
+		{
+			sqlUser.updateImage(currentSelection, data);
+		}
+	}
+	
+	public byte[] convertFileToByteArray(File file) throws IOException {
+
+	    ByteArrayOutputStream ous = null;
+	    InputStream ios = null;
+	    try {
+	        byte[] buffer = new byte[4096];
+	        ous = new ByteArrayOutputStream();
+	        ios = new FileInputStream(file);
+	        int read = 0;
+	        while ( (read = ios.read(buffer)) != -1 ) {
+	            ous.write(buffer, 0, read);
+	        }
+	    } finally { 
+	        try {
+	             if ( ous != null ) 
+	                 ous.close();
+	        } catch ( IOException e) {
+	        }
+
+	        try {
+	             if ( ios != null ) 
+	                  ios.close();
+	        } catch ( IOException e) {
+	        }
+	    }
+	    return ous.toByteArray();
 	}
 }
