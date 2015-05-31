@@ -24,7 +24,7 @@ import cis234a.nsort.model.*;
 @SuppressWarnings("serial")
 public class ReportPanel extends JPanel 
 {
-	private static final Dimension DIM = new Dimension(600,600);
+//	private static final Dimension DIM = new Dimension(600,600);
 	private JComboBox<String> userComboBox;
 	private JComboBox<String> userTestComboBox;
 	private JButton reportButton;
@@ -47,6 +47,7 @@ public class ReportPanel extends JPanel
 	 */
 	public ReportPanel(List x)
 	{
+		usersDDL = x;
 		setupPanel();
 		setupLayout();
 	}
@@ -70,7 +71,6 @@ public class ReportPanel extends JPanel
 		 * set up userComboBox
 		 */
 		userComboBox = new JComboBox<String>();
-		
 		setUsersComboBox();
 		c.gridx = 0;
 		c.gridy = 0;
@@ -207,7 +207,7 @@ public class ReportPanel extends JPanel
 	{
 		table = new JTable(objects, stringList);
 		scrollPane = new JScrollPane(table);
-		scrollPane.setPreferredSize(new Dimension(200,50));
+		scrollPane.setPreferredSize(new Dimension(300,300));
 		c.gridx = 1;
 		c.gridy = 1;
 		c.fill = GridBagConstraints.BOTH;
@@ -217,18 +217,12 @@ public class ReportPanel extends JPanel
 		setThirdVisibility();
 		panelRefresh();
 	}
-	
-	public void setUserList(List x)
-	{
-		usersDDL = x;
-	}
-	
+		
 	/**
 	 * sets the UserComboBox to be used for selecting the User/Test Taker
 	 */
 	public void setUsersComboBox()
 	{
-		
 		for (int i = 0; i < usersDDL.getItemCount(); i++)
 		{
 			Object temp  = usersDDL.getItem(i);

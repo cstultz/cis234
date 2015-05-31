@@ -23,16 +23,14 @@ public interface ReportView {
 	 * test
 	 * @param userList
 	 */
-	public void setUserList(List userList);
-	
-	/**
-	 * Register the given controller with this view.
-	 * Methods on the controller are invoked when events in the view occur that could change the model.
-	 * 
-	 * @param controller to register with this view
-	 */
+
+	public String setUser();
+//	/**
+//	 * Register the given controller with this view.
+//	 * Methods on the controller are invoked when events in the view occur that could change the model.
+//	 * 
+//	 * @param controller to register with this view
+//	 */
 		
 	public void registerController(ReportController controller);
-	
-	
 }
