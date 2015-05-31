@@ -86,13 +86,6 @@ import javax.swing.JPanel;
     	
     	if (data == null)
     	{
-//			try {
-//				input = classLoader.getResourceAsStream("no-image.png");
-//				noImage = ImageIO.read(input);
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
     		updateImage(noImage);
     	}
     	else

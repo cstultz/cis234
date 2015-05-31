@@ -1,4 +1,7 @@
 package cis234a.nsort.model;
+
+import java.awt.Image;
+
 /**
  * The Item class captures the value and each items win-loss-tire record.
  *  
@@ -8,7 +11,8 @@ package cis234a.nsort.model;
 public class Item {
 	
 	private String value;
-    private int wins = 0;
+	private Image valueImage;
+   	private int wins = 0;
     private int losses = 0;
     private int ties = 0;
 	
@@ -113,4 +117,11 @@ public class Item {
     	else return false;
     }
     
+    public Image getValueImage() {
+		return valueImage;
+	}
+
+	public void setValueImage(Image valueImage) {
+		this.valueImage = valueImage;
+	}
 }

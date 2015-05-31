@@ -1,6 +1,7 @@
 package cis234a.nsort.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 /**
  * This a ItemList class represents a list of items.
  * 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class ItemList
 {
     private ArrayList<Item> items;
+    private HashMap testImages = new HashMap();
 
     /**
      * Constructor for the class.

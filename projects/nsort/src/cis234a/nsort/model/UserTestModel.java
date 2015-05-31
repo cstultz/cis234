@@ -1,5 +1,7 @@
 package cis234a.nsort.model;
 
+import java.util.HashMap;
+
 import cis234a.nsort.model.Answer.*;
 /**
  * The UserTestModel class captures the behavior of the user test independent of the user interface.   
@@ -10,7 +12,7 @@ import cis234a.nsort.model.Answer.*;
 public class UserTestModel {
 	
 	private User user;
-	private ItemList testItemsList;	
+	private ItemList testItemsList;
 	private NTest userTest;	
 	private boolean userTestFrameState; 
 	private ProgressMeter progressMeter;
