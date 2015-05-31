@@ -61,6 +61,9 @@ public enum SqlUser_234a_t1 {
 	@SuppressWarnings("unused")
 	private final static String queryPullAllImages = "SELECT [name], [graphic] FROM [Image]";
 	private final static String queryupdateImage = "UPDATE [Image] SET [graphic] = ? WHERE name = ?;";
+	private final static String queryDeleteItemImage = "DELETE FROM ItemImages WHERE item_ID ='?';";
+	private final static String queryDeleteTestItem = "DELETE FROM TestItems WHERE item_ID ='?';";
+	private final static String queryDeleteItem = "DELETE FROM Item WHERE item_ID ='?';";
 	/*************************************queries for Ranking System*************************************/
 
 	/**

@@ -1,23 +1,35 @@
 package cis234a.nsort.view;
 
 import java.awt.Dimension;
+import java.awt.Event;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
+import javax.swing.event.PopupMenuListener;
 
 import cis234a.nsort.model.*;
 /**
@@ -36,6 +48,9 @@ public class AdminTestSetupPanel extends JPanel
 	protected JList<String> existingItemsList;
 	protected DefaultListModel<String> existingItemsListModel;
 	private JScrollPane existingItemsScrollPane;
+	
+	private JPopupMenu existingItemsListRightClickPopupMenu;
+	private JMenuItem deleteMenuItem;
 
 	private JLabel addItemLabel;
 	private JTextField addItemTextField;
@@ -60,7 +75,6 @@ public class AdminTestSetupPanel extends JPanel
 	 */
 	public AdminTestSetupPanel()
 	{
-		
 		imagePanel = new ImagePanel();
 		imagePanel.setSize(250, 237);
 		imagePanel.setLocation(417, 56);
@@ -69,6 +83,14 @@ public class AdminTestSetupPanel extends JPanel
 		editButton.setEnabled(false);
 		editButton.setBounds(498, 304, 89, 23);
 		
+		deleteMenuItem = new JMenuItem("Delete Item", new ImageIcon("resources/delete.jpg"));
+
+		
+		existingItemsListRightClickPopupMenu = new JPopupMenu("Existing Items List Right Click Menu");
+		existingItemsListRightClickPopupMenu.setVisible(false);
+		existingItemsListRightClickPopupMenu.add(deleteMenuItem); 
+		existingItemsListRightClickPopupMenu.setBorder(new BevelBorder(BevelBorder.RAISED));
+				
 		existingItemsListModel = new DefaultListModel<String>();
 
 		existingItemsLabel = new JLabel("Existing Items");
@@ -134,8 +156,6 @@ public class AdminTestSetupPanel extends JPanel
 		addItemLabel.setFont(new Font("Arial", Font.BOLD, 14));
 		
 		lblOr.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		
 	}
 	
 	/**
@@ -166,6 +186,7 @@ public class AdminTestSetupPanel extends JPanel
 		add(cancelButton);
 		add(imagePanel);
 		add(editButton);
+		add(existingItemsListRightClickPopupMenu);
 	}
 
 	/**
@@ -472,5 +493,27 @@ public class AdminTestSetupPanel extends JPanel
 	public void updateItemImageToBlank()
 	{
 		imagePanel.updateItemImageToBlank();
+	}
+	
+	public String existingItemListRightClickMenu(MouseEvent event)
+	{
+		JList<String> list = (JList<String>)event.getSource();
+        int row = list.locationToIndex(event.getPoint());
+        list.setSelectedIndex(row);
+
+        existingItemsListRightClickPopupMenu.setVisible(true);
+        existingItemsListRightClickPopupMenu.show(list, event.getPoint().x+5, event.getPoint().y+10);
+        
+        return list.getSelectedValue();
+	}
+	
+	public void addExistingItemsListRightClickPopupMenuDeleteItemActionListener(ActionListener al)
+	{
+		deleteMenuItem.addActionListener(al);
+	}
+	
+	public String getPopupMenuSelectedValue()
+	{
+		return existingItemsListRightClickPopupMenu.getSubElements().toString();
 	}
 }

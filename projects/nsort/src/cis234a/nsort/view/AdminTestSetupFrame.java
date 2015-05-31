@@ -6,12 +6,20 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
+
 import cis234a.nsort.controller.*;
 import cis234a.nsort.model.*;
+
 import java.awt.BorderLayout;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -29,6 +37,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	private AdminTestSetupController controller;
 	
 	private String currentSelection = "";
+	
 	
 	/**
 	 * Constructor for the AdminTestSetupFrame. Must pass a parameter reference of the AdminTestSetupController to the frame
@@ -82,13 +91,18 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			{
 				String selectedValue = adminTestSetupPanel.getTestItemsListSelectedValue();
 				
+				if (SwingUtilities.isRightMouseButton(event))
+	            {
+					//do nothing
+	            }
+				else if (event.getClickCount() == 1)  //double click
+				{
 				currentSelection = adminTestSetupPanel.getTestItemsListSelectedValue();
 				adminTestSetupPanel.setEditButtonCurrentState(true);
 				adminTestSetupPanel.clearExistingItemsListSelection();
-				
 				controller.updateItemImage(selectedValue);
-				
-				if (event.getClickCount() == 2)  //double click
+				}
+				else if (event.getClickCount() == 2)  //double click
 				{
 					adminTestSetupPanel.updateItemImageToBlank();
 					adminTestSetupPanel.setEditButtonCurrentState(false);
@@ -107,16 +121,23 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			@Override
 			public void mousePressed(MouseEvent event)
 			{
-				
 				String selectedValue = adminTestSetupPanel.getExistingItemsListSelectedValue();
 				
+				if (SwingUtilities.isRightMouseButton(event))
+	            {
+					currentSelection = adminTestSetupPanel.existingItemListRightClickMenu(event);	                
+					//currentSelection = adminTestSetupPanel.getExistingItemsListSelectedValue();
+					adminTestSetupPanel.clearTestItemsListSelection();
+					controller.updateItemImage(currentSelection);
+	            }
+				else if (event.getClickCount() == 1)  //double click
+				{
 				currentSelection = adminTestSetupPanel.getExistingItemsListSelectedValue();
 				adminTestSetupPanel.setEditButtonCurrentState(true);
 				adminTestSetupPanel.clearTestItemsListSelection();
-
 				controller.updateItemImage(selectedValue);
-				
-				if (event.getClickCount() == 2)  //double click
+				}
+				else if (event.getClickCount() == 2)  //double click
 				{
 					controller.addExistingItemToTestItemsList(selectedValue);
 					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements());
@@ -211,7 +232,20 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				//REPORT BUTTON CLICKED
 				controller.launchReport();
 			}
-		});		
+		});
+		
+		/**
+		 * listener for the Existing Items List Right Click Popup Menu Mouse click
+		 */
+		adminTestSetupPanel.addExistingItemsListRightClickPopupMenuDeleteItemActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent ae) 
+			{
+				//'Delete Item' BUTTON CLICKED - USER ATTEMPTS TO DELETE AN EXISTING ITEMS LIST ITEM
+				controller.deleteExistingItem(currentSelection);
+			}
+		});
 		
 		return adminTestSetupPanel;
 	}

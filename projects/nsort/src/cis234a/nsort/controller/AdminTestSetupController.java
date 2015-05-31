@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -309,5 +310,10 @@ public class AdminTestSetupController {
 	        }
 	    }
 	    return ous.toByteArray();
+	}
+	
+	public void deleteExistingItem(String currentSelection)
+	{
+		JOptionPane.showMessageDialog(null, "Delete Item " + currentSelection + " from Existing Items List","Delete Existing Item",JOptionPane.WARNING_MESSAGE);
 	}
 }
