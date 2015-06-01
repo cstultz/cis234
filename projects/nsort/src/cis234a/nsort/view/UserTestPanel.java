@@ -199,7 +199,7 @@ public class UserTestPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(new Dimension(DIM));
+		setPreferredSize(new Dimension(686, 660));
 	}
 	
 	/**
@@ -207,6 +207,15 @@ public class UserTestPanel extends JPanel
 	 */
 	public void addComponents()
 	{
+		
+		JLabel lblNewLabel = new JLabel("Which Do You Prefer?");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.gridwidth = 8;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 0;
+		add(lblNewLabel, gbc_lblNewLabel);
 		add(leftItemLabel, gbc_leftItemLabel);
 		add(lblVs, gbc_lblVs);
 		add(rightItemLabel, gbc_rightItemLabel);
