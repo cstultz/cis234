@@ -11,7 +11,6 @@ import java.util.HashMap;
 public class ItemList
 {
     private ArrayList<Item> items;
-    private HashMap testImages = new HashMap();
 
     /**
      * Constructor for the class.
