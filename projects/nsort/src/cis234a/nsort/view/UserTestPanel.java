@@ -22,15 +22,17 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class UserTestPanel extends JPanel 
 {
-	private static final Dimension DIM = new Dimension(580, 374);
+	private static final Dimension DIM = new Dimension(580, 474);
 	
 	private ProgressMeterPanel progressMeterPanel;
 	
 	private JButton leftChoiceButton;
 	private JButton iCantDecideButton;
 	private JButton rightChoiceButton;
+	private JButton currentResultsButton;
 	private JLabel leftItemLabel;
 	private JLabel rightItemLabel;
+	private JLabel lblReportItem;
 	private final JLabel lblVs;
 	private JLabel lblChooseEitherItem;
 	
@@ -43,6 +45,9 @@ public class UserTestPanel extends JPanel
 	private GridBagConstraints gbc_IcantDecide;
 	private GridBagConstraints gbc_rightChoice;
 	private GridBagConstraints gbc_lblChooseEitherItem;
+	private GridBagConstraints gbc_currentResults;
+	private GridBagConstraints gbc_lblReportItem;
+
 	
 	/**
 	 * Constructor for the UserTestPanel. Must pass a parameter reference of the UserTestController to the panel
@@ -55,10 +60,12 @@ public class UserTestPanel extends JPanel
 		leftItemLabel = new JLabel("Left Item");
 		lblChooseEitherItem = new JLabel("Choose either item or \"I can't decide\"");
 		rightItemLabel = new JLabel("Right Item");
+		lblReportItem = new JLabel("To view current results, click the button below");
 		
 		leftChoiceButton = new JButton("Choose left");
 		iCantDecideButton = new JButton("I can't decide");
 		rightChoiceButton = new JButton("Choose right");
+		currentResultsButton = new JButton("View Results");
 		
 		lblVs = new JLabel("Vs.");
 
@@ -71,6 +78,8 @@ public class UserTestPanel extends JPanel
 		gbc_IcantDecide = new GridBagConstraints();
 		gbc_rightChoice = new GridBagConstraints();
 		gbc_lblChooseEitherItem = new GridBagConstraints();
+		gbc_lblReportItem = new GridBagConstraints();
+		gbc_currentResults = new GridBagConstraints();
 
 		setupPanel();
 		setupLayout();
@@ -89,11 +98,14 @@ public class UserTestPanel extends JPanel
 		leftItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		rightItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		leftChoiceButton.setHorizontalAlignment(SwingConstants.CENTER);
+		currentResultsButton.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		leftItemLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblVs.setFont(new Font("Tahoma", Font.BOLD, 18));
 		rightItemLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblChooseEitherItem.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblReportItem.setFont(new Font("Tahoma", Font.BOLD, 12));
+		
 
 		gridBagLayout.columnWidths = new int[]{75, 75, 75, 75, 75, 75, 75, 75};
 		gridBagLayout.rowHeights = new int[]{75, 75, 75, 75, 75, 75, 75};
@@ -136,9 +148,19 @@ public class UserTestPanel extends JPanel
 		gbc_rightChoice.insets = new Insets(0, 0, 5, 0);
 		gbc_rightChoice.gridx = 4;
 		gbc_rightChoice.gridy = 2;
+		
+		gbc_currentResults.gridwidth = 3;
+		gbc_currentResults.insets = new Insets(0, 0, 5, 5);
+		gbc_currentResults.gridx = 2;
+		gbc_currentResults.gridy = 5;
+		
 		gbc_lblChooseEitherItem.gridwidth = 7;
 		gbc_lblChooseEitherItem.gridx = 0;
 		gbc_lblChooseEitherItem.gridy = 3;
+		
+		gbc_lblReportItem.gridwidth = 7;
+		gbc_lblReportItem.gridx = 0;
+		gbc_lblReportItem.gridy = 4;
 	}
 	
 	/**
@@ -158,10 +180,12 @@ public class UserTestPanel extends JPanel
 		add(lblVs, gbc_lblVs);
 		add(rightItemLabel, gbc_rightItemLabel);
 		add(lblChooseEitherItem, gbc_lblChooseEitherItem);
+		add(lblReportItem, gbc_lblReportItem);
 		
 		add(leftChoiceButton, gbc_leftChoice);	
 		add(iCantDecideButton, gbc_IcantDecide);
 		add(rightChoiceButton, gbc_rightChoice);
+		add(currentResultsButton, gbc_currentResults);
 		
 		add(progressMeterPanel, gbc_progressMeterPanel);
 	}
@@ -202,6 +226,15 @@ public class UserTestPanel extends JPanel
 	public void addLeftChoiceButtonActionListener(ActionListener al)
 	{
 		leftChoiceButton.addActionListener(al);
+	}
+	/**
+	 * add an action listener to the current results button
+	 * 
+	 * @param al user clicked the button
+	 */
+	public void addCurrentResultsButtonActionListener(ActionListener al)
+	{
+		currentResultsButton.addActionListener(al);
 	}
 	
 	/**

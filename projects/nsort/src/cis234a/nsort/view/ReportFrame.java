@@ -27,11 +27,9 @@ public class ReportFrame extends JFrame implements ReportView
 	/**
 	 * Constructor for the class.
 	 */
-	public ReportFrame(List x)
+	public ReportFrame()
 	{
 		super("Ranking System - Report"); 
-		//setUserList(controller.getUserListData());
-		userList = x;
 		reportPanel = createReportPanel();
 		getContentPane().add(reportPanel);
 		setSize(400,400);
@@ -42,7 +40,7 @@ public class ReportFrame extends JFrame implements ReportView
 	
 	private ReportPanel createReportPanel()
 	{
-		ReportPanel reportPanel = new ReportPanel(userList);
+		ReportPanel reportPanel = new ReportPanel();
 		//Listeners go here		
 		
 		reportPanel.addUserComboBoxItemListener(new ItemListener()
@@ -60,7 +58,10 @@ public class ReportFrame extends JFrame implements ReportView
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-				reportPanel.setUserTestComboBox(controller.getUserTestData());
+//				reportPanel.setUserTestComboBox();
+				controller.getUserTestData();
+				reportPanel.setSecondVisibility();
+				reportPanel.panelRefresh();
 			}
 		});
 		
@@ -111,10 +112,21 @@ public class ReportFrame extends JFrame implements ReportView
 	}
 
 	@Override
-	public String setUser() 
+	public void setUserList(List value) 
 	{
-		String x = reportPanel.setUser();
-		return x;
+		reportPanel.setUsersComboBox(value);
 	}
 	
+	@Override
+	public void setUserTestList(List value)
+	{
+		reportPanel.setUserTestComboBox(value);
+	}
+	
+	@Override
+	public String getUsers()
+	{
+		String user = reportPanel.setUser();
+		return user;
+	}
 }

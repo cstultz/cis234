@@ -19,18 +19,19 @@ public interface ReportView {
 	 */
 	public boolean updateReportFrameState(boolean reportFrameState);
 	
+	public void setUserList(List value);
+	
+	public void setUserTestList(List value);
+	
+	public String getUsers();
 	/**
-	 * test
-	 * @param userList
+	 * Register the given controller with this view.
+	 * Methods on the controller are invoked when events in the view occur that could change the model.
+	 * 
+	 * @param controller to register with this view
 	 */
-
-	public String setUser();
-//	/**
-//	 * Register the given controller with this view.
-//	 * Methods on the controller are invoked when events in the view occur that could change the model.
-//	 * 
-//	 * @param controller to register with this view
-//	 */
 		
 	public void registerController(ReportController controller);
+
+	
 }

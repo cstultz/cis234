@@ -45,9 +45,8 @@ public class ReportPanel extends JPanel
 	 * in order to communicate back to the ReportController.
 	 * @param controller
 	 */
-	public ReportPanel(List x)
+	public ReportPanel()
 	{
-		usersDDL = x;
 		setupPanel();
 		setupLayout();
 	}
@@ -71,7 +70,7 @@ public class ReportPanel extends JPanel
 		 * set up userComboBox
 		 */
 		userComboBox = new JComboBox<String>();
-		setUsersComboBox();
+		//setUsersComboBox();
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.NORTH;
@@ -147,7 +146,7 @@ public class ReportPanel extends JPanel
 	 *Sets the initial visibility of items
 	 *upon panel creation 
 	 */
-	private void setInitialVisibility() 
+	public void setInitialVisibility() 
 	{
 		userComboBox.setVisible(true);
 		userTestButton.setVisible(true);
@@ -159,7 +158,7 @@ public class ReportPanel extends JPanel
 	 * Sets the appropriate visible items for the 
 	 * second part of information gathering
 	 */
-	private void setSecondVisibility()
+	public void setSecondVisibility()
 	{
 		userComboBox.setVisible(false);
 		userTestButton.setVisible(false);
@@ -171,7 +170,7 @@ public class ReportPanel extends JPanel
 	/**
 	 * Sets all visible items for the ReportView
 	 */
-	private void setThirdVisibility()
+	public void setThirdVisibility()
 	{
 		userTestComboBox.setVisible(false);
 		reportButton.setVisible(false);
@@ -221,8 +220,9 @@ public class ReportPanel extends JPanel
 	/**
 	 * sets the UserComboBox to be used for selecting the User/Test Taker
 	 */
-	public void setUsersComboBox()
+	public void setUsersComboBox(List userList)
 	{
+		usersDDL = userList;
 		for (int i = 0; i < usersDDL.getItemCount(); i++)
 		{
 			Object temp  = usersDDL.getItem(i);
@@ -252,9 +252,9 @@ public class ReportPanel extends JPanel
 	 * sets the userTestComboBox to be used for selecting the Test ID for that specific user
 	 * @param x - List of TestIDs returned from the ReportModel
 	 */
-	public void setUserTestComboBox(List x)
+	public void setUserTestComboBox(List userTestList)
 	{
-		usersTestDDL = x;
+		usersTestDDL = userTestList;
 		userTestComboBox.removeAllItems();
 		for (int i = 0; i < usersTestDDL.getItemCount(); i++)
 		{
@@ -268,7 +268,7 @@ public class ReportPanel extends JPanel
 	/**
 	 * recreates panel to update view
 	 */
-	private void panelRefresh() 
+	public void panelRefresh() 
 	{
 		revalidate();
 		repaint();		

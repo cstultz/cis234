@@ -32,6 +32,8 @@ public class ReportController
 		this.controller = controller;
 		this.model = model;
 		this.view = view;
+		
+		getUserListData();
 	}
 	
 	/**
@@ -50,18 +52,18 @@ public class ReportController
 		return tempObject = model.queryColumnData(x, y);
 	}
 	
-	public List getUserListData()
+	public void getUserListData()
 	{
 		tempUserList = new List();
 		tempUserList = model.getUsers();
-		return tempUserList;
+		view.setUserList(tempUserList);
 	}
 	
-	public List getUserTestData()
+	public void getUserTestData()
 	{
 		tempUserTestList = new List();
-		tempUserTestList = model.getUsersTestID(view.setUser());
-		return tempUserTestList;
+		tempUserTestList = model.getUsersTestID(view.getUsers());
+		view.setUserTestList(tempUserTestList);
 	}
 }
 
