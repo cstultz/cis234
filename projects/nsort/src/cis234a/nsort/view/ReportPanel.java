@@ -6,15 +6,11 @@ import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.List;
-import cis234a.nsort.model.*;
 /**
  * The ReportPanel Class contains the components for the ReportFrame.
  *  
@@ -197,6 +193,7 @@ public class ReportPanel extends JPanel
 		columns = x;
 		return columns;
 	}
+	
 	/**
 	 * Sets and creates the JTable table to display results 
 	 * @param stringList - input of columns for table
@@ -213,8 +210,8 @@ public class ReportPanel extends JPanel
 		c.weightx = 1.0;
 		c.weighty = 1.0;
 		add(scrollPane, c);
-		setThirdVisibility();
-		panelRefresh();
+//		setThirdVisibility();
+//		panelRefresh();
 	}
 		
 	/**
@@ -261,8 +258,6 @@ public class ReportPanel extends JPanel
 			Object temp  = usersTestDDL.getItem(i);
 			userTestComboBox.addItem(temp.toString());
 		}
-		setSecondVisibility();
-		panelRefresh();
 	}
 	
 	/**
@@ -295,6 +290,7 @@ public class ReportPanel extends JPanel
 		testIndex = userTestComboBox.getSelectedIndex();
 		return testIndex;
 	}
+	
 	/**
 	 * Enable or Disable userTestButton
 	 * @param x - true / false value 

@@ -24,6 +24,10 @@ public interface ReportView {
 	public void setUserTestList(List value);
 	
 	public String getUsers();
+	
+	public int getTestID();
+	
+	public void getReportTable(String[] strValue , Object[][] objValue);
 	/**
 	 * Register the given controller with this view.
 	 * Methods on the controller are invoked when events in the view occur that could change the model.

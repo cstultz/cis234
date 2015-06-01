@@ -21,6 +21,8 @@ public class ReportController
 	private Object[] tempObject;
 	private List tempUserList;
 	private List tempUserTestList;
+	private String[] tableColumns;
+	private Object[][] tableRows;
 	
 	/**
 	 * Constructor for the class. Creates the listener for the ReportController.
@@ -64,6 +66,14 @@ public class ReportController
 		tempUserTestList = new List();
 		tempUserTestList = model.getUsersTestID(view.getUsers());
 		view.setUserTestList(tempUserTestList);
+	}
+	
+	public void getReportTableData()
+	{
+		tableColumns = model.getColumnData();
+		tableRows = model.queryColumnData(view.getUsers(), view.getTestID());
+		view.getReportTable(tableColumns, tableRows);
+		
 	}
 }
 

@@ -1,6 +1,5 @@
 package cis234a.nsort.view;
 
-import java.awt.Dimension;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,8 +21,6 @@ public class ReportFrame extends JFrame implements ReportView
 {
 	private ReportPanel reportPanel;
 	private ReportController controller;
-	private List userList;
-	
 	/**
 	 * Constructor for the class.
 	 */
@@ -80,7 +77,9 @@ public class ReportFrame extends JFrame implements ReportView
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				reportPanel.setReportTable((reportPanel.setColumns(controller.getColumnData())), (reportPanel.setData(controller.queryColumnData(reportPanel.setUser(), reportPanel.setTest()))));
+				controller.getReportTableData();
+				reportPanel.setThirdVisibility();
+				reportPanel.panelRefresh();
 			}
 			
 		});
@@ -128,5 +127,18 @@ public class ReportFrame extends JFrame implements ReportView
 	{
 		String user = reportPanel.setUser();
 		return user;
+	}
+	
+	@Override
+	public int getTestID()
+	{
+		int testID = reportPanel.setTest();
+		return testID;
+	}
+
+	@Override
+	public void getReportTable(String[] strValue, Object[][] objValue) 
+	{
+		reportPanel.setReportTable(strValue, objValue);
 	}
 }
