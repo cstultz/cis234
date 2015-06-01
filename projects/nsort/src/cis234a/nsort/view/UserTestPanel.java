@@ -87,9 +87,12 @@ public class UserTestPanel extends JPanel
 		gbc_lblVs.gridwidth = 2;
 		gbc_rightItemLabel = new GridBagConstraints();
 		gbc_leftChoice = new GridBagConstraints();
+		gbc_leftChoice.anchor = GridBagConstraints.NORTH;
 		gbc_IcantDecide = new GridBagConstraints();
+		gbc_IcantDecide.anchor = GridBagConstraints.NORTH;
 		gbc_IcantDecide.gridwidth = 2;
 		gbc_rightChoice = new GridBagConstraints();
+		gbc_rightChoice.anchor = GridBagConstraints.NORTH;
 		gbc_lblChooseEitherItem = new GridBagConstraints();
 		gbc_lblChooseEitherItem.insets = new Insets(0, 0, 5, 0);
 		gbc_imagePanelLeft = new GridBagConstraints();
@@ -131,12 +134,12 @@ public class UserTestPanel extends JPanel
 //		lblReportItem.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		gridBagLayout.columnWidths = new int[]{75, 75, 75, 75, 75, 75, 75, 75};
-		gridBagLayout.rowHeights = new int[]{27, 75, 75, 75, 75, 75, 75, 62, 62};
+		gridBagLayout.rowHeights = new int[]{27, 75, 75, 75, 75, 36, 48, 48, 37};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
-		gbc_progressMeterPanel.gridwidth = 6;
-		gbc_progressMeterPanel.gridx = 1;
+		gbc_progressMeterPanel.gridwidth = 8;
+		gbc_progressMeterPanel.gridx = 0;
 		gbc_progressMeterPanel.gridy = 8;
 		
 		gbc_imagePanelLeft.fill = GridBagConstraints.BOTH;
@@ -180,14 +183,14 @@ public class UserTestPanel extends JPanel
 		gbc_rightChoice.gridx = 5;
 		gbc_rightChoice.gridy = 5;
 		
+		gbc_lblChooseEitherItem.gridwidth = 8;
+		gbc_lblChooseEitherItem.gridx = 0;
+		gbc_lblChooseEitherItem.gridy = 6;
+
 		gbc_currentResults.gridwidth = 8;
 		gbc_currentResults.insets = new Insets(0, 0, 5, 0);
 		gbc_currentResults.gridx = 0;
-		gbc_currentResults.gridy = 6;
-		
-		gbc_lblChooseEitherItem.gridwidth = 8;
-		gbc_lblChooseEitherItem.gridx = 0;
-		gbc_lblChooseEitherItem.gridy = 7;
+		gbc_currentResults.gridy = 7;
 		
 //		gbc_lblReportItem.gridwidth = 4;
 //		gbc_lblReportItem.gridx = 0;
@@ -212,7 +215,7 @@ public class UserTestPanel extends JPanel
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.gridwidth = 8;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel.gridx = 0;
 		gbc_lblNewLabel.gridy = 0;
 		add(lblNewLabel, gbc_lblNewLabel);
