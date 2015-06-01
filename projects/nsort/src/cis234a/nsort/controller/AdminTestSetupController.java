@@ -256,7 +256,7 @@ public class AdminTestSetupController {
 	{
 		File selectedFile = null;
 		byte[] data = null;
-		JFileChooser openFile = new JFileChooser();
+		JFileChooser openFile = new JFileChooser(System.getProperty("user.home") + System.getProperty("file.separator")+ "Pictures");
 		FileFilter filter = new FileNameExtensionFilter(".png, .jpg", new String[] {"png", "jpg"});
 		openFile.setFileFilter(filter);
 		openFile.addChoosableFileFilter(filter);
