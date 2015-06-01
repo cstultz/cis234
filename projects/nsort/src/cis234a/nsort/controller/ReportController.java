@@ -20,6 +20,7 @@ public class ReportController
 	private String[] x;
 	private Object[] tempObject;
 	private List tempUserList;
+	private List tempUserTestList;
 	
 	/**
 	 * Constructor for the class. Creates the listener for the ReportController.
@@ -56,5 +57,11 @@ public class ReportController
 		return tempUserList;
 	}
 	
+	public List getUserTestData()
+	{
+		tempUserTestList = new List();
+		tempUserTestList = model.getUsersTestID(view.setUser());
+		return tempUserTestList;
+	}
 }
 
