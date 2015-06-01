@@ -250,7 +250,7 @@ public class AdminTestSetupController {
 	}
 	
 	/**
-	 * populate the Items from the model to the Existing Items List in the view.
+	 * populate th e Items from the model to the Existing Items List in the view.
 	 */
 	public void associateImageToExistingItem(String currentSelection)
 	{
@@ -264,23 +264,23 @@ public class AdminTestSetupController {
 		int returnVal = openFile.showOpenDialog(null);
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
 		  selectedFile = new File(openFile.getSelectedFile().getAbsolutePath());
-		}
-		
-		try {
-			data = convertFileToByteArray(selectedFile);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		if (sqlUser.getValueImageByteArray(currentSelection) == null)
-		{
-			sqlUser.addImage(currentSelection, data);
-			sqlUser.associateImageToExistingItem(currentSelection);
-		}
-		else
-		{
-			sqlUser.updateImage(currentSelection, data);
+		  
+			try {
+				data = convertFileToByteArray(selectedFile);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if (sqlUser.getValueImageByteArray(currentSelection) == null)
+			{
+				sqlUser.addImage(currentSelection, data);
+				sqlUser.associateImageToExistingItem(currentSelection);
+			}
+			else
+			{
+				sqlUser.updateImage(currentSelection, data);
+			}
 		}
 	}
 	

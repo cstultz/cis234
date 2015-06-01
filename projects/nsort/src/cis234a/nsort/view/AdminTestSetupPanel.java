@@ -76,8 +76,8 @@ public class AdminTestSetupPanel extends JPanel
 	public AdminTestSetupPanel()
 	{
 		imagePanel = new ImagePanel();
-		imagePanel.setSize(250, 237);
-		imagePanel.setLocation(417, 56);
+		imagePanel.setSize(250, 264);
+		imagePanel.setLocation(417, 32);
 
 		editButton = new JButton("Edit");
 		editButton.setEnabled(false);
@@ -122,21 +122,21 @@ public class AdminTestSetupPanel extends JPanel
 		submitButton.setBounds(288, 307, 77, 23);
 		reportButton = new JButton("Test Results Reporting");
 		reportButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		reportButton.setBounds(110, 382, 180, 23);
+		reportButton.setBounds(454, 360, 180, 34);
 		progressMeterCheckBox = new JCheckBox("Display progress indicator during the User Test?");
 		progressMeterCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
 		progressMeterCheckBox.setFont(new Font("Arial", Font.PLAIN, 12));
 		progressMeterCheckBox.setBounds(54, 341, 292, 23);
 		finishButton = new JButton("Finish");
 		finishButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		finishButton.setBounds(105, 430, 77, 23);
+		finishButton.setBounds(105, 371, 77, 23);
 		finishButton.setEnabled(false);                                             
 		lblOr = new JLabel("OR");
 		lblOr.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblOr.setBounds(192, 435, 15, 14);
+		lblOr.setBounds(192, 376, 15, 14);
 		cancelButton = new JButton("Cancel");
 		cancelButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		cancelButton.setBounds(217, 430, 77, 23);
+		cancelButton.setBounds(217, 371, 77, 23);
 
 		setupLayout();
 		setupPanel();
@@ -163,7 +163,7 @@ public class AdminTestSetupPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(DIM);
+		setPreferredSize(new Dimension(700, 404));
 	}
 	
 	/**

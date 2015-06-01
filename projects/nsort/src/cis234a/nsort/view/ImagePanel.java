@@ -52,8 +52,8 @@ import javax.swing.JPanel;
 	public void setupLayout()
 	{
 		// set border for the panel
-		setBorder(BorderFactory.createTitledBorder(
-               BorderFactory.createEtchedBorder(), "Image Panel"));
+//		setBorder(BorderFactory.createTitledBorder(
+//               BorderFactory.createEtchedBorder(), "Image Panel"));
 	}
 	
 	/**
@@ -78,7 +78,7 @@ import javax.swing.JPanel;
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(graphic, 15, 25, 220, 200, null);       
+        g.drawImage(graphic, 15, 15, 220, 220, null);       
     }
     
     public void setImage(byte[] data)

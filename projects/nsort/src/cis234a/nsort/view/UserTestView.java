@@ -1,5 +1,7 @@
 package cis234a.nsort.view;
 
+import java.awt.Image;
+
 import cis234a.nsort.controller.*;
 /**
  * The interface for a view of an UserTest model.
@@ -20,12 +22,12 @@ public interface UserTestView {
 	/**
 	 * set the left item label object
 	 */
-	public void setLeftItemLabelValue(String itemLeftValue);
+	public void setLeftItem(String itemLeftValue, Image image);
 	
 	/**
 	 * set the right item label object
 	 */
-	public void setRightItemLabelValue(String itemRightValue);
+	public void setRightItem(String itemRightValue, Image image);
 	
 	/**
 	 * set the total questions on the user test

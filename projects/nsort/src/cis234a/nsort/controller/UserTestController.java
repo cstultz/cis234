@@ -52,9 +52,9 @@ public class UserTestController {
 	{
 		Question question = model.getFirstQuestion();
 		Item item = question.getItemLeft();
-		view.setLeftItemLabelValue(item.getValue());
+		view.setLeftItem(item.getValue(), item.getValueImage());
 		item = question.getItemRight();
-		view.setRightItemLabelValue(item.getValue());
+		view.setRightItem(item.getValue(), item.getValueImage());
 	}
 	
 	/**
@@ -133,9 +133,9 @@ public class UserTestController {
 		{
 			//set the labels for the next question on the test
 			Item item = question.getItemLeft();
-			view.setLeftItemLabelValue(item.getValue());
+			view.setLeftItem(item.getValue(), item.getValueImage());
 			item = question.getItemRight();
-			view.setRightItemLabelValue(item.getValue());
+			view.setRightItem(item.getValue(), item.getValueImage());
 			
 			
 			return true;

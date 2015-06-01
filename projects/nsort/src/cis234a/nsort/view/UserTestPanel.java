@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 
@@ -26,6 +27,9 @@ public class UserTestPanel extends JPanel
 	
 	private ProgressMeterPanel progressMeterPanel;
 	
+	private ImagePanel imagePanelLeft;
+	private ImagePanel imagePanelRight;
+	
 	private JButton leftChoiceButton;
 	private JButton iCantDecideButton;
 	private JButton rightChoiceButton;
@@ -43,6 +47,8 @@ public class UserTestPanel extends JPanel
 	private GridBagConstraints gbc_IcantDecide;
 	private GridBagConstraints gbc_rightChoice;
 	private GridBagConstraints gbc_lblChooseEitherItem;
+	private GridBagConstraints gbc_imagePanelLeft;
+	private GridBagConstraints gbc_imagePanelRight;
 	
 	/**
 	 * Constructor for the UserTestPanel. Must pass a parameter reference of the UserTestController to the panel
@@ -51,6 +57,9 @@ public class UserTestPanel extends JPanel
 	 */
 	public UserTestPanel()
 	{
+		imagePanelLeft = new ImagePanel();
+		imagePanelRight = new ImagePanel();
+		
 		progressMeterPanel = new ProgressMeterPanel();
 		leftItemLabel = new JLabel("Left Item");
 		lblChooseEitherItem = new JLabel("Choose either item or \"I can't decide\"");
@@ -64,13 +73,24 @@ public class UserTestPanel extends JPanel
 
 		gridBagLayout = new GridBagLayout();
 		gbc_progressMeterPanel = new GridBagConstraints();
+		gbc_progressMeterPanel.anchor = GridBagConstraints.NORTH;
+		gbc_progressMeterPanel.insets = new Insets(0, 0, 0, 5);
 		gbc_leftItemLabel = new GridBagConstraints();
 		gbc_lblVs = new GridBagConstraints();
+		gbc_lblVs.gridwidth = 2;
 		gbc_rightItemLabel = new GridBagConstraints();
 		gbc_leftChoice = new GridBagConstraints();
 		gbc_IcantDecide = new GridBagConstraints();
+		gbc_IcantDecide.gridwidth = 2;
 		gbc_rightChoice = new GridBagConstraints();
 		gbc_lblChooseEitherItem = new GridBagConstraints();
+		gbc_lblChooseEitherItem.insets = new Insets(0, 0, 5, 0);
+		gbc_imagePanelLeft = new GridBagConstraints();
+		gbc_imagePanelLeft.insets = new Insets(0, 0, 5, 5);
+		gbc_imagePanelRight = new GridBagConstraints();
+		gbc_imagePanelRight.insets = new Insets(0, 0, 5, 0);
+		gbc_imagePanelLeft.gridheight = 3;
+		gbc_imagePanelRight.gridheight = 3;
 
 		setupPanel();
 		setupLayout();
@@ -96,49 +116,58 @@ public class UserTestPanel extends JPanel
 		lblChooseEitherItem.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		gridBagLayout.columnWidths = new int[]{75, 75, 75, 75, 75, 75, 75, 75};
-		gridBagLayout.rowHeights = new int[]{75, 75, 75, 75, 75, 75, 75};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowHeights = new int[]{27, 75, 75, 75, 75, 75, 62, 62};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
+		gbc_progressMeterPanel.gridwidth = 6;
+		gbc_progressMeterPanel.gridx = 1;
+		gbc_progressMeterPanel.gridy = 7;
 		
-		gbc_progressMeterPanel.insets = new Insets(0, 0, 5, 0);
-		gbc_progressMeterPanel.gridwidth = 7;
-		gbc_progressMeterPanel.gridx = 0;
-		gbc_progressMeterPanel.gridy = 4;
+		gbc_imagePanelLeft.fill = GridBagConstraints.BOTH;
+		gbc_imagePanelLeft.gridwidth = 3;
+		gbc_imagePanelLeft.gridx = 0;
+		gbc_imagePanelLeft.gridy = 1;
+		
+		gbc_imagePanelRight.fill = GridBagConstraints.BOTH;
+		gbc_imagePanelRight.gridwidth = 3;
+		gbc_imagePanelRight.gridx = 5;
+		gbc_imagePanelRight.gridy = 1;
 		
 		gbc_leftItemLabel.fill = GridBagConstraints.BOTH;
 		gbc_leftItemLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_leftItemLabel.gridwidth = 3;
 		gbc_leftItemLabel.gridx = 0;
-		gbc_leftItemLabel.gridy = 1;
+		gbc_leftItemLabel.gridy = 4;
 		
 		gbc_lblVs.insets = new Insets(0, 0, 5, 5);
 		gbc_lblVs.gridx = 3;
-		gbc_lblVs.gridy = 1;
+		gbc_lblVs.gridy = 4;
 		
 		
 		gbc_rightItemLabel.fill = GridBagConstraints.BOTH;
 		gbc_rightItemLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_rightItemLabel.gridwidth = 3;
-		gbc_rightItemLabel.gridx = 4;
-		gbc_rightItemLabel.gridy = 1;
+		gbc_rightItemLabel.gridx = 5;
+		gbc_rightItemLabel.gridy = 4;
 		
 		gbc_leftChoice.gridwidth = 3;
 		gbc_leftChoice.insets = new Insets(0, 0, 5, 5);
 		gbc_leftChoice.gridx = 0;
-		gbc_leftChoice.gridy = 2;
+		gbc_leftChoice.gridy = 5;
 		
 		gbc_IcantDecide.insets = new Insets(0, 0, 5, 5);
 		gbc_IcantDecide.gridx = 3;
-		gbc_IcantDecide.gridy = 2;
+		gbc_IcantDecide.gridy = 5;
 		
 		gbc_rightChoice.gridwidth = 3;
 		gbc_rightChoice.insets = new Insets(0, 0, 5, 0);
-		gbc_rightChoice.gridx = 4;
-		gbc_rightChoice.gridy = 2;
-		gbc_lblChooseEitherItem.gridwidth = 7;
+		gbc_rightChoice.gridx = 5;
+		gbc_rightChoice.gridy = 5;
+		
+		gbc_lblChooseEitherItem.gridwidth = 8;
 		gbc_lblChooseEitherItem.gridx = 0;
-		gbc_lblChooseEitherItem.gridy = 3;
+		gbc_lblChooseEitherItem.gridy = 6;
 	}
 	
 	/**
@@ -146,7 +175,7 @@ public class UserTestPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(DIM);
+		setPreferredSize(new Dimension(644, 588));
 	}
 	
 	/**
@@ -164,6 +193,8 @@ public class UserTestPanel extends JPanel
 		add(rightChoiceButton, gbc_rightChoice);
 		
 		add(progressMeterPanel, gbc_progressMeterPanel);
+		add(imagePanelLeft, gbc_imagePanelLeft);
+		add(imagePanelRight, gbc_imagePanelRight);
 	}
 	
 	/**
@@ -232,6 +263,26 @@ public class UserTestPanel extends JPanel
 	public void setLeftItemLabelValue(String itemLeftValue)
 	{
 		leftItemLabel.setText(itemLeftValue);
+	}
+
+	/**
+	 * set the right item image
+	 * 
+	 * @param the right item label image
+	 */
+	public void setRightItemImage(Image itemRightImage)
+	{
+		imagePanelRight.updateImage(itemRightImage);
+	}
+	
+	/**
+	 * set left item image
+	 * 
+	 * @param the left item label image
+	 */
+	public void setLeftItemImage(Image itemLeftImage)
+	{
+		imagePanelLeft.updateImage(itemLeftImage);
 	}
 
 	/**
