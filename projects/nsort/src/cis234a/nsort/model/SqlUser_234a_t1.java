@@ -61,9 +61,13 @@ public enum SqlUser_234a_t1 {
 	private final static String queryGetImageByItemID = "SELECT [graphic] FROM [Image] JOIN ItemImages ON Image.imageID = ItemImages.image_ID WHERE ItemImages.item_ID = ?;";
 	private final static String queryImageIDByName = "SELECT imageID FROM [Image] WHERE [Image].name = ?;";
 	private final static String queryupdateImage = "UPDATE [Image] SET [graphic] = ? WHERE name = ?;";
+	@SuppressWarnings("unused")
 	private final static String queryPullAllItemImages = "SELECT [item_ID], [image_ID] FROM [ItemImages]";
+	@SuppressWarnings("unused")
 	private final static String queryDeleteItemImage = "DELETE FROM ItemImages WHERE item_ID ='?';";
+	@SuppressWarnings("unused")
 	private final static String queryDeleteTestItem = "DELETE FROM TestItems WHERE item_ID ='?';";
+	@SuppressWarnings("unused")
 	private final static String queryDeleteItem = "DELETE FROM Item WHERE item_ID ='?';";
 	/*************************************queries for Ranking System*************************************/
 

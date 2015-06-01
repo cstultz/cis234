@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -22,6 +23,7 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+
 import cis234a.nsort.model.*;
 /**
  * The LoginPanel Class contains the components for the LoginFrame.
@@ -486,6 +488,7 @@ public class AdminTestSetupPanel extends JPanel
 		imagePanel.updateItemImageToBlank();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public String existingItemListRightClickMenu(MouseEvent event)
 	{
 		JList<String> list = (JList<String>)event.getSource();

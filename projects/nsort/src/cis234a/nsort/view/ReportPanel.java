@@ -3,12 +3,14 @@ package cis234a.nsort.view;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 import java.awt.GridBagConstraints;
 import java.awt.List;
 /**
@@ -32,8 +34,11 @@ public class ReportPanel extends JPanel
 	private List usersTestDDL;
 	private GridBagConstraints c = new GridBagConstraints();
 	private JScrollPane scrollPane;
+	@SuppressWarnings("unused")
 	private String selectedUser;
+	@SuppressWarnings("unused")
 	private int selectedTest;
+	@SuppressWarnings("unused")
 	private int userIndex;
 	
 	/**

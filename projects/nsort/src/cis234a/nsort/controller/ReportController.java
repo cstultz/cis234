@@ -12,12 +12,14 @@ import cis234a.nsort.view.ReportView;
  */
 public class ReportController 
 {
+	@SuppressWarnings("unused")
 	private AdminTestSetupController controller;
 	
 	private ReportView view;
 	private Report model;
 	
 	private String[] x;
+	@SuppressWarnings("unused")
 	private Object[] tempObject;
 	private List tempUserList;
 	private List tempUserTestList;

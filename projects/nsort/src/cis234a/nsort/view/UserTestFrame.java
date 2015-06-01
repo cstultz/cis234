@@ -3,10 +3,8 @@ package cis234a.nsort.view;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.awt.Image;
 import cis234a.nsort.model.*;
 import cis234a.nsort.controller.*;
 
