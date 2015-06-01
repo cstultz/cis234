@@ -1,7 +1,6 @@
 package cis234a.nsort.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 /**
  * This a ItemList class represents a list of items.
  * 

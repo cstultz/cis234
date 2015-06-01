@@ -12,13 +12,8 @@ import cis234a.nsort.view.*;
 public class UserTestController {
 	
 	private RankingSystemController controller;
-	
 	private UserTestModel model;
 	private UserTestView view;
-	
-	private Report reportModel;
-	private ReportView reportView;
-	
 	private SqlUser_234a_t1 sqlUser;
 
 	/**

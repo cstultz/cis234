@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import java.awt.Image;
 import cis234a.nsort.model.*;
 import cis234a.nsort.controller.*;
 
@@ -170,9 +170,10 @@ public class UserTestFrame extends JFrame implements UserTestView
 	 * 
 	 * @param value to set the left item label 
 	 */
-	public void setLeftItemLabel(String value)
+	public void setLeftItem(String value, Image image)
 	{
 		userTestPanel.setLeftItemLabel(value);
+		userTestPanel.setLeftItemImage(image);
 	}
 
 	/**
@@ -180,26 +181,10 @@ public class UserTestFrame extends JFrame implements UserTestView
 	 * 
 	 * @param value to set the right item label
 	 */
-	public void setRightItemLabel(String value)
+	public void setRightItem(String value, Image image)
 	{
 		userTestPanel.setRightItemLabel(value);
-	}
-	
-	/**
-	 * set the left item label object
-	 */
-	@Override
-	public void setLeftItemLabelValue(String itemLeftValue)
-	{
-		userTestPanel.setLeftItemLabelValue(itemLeftValue);
-	}
-
-	/**
-	 * set the right item label object
-	 */
-	@Override
-	public void setRightItemLabelValue(String itemRightValue) {
-		userTestPanel.setRightItemLabelValue(itemRightValue);
+		userTestPanel.setRightItemImage(image);
 	}
 	
 	/**

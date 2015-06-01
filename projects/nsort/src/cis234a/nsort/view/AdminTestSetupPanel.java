@@ -1,17 +1,11 @@
 package cis234a.nsort.view;
 
 import java.awt.Dimension;
-import java.awt.Event;
 import java.awt.Font;
-import java.awt.Image;
-import java.awt.Point;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
-import java.io.InputStream;
-import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -28,9 +22,6 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
-import javax.swing.event.PopupMenuListener;
-
 import cis234a.nsort.model.*;
 /**
  * The LoginPanel Class contains the components for the LoginFrame.
@@ -42,7 +33,7 @@ import cis234a.nsort.model.*;
 public class AdminTestSetupPanel extends JPanel
 {
 
-	private static final Dimension DIM = new Dimension(700, 475);
+	private static final Dimension DIM = new Dimension(700, 404);
 	
 	private JLabel existingItemsLabel;
 	protected JList<String> existingItemsList;
@@ -163,7 +154,7 @@ public class AdminTestSetupPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(new Dimension(700, 404));
+		setPreferredSize(new Dimension(DIM));
 	}
 	
 	/**

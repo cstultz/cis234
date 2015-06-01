@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class UserTestPanel extends JPanel 
 {
-	private static final Dimension DIM = new Dimension(580, 474);
+	private static final Dimension DIM = new Dimension(644, 588);
 	
 	private ProgressMeterPanel progressMeterPanel;
 	
@@ -36,7 +36,7 @@ public class UserTestPanel extends JPanel
 	private JButton currentResultsButton;
 	private JLabel leftItemLabel;
 	private JLabel rightItemLabel;
-	private JLabel lblReportItem;
+//	private JLabel lblReportItem;
 	private final JLabel lblVs;
 	private JLabel lblChooseEitherItem;
 	
@@ -50,7 +50,7 @@ public class UserTestPanel extends JPanel
 	private GridBagConstraints gbc_rightChoice;
 	private GridBagConstraints gbc_lblChooseEitherItem;
 	private GridBagConstraints gbc_currentResults;
-	private GridBagConstraints gbc_lblReportItem;
+//	private GridBagConstraints gbc_lblReportItem;
 	private GridBagConstraints gbc_imagePanelLeft;
 	private GridBagConstraints gbc_imagePanelRight;
 	
@@ -69,12 +69,12 @@ public class UserTestPanel extends JPanel
 		lblChooseEitherItem = new JLabel("Choose either item or \"I can't decide\"");
 		rightItemLabel = new JLabel("Right Item");
 
-		lblReportItem = new JLabel("To view current results, click the button below");
+//		lblReportItem = new JLabel("To view current results, click the button below");
 		
 		leftChoiceButton = new JButton("Choose left");
 		iCantDecideButton = new JButton("I can't decide");
 		rightChoiceButton = new JButton("Choose right");
-		currentResultsButton = new JButton("View Results");
+		currentResultsButton = new JButton("View Results So Far");
 		
 		lblVs = new JLabel("Vs.");
 
@@ -98,7 +98,8 @@ public class UserTestPanel extends JPanel
 		gbc_imagePanelRight.insets = new Insets(0, 0, 5, 0);
 		gbc_imagePanelLeft.gridheight = 3;
 		gbc_imagePanelRight.gridheight = 3;
-		gbc_lblReportItem = new GridBagConstraints();
+//		gbc_lblReportItem = new GridBagConstraints();
+//		gbc_lblReportItem.insets = new Insets(0, 0, 5, 5);
 		gbc_currentResults = new GridBagConstraints();
 		
 
@@ -127,16 +128,16 @@ public class UserTestPanel extends JPanel
 		rightItemLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblChooseEitherItem.setFont(new Font("Tahoma", Font.BOLD, 12));
 		
-		lblReportItem.setFont(new Font("Tahoma", Font.BOLD, 12));
+//		lblReportItem.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		gridBagLayout.columnWidths = new int[]{75, 75, 75, 75, 75, 75, 75, 75};
-		gridBagLayout.rowHeights = new int[]{27, 75, 75, 75, 75, 75, 62, 62};
+		gridBagLayout.rowHeights = new int[]{27, 75, 75, 75, 75, 75, 75, 62, 62};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		gbc_progressMeterPanel.gridwidth = 6;
 		gbc_progressMeterPanel.gridx = 1;
-		gbc_progressMeterPanel.gridy = 7;
+		gbc_progressMeterPanel.gridy = 8;
 		
 		gbc_imagePanelLeft.fill = GridBagConstraints.BOTH;
 		gbc_imagePanelLeft.gridwidth = 3;
@@ -179,18 +180,18 @@ public class UserTestPanel extends JPanel
 		gbc_rightChoice.gridx = 5;
 		gbc_rightChoice.gridy = 5;
 		
-		gbc_currentResults.gridwidth = 3;
-		gbc_currentResults.insets = new Insets(0, 0, 5, 5);
-		gbc_currentResults.gridx = 2;
-		gbc_currentResults.gridy = 5;
+		gbc_currentResults.gridwidth = 8;
+		gbc_currentResults.insets = new Insets(0, 0, 5, 0);
+		gbc_currentResults.gridx = 0;
+		gbc_currentResults.gridy = 6;
 		
 		gbc_lblChooseEitherItem.gridwidth = 8;
 		gbc_lblChooseEitherItem.gridx = 0;
-		gbc_lblChooseEitherItem.gridy = 6;
+		gbc_lblChooseEitherItem.gridy = 7;
 		
-		gbc_lblReportItem.gridwidth = 7;
-		gbc_lblReportItem.gridx = 0;
-		gbc_lblReportItem.gridy = 4;
+//		gbc_lblReportItem.gridwidth = 4;
+//		gbc_lblReportItem.gridx = 0;
+//		gbc_lblReportItem.gridy = 6;
 	}
 	
 	/**
@@ -198,7 +199,7 @@ public class UserTestPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(new Dimension(644, 588));
+		setPreferredSize(new Dimension(632, 660));
 	}
 	
 	/**
@@ -219,7 +220,7 @@ public class UserTestPanel extends JPanel
 		add(imagePanelLeft, gbc_imagePanelLeft);
 		add(imagePanelRight, gbc_imagePanelRight);
 		
-		add(lblReportItem, gbc_lblReportItem);
+//		add(lblReportItem, gbc_lblReportItem);
 		add(currentResultsButton, gbc_currentResults);
 	}
 	

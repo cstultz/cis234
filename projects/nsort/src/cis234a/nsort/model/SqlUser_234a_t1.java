@@ -2,16 +2,8 @@ package cis234a.nsort.model;
 
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
 /**
  * The SqlUser234A_t1 class is the model for all connection operations to the 234a_t1 MS SQL database.
  * Only 1 test can be saved in the database at any given time. testID = 1
@@ -68,9 +60,8 @@ public enum SqlUser_234a_t1 {
 	private final static String queryAddItemToImage = "INSERT INTO ItemImages (item_ID, image_ID) VALUES (?,?);";
 	private final static String queryGetImageByItemID = "SELECT [graphic] FROM [Image] JOIN ItemImages ON Image.imageID = ItemImages.image_ID WHERE ItemImages.item_ID = ?;";
 	private final static String queryImageIDByName = "SELECT imageID FROM [Image] WHERE [Image].name = ?;";
-	@SuppressWarnings("unused")
-	private final static String queryPullAllItemImages = "SELECT [item_ID], [image_ID] FROM [ItemImages]";
 	private final static String queryupdateImage = "UPDATE [Image] SET [graphic] = ? WHERE name = ?;";
+	private final static String queryPullAllItemImages = "SELECT [item_ID], [image_ID] FROM [ItemImages]";
 	private final static String queryDeleteItemImage = "DELETE FROM ItemImages WHERE item_ID ='?';";
 	private final static String queryDeleteTestItem = "DELETE FROM TestItems WHERE item_ID ='?';";
 	private final static String queryDeleteItem = "DELETE FROM Item WHERE item_ID ='?';";
