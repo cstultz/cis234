@@ -227,10 +227,10 @@ public class AdminTestSetupController {
 	public void launchReport()
 	{
 		Report model = new Report();
-		ReportView view = new ReportFrame(model.getUsers());
+		ReportView view = new ReportFrame();
 		//view.setUserList(model.getUsers());
 		@SuppressWarnings("unused")
 		ReportController controller = new ReportController(this, view, model);
-		view.registerController(controller);
+		
 	}
 }

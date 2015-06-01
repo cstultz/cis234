@@ -1,30 +1,28 @@
 package cis234a.nsort.view;
 
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.List;
-import cis234a.nsort.model.*;
 /**
- * The ReportPanel Class contains the components for the ReportFrame.
+ * The Report Class contains the components for the report view.
  *  
  * @author (Chris.Stultz, John.Loranger, Ryan.Reams, Josh.Eads) 
  * @version (4/25/2015)
  */
+
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
+
+import javax.swing.*;
+
 @SuppressWarnings("serial")
-public class ReportPanel extends JPanel 
+public class ReportViewold extends JFrame 
 {
-	private static final Dimension DIM = new Dimension(600,600);
+	/**
+	 * ReportView sets up all parameters for build and display of report panel
+	 */
+	//RankingSystemController controller;
+	//final static boolean shouldFill = true;
+	
+	private JPanel panel = new JPanel();
 	private JComboBox<String> userComboBox;
 	private JComboBox<String> userTestComboBox;
 	private JButton reportButton;
@@ -39,43 +37,51 @@ public class ReportPanel extends JPanel
 	private String selectedUser;
 	private int selectedTest;
 	private int userIndex;
-	
 	/**
-	 * Constructor for the ReportPanel. Must pass a parameter reference of the ReportController to the panel
-	 * in order to communicate back to the ReportController.
-	 * @param controller
+	 * ReportView object received call from RankingSystemController to create panel for reports
+	 * for use by the RankingSystem
+	 * @param List x
 	 */
-	public ReportPanel(List x)
+	public ReportViewold(List x)
 	{
-		setupPanel();
-		setupLayout();
+		usersDDL = x;
+		FrameCreation();
+		PanelCreation(this);
+		this.add(panel);
+		this.pack();
+		this.setVisible(true);
 	}
 	
 	/**
-	 * setup JPanel layout
+	 * Creates the panel to hold the report info
+	 * @param frame - JFrame frame
 	 */
-	public void setupLayout()
+	private void PanelCreation(JFrame frame) 
 	{
-        // set border for the panel
-		setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createEtchedBorder(), "Report Panel"));
+		/**
+		 * decides to either display report table or display report selection information
+		 */
+		frame.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		panel.setLayout(new GridBagLayout());
+		panel.setPreferredSize(new Dimension(400,400));
+		createItems();
+		setInitialVisibility();
 	}
-	
+
 	/**
-	 * set up JPanel components
+	 * 
 	 */
-	public void setupPanel()
+	private void createItems() 
 	{
 		/**
 		 * set up userComboBox
 		 */
 		userComboBox = new JComboBox<String>();
-		
 		setUsersComboBox();
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.NORTH;
-		add(userComboBox, c);
+		panel.add(userComboBox, c);
 
 		/**
 		 * set up userTestButton
@@ -85,7 +91,7 @@ public class ReportPanel extends JPanel
 		c.gridx = 0;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.NORTH;
-		add(userTestButton, c);
+		panel.add(userTestButton, c);
 
 		/**
 		 * set up userTestComboBox
@@ -94,7 +100,7 @@ public class ReportPanel extends JPanel
 		c.gridx = 0;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.NORTH;
-		add(userTestComboBox, c);
+		panel.add(userTestComboBox, c);
 		/**
 		 * set up reportButton
 		 */
@@ -102,45 +108,7 @@ public class ReportPanel extends JPanel
 		c.gridx = 0;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.NORTH;
-		add(reportButton, c);
-		
-		setInitialVisibility();
-	}
-	
-	/**
-	 * listens for the ReportButton to be pressed to generate report
-	 * @param listenForReportButton
-	 */
-	public void addReportListener(ActionListener al)
-	{
-		reportButton.addActionListener(al);
-	}
-	
-	/**
-	 * listener for using the usersDDL menu.
-	 * @param listenForUserTestButton
-	 */
-	public void addUserSelectListener(ActionListener al)
-	{
-		userTestButton.addActionListener(al);
-	}
-	
-	/**
-	 * listener for enabling userTestButton when a user is selected
-	 * @param listenforUserComboBox
-	 */
-	public void addUserComboBoxItemListener(ItemListener il)
-	{
-		userComboBox.addItemListener(il);
-	}
-
-	/**
-	 * listener for enabling reportButton when a testID is selected
-	 * @param listenforUserTestComboBox
-	 */
-	public void addUserTestComboBoxListener(ItemListener il)
-	{
-		userTestComboBox.addItemListener(il);
+		panel.add(reportButton, c);
 	}
 	
 	/**
@@ -177,6 +145,15 @@ public class ReportPanel extends JPanel
 		reportButton.setVisible(false);
 	}
 	
+	/**	
+	 * Creates the JFrame object 
+	 */
+	private void FrameCreation() 
+	{
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);	
+	}
+
 	/**
 	 * sets the data Object that is housed to display 
 	 * @param objects objects from ReportController
@@ -213,14 +190,9 @@ public class ReportPanel extends JPanel
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 1.0;
 		c.weighty = 1.0;
-		add(scrollPane, c);
+		panel.add(scrollPane, c);
 		setThirdVisibility();
 		panelRefresh();
-	}
-	
-	public void setUserList(List x)
-	{
-		usersDDL = x;
 	}
 	
 	/**
@@ -228,7 +200,6 @@ public class ReportPanel extends JPanel
 	 */
 	public void setUsersComboBox()
 	{
-		
 		for (int i = 0; i < usersDDL.getItemCount(); i++)
 		{
 			Object temp  = usersDDL.getItem(i);
@@ -276,8 +247,8 @@ public class ReportPanel extends JPanel
 	 */
 	private void panelRefresh() 
 	{
-		revalidate();
-		repaint();		
+		panel.revalidate();
+		panel.repaint();		
 	}
 
 	/**
@@ -301,6 +272,43 @@ public class ReportPanel extends JPanel
 		testIndex = userTestComboBox.getSelectedIndex();
 		return testIndex;
 	}
+	
+	/**
+	 * listens for the ReportButton to be pressed to generate report
+	 * @param listenForReportButton
+	 */
+	public void addReportListener(ActionListener listenForReportButton)
+	{
+		reportButton.addActionListener(listenForReportButton);
+	}
+	
+	/**
+	 * listener for using the usersDDL menu.
+	 * @param listenForUserTestButton
+	 */
+	public void addUserSelectListener(ActionListener listenForUserTestButton)
+	{
+		userTestButton.addActionListener(listenForUserTestButton);
+	}
+	
+	/**
+	 * listener for enabling userTestButton when a user is selected
+	 * @param listenforUserComboBox
+	 */
+	public void addUserComboBoxItemListener(ItemListener listenforUserComboBox)
+	{
+		userComboBox.addItemListener(listenforUserComboBox);
+	}
+
+	/**
+	 * listener for enabling reportButton when a testID is selected
+	 * @param listenforUserTestComboBox
+	 */
+	public void addUserTestComboBoxListener(ItemListener listenforUserTestComboBox)
+	{
+		userTestComboBox.addItemListener(listenforUserTestComboBox);
+	}
+	
 	/**
 	 * Enable or Disable userTestButton
 	 * @param x - true / false value 

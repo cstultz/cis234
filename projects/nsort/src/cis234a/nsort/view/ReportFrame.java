@@ -1,13 +1,13 @@
 package cis234a.nsort.view;
 
-import java.awt.Dimension;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import cis234a.nsort.controller.*;
 
@@ -22,58 +22,26 @@ public class ReportFrame extends JFrame implements ReportView
 {
 	private ReportPanel reportPanel;
 	private ReportController controller;
-	private List userList;
 	
 	/**
 	 * Constructor for the class.
 	 */
-	public ReportFrame(List x)
+	public ReportFrame()
 	{
 		super("Ranking System - Report"); 
-		//setUserList(controller.getUserListData());
-		userList = x;
+		setUserList(controller.getUserListData());
 		reportPanel = createReportPanel();
 		getContentPane().add(reportPanel);
-		setSize(400,400);
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pack();
 		setVisible(true);    
 		setLocationRelativeTo(null);
 	}
 	
 	private ReportPanel createReportPanel()
 	{
-		ReportPanel reportPanel = new ReportPanel(userList);
+		ReportPanel reportPanel = new ReportPanel();
 		//Listeners go here		
-		
-		reportPanel.addUserComboBoxItemListener(new ItemListener()
-		{	
-			@Override
-			public void itemStateChanged(ItemEvent e) 
-			{
-				reportPanel.switchUserTestButton(true);
-			}
-		});
-		
-		reportPanel.addUserSelectListener(new ActionListener()
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent e) 
-			{
-				reportPanel.setUserTestComboBox(controller.getUserTestData());
-			}
-		});
-		
-		reportPanel.addUserTestComboBoxListener(new ItemListener()
-		{
-			@Override
-			public void itemStateChanged(ItemEvent e) 
-			{
-				reportPanel.switchReportButton(true);
-			}
-			
-		});
-		
 		reportPanel.addReportListener(new ActionListener()
 		{
 
@@ -83,7 +51,26 @@ public class ReportFrame extends JFrame implements ReportView
 			}
 			
 		});
-		
+		reportPanel.addReportListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		reportPanel.addReportListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		return reportPanel;
 	}
 	
@@ -111,10 +98,8 @@ public class ReportFrame extends JFrame implements ReportView
 	}
 
 	@Override
-	public String setUser() 
+	public void setUserList(List userList) 
 	{
-		String x = reportPanel.setUser();
-		return x;
+		reportPanel.setUserList(userList);
 	}
-	
 }
