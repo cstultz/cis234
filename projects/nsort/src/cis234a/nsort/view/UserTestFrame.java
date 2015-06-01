@@ -1,6 +1,5 @@
 package cis234a.nsort.view;
 
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -117,6 +116,18 @@ public class UserTestFrame extends JFrame implements UserTestView
 				}
 			}
 		});
+		
+		userTestPanel.addCurrentResultsButtonActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent ae) {
+				// currentResultsButton selected
+				
+				
+			}
+			
+		});
 		return userTestPanel;
 	}
 	
@@ -159,10 +170,9 @@ public class UserTestFrame extends JFrame implements UserTestView
 	 * 
 	 * @param value to set the left item label 
 	 */
-	public void setLeftItem(String value, Image image)
+	public void setLeftItemLabel(String value)
 	{
 		userTestPanel.setLeftItemLabel(value);
-		userTestPanel.setLeftItemImage(image);
 	}
 
 	/**
@@ -170,10 +180,26 @@ public class UserTestFrame extends JFrame implements UserTestView
 	 * 
 	 * @param value to set the right item label
 	 */
-	public void setRightItem(String value, Image image)
+	public void setRightItemLabel(String value)
 	{
 		userTestPanel.setRightItemLabel(value);
-		userTestPanel.setRightItemImage(image);
+	}
+	
+	/**
+	 * set the left item label object
+	 */
+	@Override
+	public void setLeftItemLabelValue(String itemLeftValue)
+	{
+		userTestPanel.setLeftItemLabelValue(itemLeftValue);
+	}
+
+	/**
+	 * set the right item label object
+	 */
+	@Override
+	public void setRightItemLabelValue(String itemRightValue) {
+		userTestPanel.setRightItemLabelValue(itemRightValue);
 	}
 	
 	/**
