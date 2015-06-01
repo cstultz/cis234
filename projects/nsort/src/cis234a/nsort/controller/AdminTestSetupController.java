@@ -236,11 +236,10 @@ public class AdminTestSetupController {
 	 */
 	public void launchReport()
 	{
-		Report model = new Report();
-		ReportView view = new ReportView(model.getUsers());
-		@SuppressWarnings("unused")
-		ReportController controlsler = new ReportController(view, model);
-		view.setVisible(true);
+		Report model = new Report();		
+		ReportView view = new ReportFrame();
+		ReportController controller = new ReportController(this, view, model);
+		view.registerController(controller);
 	}
 	
 	public void updateItemImage(String value)
@@ -250,7 +249,7 @@ public class AdminTestSetupController {
 	}
 	
 	/**
-	 * populate th e Items from the model to the Existing Items List in the view.
+	 * populate the Items from the model to the Existing Items List in the view.
 	 */
 	public void associateImageToExistingItem(String currentSelection)
 	{
