@@ -13,7 +13,7 @@ import java.sql.*;
 public class Report 
 {
 	private Object[][] columnData;
-	private SqlUser_234a_t1 resultSet = new SqlUser_234a_t1();;
+	private SqlUser_234a_t1 resultSet = SqlUser_234a_t1.INSTANCE;
 	private List userNames;
 	private List userTestID;
 	final private String [] testColumns = {"Item", "Win", "Loss", "Tie"} ;
