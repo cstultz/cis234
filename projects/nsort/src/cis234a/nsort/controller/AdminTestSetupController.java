@@ -318,7 +318,7 @@ public class AdminTestSetupController {
 		}
 		else if (view.checkItemOnTestItemsList(currentSelection))
 		{
-			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' appears on the test items list. \nPlease remove the item from the Test Items List and try again.","Item '" + currentSelection + "' appears on Test Items List",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' is currently listed on the test items list. \nPlease remove the item from the Test Items List and try again.","Item '" + currentSelection + "' appears on Test Items List",JOptionPane.WARNING_MESSAGE);
 
 //			sqlUser.deleteTestItem(currentSelection);
 //			view.enableFinishButton(true);
