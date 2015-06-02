@@ -313,30 +313,26 @@ public class AdminTestSetupController {
 	
 	public void deleteExistingItem(String currentSelection)
 	{
-		//Check to see if the item is apart of test results
-		//        IF SO show Warning message to user 'unable to delete due to item being apart of a test result set
-		//        ELSE
-		//        delete item image if one exists
-		//        delete item from test items list
-		//        delete item
-		
 		if (sqlUser.checkTestResultsForItem_ID(currentSelection))
 		{
-			JOptionPane.showMessageDialog(null, "Item " + currentSelection + " exits on 1 or more test results and thus cannot be deleted.","Can't delete '" + currentSelection + "'",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Item " + currentSelection + " appears on 1 or more user test results and thus cannot be deleted.","Can't delete '" + currentSelection + "' - Test Results",JOptionPane.WARNING_MESSAGE);
+		}
+		else if (view.checkItemOnTestItemsList(currentSelection))
+		{
+			JOptionPane.showMessageDialog(null, "Item " + currentSelection + " appears on the test items list and thus cannot be deleted. Please remove the item from the test items list and try again.","Can't delete '" + currentSelection + " - Test Items List'",JOptionPane.WARNING_MESSAGE);
+
+//			sqlUser.deleteTestItem(currentSelection);
+//			view.enableFinishButton(true);
+//			model.removeItemFromTestItemsList(currentSelection);
+//			view.removeItemFromTestItemsList(currentSelection);
 		}
 		else
-		{	
+		{
 			if (sqlUser.checkItemImagesForItem_ID(currentSelection))
 			{
 				sqlUser.deleteItemImage(currentSelection);
 			}
-			if (view.checkItemOnTestItemsList(currentSelection))
-			{
-				sqlUser.deleteTestItem(currentSelection);
-				view.enableFinishButton(true);
-				model.removeItemFromTestItemsList(currentSelection);
-				view.removeItemFromTestItemsList(currentSelection);
-			}
+			
 			sqlUser.deleteExistingItem(currentSelection);
 			model.removeItemFromExistingItemsList(currentSelection);
 			view.removeItemFromExistingItemsList(currentSelection);
