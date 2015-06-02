@@ -336,6 +336,7 @@ public class AdminTestSetupController {
 			sqlUser.deleteExistingItem(currentSelection);
 			model.removeItemFromExistingItemsList(currentSelection);
 			view.removeItemFromExistingItemsList(currentSelection);
+			
 		}
 	}
 }
