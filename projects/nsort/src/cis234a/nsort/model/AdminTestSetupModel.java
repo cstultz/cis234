@@ -49,12 +49,21 @@ public class AdminTestSetupModel {
 	/**
 	 * remove an item from the test items list
 	 * 
-	 * @param JListModel Default List Model Test Items List in the view
 	 * @param value the value of the item being removed
 	 */
-	public void removeItemFromTestItemList(String value)
+	public void removeItemFromTestItemsList(String value)
 	{
 		testItemsList.removeItem(value);     
+	}
+	
+	/**
+	 * remove an item from the existing items list
+	 * 
+	 * @param value the value of the item being removed
+	 */
+	public void removeItemFromExistingItemsList(String value)
+	{
+		existingItemsList.removeItem(value);     
 	}
 	
 	/**

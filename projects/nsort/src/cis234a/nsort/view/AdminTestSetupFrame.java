@@ -6,13 +6,17 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+
 import cis234a.nsort.controller.*;
 import cis234a.nsort.model.*;
+
 import java.awt.BorderLayout;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -368,5 +372,34 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	public void updateImage(byte[] data) 
 	{
 		adminTestSetupPanel.updateImage(data);
+	}
+
+	@Override
+	public void removeItemFromExistingItemsList(String value) 
+	{
+		adminTestSetupPanel.removeItemFromExistingItemsList(value);
+	}
+	
+	public boolean checkItemOnTestItemsList(String value)
+	{
+		if (adminTestSetupPanel.checkItemOnTestItemsList(value))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	@Override
+	public void removeItemFromTestItemsList(String value) 
+	{
+		adminTestSetupPanel.removeItemFromTestItemList(value);
+	}
+
+	@Override
+	public void enableFinishButton(boolean setState) {
+		adminTestSetupPanel.setFinishButtonEnabled(setState);
 	}
 }

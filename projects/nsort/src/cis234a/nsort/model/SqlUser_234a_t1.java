@@ -61,14 +61,13 @@ public enum SqlUser_234a_t1 {
 	private final static String queryGetImageByItemID = "SELECT [graphic] FROM [Image] JOIN ItemImages ON Image.imageID = ItemImages.image_ID WHERE ItemImages.item_ID = ?;";
 	private final static String queryImageIDByName = "SELECT imageID FROM [Image] WHERE [Image].name = ?;";
 	private final static String queryupdateImage = "UPDATE [Image] SET [graphic] = ? WHERE name = ?;";
+	private final static String queryDeleteItemImage = "DELETE FROM ItemImages WHERE item_ID =?;";
+	private final static String queryDeleteItem = "DELETE FROM Item WHERE itemID =?;";
+	private final static String queryDeleteTestItem = "DELETE FROM TestItems WHERE item_ID =?;";
+	private final static String queryCheckItemOnTestResults = "SELECT COUNT(*) AS 'Count' FROM TestResults WHERE item_ID = ?;";
+	private final static String queryCheckItemOnItemImages = "SELECT COUNT(*) AS 'Count' FROM ItemImages WHERE item_ID = ?;";
 	@SuppressWarnings("unused")
 	private final static String queryPullAllItemImages = "SELECT [item_ID], [image_ID] FROM [ItemImages]";
-	@SuppressWarnings("unused")
-	private final static String queryDeleteItemImage = "DELETE FROM ItemImages WHERE item_ID ='?';";
-	@SuppressWarnings("unused")
-	private final static String queryDeleteTestItem = "DELETE FROM TestItems WHERE item_ID ='?';";
-	@SuppressWarnings("unused")
-	private final static String queryDeleteItem = "DELETE FROM Item WHERE item_ID ='?';";
 	/*************************************queries for Ranking System*************************************/
 
 	/**
@@ -757,4 +756,113 @@ public enum SqlUser_234a_t1 {
 //		}
 //		return itemImages;
 //	}
+	
+	public boolean checkTestResultsForItem_ID(String value)
+	{
+		//queryCheckItemOnTestResults
+		int itemID = pullTestItemIDByValue(value);
+		int count = 0;
+    	try {
+    		connect();
+    		PreparedStatement preparedStmt = conn.prepareStatement(queryCheckItemOnTestResults);
+			preparedStmt.setInt(1, itemID);
+			ResultSet rs = preparedStmt.executeQuery();
+			while (rs.next())
+			{
+				count = rs.getInt("Count");
+			}
+			if (count > 0)
+			{
+				return true;
+			}
+		}
+		catch (SQLException e)
+		{
+			System.err.println("Got an exception! ");
+			System.err.println(e.getMessage());
+		}
+    	return false;
+	}
+	
+	/**
+     * Deletes Image associated to Item base on the Item value
+     */
+    public void deleteItemImage(String value)
+    {
+    	//queryDeleteItemImage
+    	int itemID = pullTestItemIDByValue(value);
+		try {
+			connect();
+			PreparedStatement preparedStmt = conn.prepareStatement(queryDeleteItemImage);
+			preparedStmt.setInt(1, itemID);
+	         // execute the preparedstatement
+	         preparedStmt.execute();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+    }
+    
+    public boolean checkItemImagesForItem_ID(String value)
+	{
+		//queryCheckItemOnTestResults
+		int itemID = pullTestItemIDByValue(value);
+		int count = 0;
+    	try {
+    		connect();
+    		PreparedStatement preparedStmt = conn.prepareStatement(queryCheckItemOnItemImages);
+			preparedStmt.setInt(1, itemID);
+			ResultSet rs = preparedStmt.executeQuery();
+			while (rs.next())
+			{
+				count = rs.getInt("Count");
+			}
+			if (count > 0)
+			{
+				return true;
+			}
+		}
+		catch (SQLException e)
+		{
+			System.err.println("Got an exception! ");
+			System.err.println(e.getMessage());
+		}
+    	return false;
+	}
+    
+    /**
+     * Deletes Image associated to Item base on the Item value
+     */
+    public void deleteExistingItem(String value)
+    {
+    	//queryDeleteItemImage
+    	int itemID = pullTestItemIDByValue(value);
+		try {
+			connect();
+			PreparedStatement preparedStmt = conn.prepareStatement(queryDeleteItem);
+			preparedStmt.setInt(1, itemID);
+	         // execute the preparedstatement
+	         preparedStmt.execute();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+    }
+    
+    public void deleteTestItem(String value)
+    {
+    	int itemID = pullTestItemIDByValue(value);
+		try {
+			connect();
+			PreparedStatement preparedStmt = conn.prepareStatement(queryDeleteTestItem);
+			preparedStmt.setInt(1, itemID);
+	         // execute the preparedstatement
+	         preparedStmt.execute();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    }
 }
