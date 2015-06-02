@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class UserTestPanel extends JPanel 
 {
-	private static final Dimension DIM = new Dimension(632, 660);
+	private static final Dimension DIM = new Dimension(686, 660);
 	
 	private ProgressMeterPanel progressMeterPanel;
 	
@@ -202,7 +202,7 @@ public class UserTestPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(new Dimension(686, 660));
+		setPreferredSize(new Dimension(DIM));
 	}
 	
 	/**

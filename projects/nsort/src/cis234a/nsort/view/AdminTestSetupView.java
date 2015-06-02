@@ -81,4 +81,12 @@ public interface AdminTestSetupView {
 	public void registerController(AdminTestSetupController controller);
 	
 	public void updateImage(byte[] data);
+	
+	public void removeItemFromExistingItemsList(String value);
+	
+	public void removeItemFromTestItemsList(String value);
+	
+	public boolean checkItemOnTestItemsList(String value);
+	
+	public void enableFinishButton(boolean setState);
 }

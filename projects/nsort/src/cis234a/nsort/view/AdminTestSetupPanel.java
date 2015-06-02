@@ -510,4 +510,21 @@ public class AdminTestSetupPanel extends JPanel
 	{
 		return existingItemsListRightClickPopupMenu.getSubElements().toString();
 	}
+	
+	public void removeItemFromExistingItemsList(String value)
+	{
+		existingItemsListModel.removeElement(value);
+	}
+	
+	public boolean checkItemOnTestItemsList(String value)
+	{
+		if (testItemsListModel.contains(value))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

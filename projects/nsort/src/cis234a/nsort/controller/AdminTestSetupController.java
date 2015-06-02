@@ -79,7 +79,7 @@ public class AdminTestSetupController {
 	 */
 	public void removeItemFromTestItemList(String selectedValue)
 	{
-		model.removeItemFromTestItemList(selectedValue);
+		model.removeItemFromTestItemsList(selectedValue);
 	}
 	
 	/**
@@ -255,7 +255,7 @@ public class AdminTestSetupController {
 	{
 		File selectedFile = null;
 		byte[] data = null;
-		JFileChooser openFile = new JFileChooser(System.getProperty("user.home") + System.getProperty("file.separator")+ "Pictures");
+		JFileChooser openFile = new JFileChooser(System.getProperty("user.home") + System.getProperty("file.separator") + "Pictures");
 		FileFilter filter = new FileNameExtensionFilter(".png, .jpg", new String[] {"png", "jpg"});
 		openFile.setFileFilter(filter);
 		openFile.addChoosableFileFilter(filter);
@@ -285,34 +285,58 @@ public class AdminTestSetupController {
 	
 	public byte[] convertFileToByteArray(File file) throws IOException {
 
-	    ByteArrayOutputStream ous = null;
-	    InputStream ios = null;
+	    ByteArrayOutputStream outputStream = null;
+	    InputStream inputStream = null;
 	    try {
 	        byte[] buffer = new byte[4096];
-	        ous = new ByteArrayOutputStream();
-	        ios = new FileInputStream(file);
+	        outputStream = new ByteArrayOutputStream();
+	        inputStream = new FileInputStream(file);
 	        int read = 0;
-	        while ( (read = ios.read(buffer)) != -1 ) {
-	            ous.write(buffer, 0, read);
+	        while ( (read = inputStream.read(buffer)) != -1 ) {
+	        	outputStream.write(buffer, 0, read);
 	        }
 	    } finally { 
 	        try {
-	             if ( ous != null ) 
-	                 ous.close();
+	             if ( outputStream != null ) 
+	            	 outputStream.close();
 	        } catch ( IOException e) {
 	        }
 
 	        try {
-	             if ( ios != null ) 
-	                  ios.close();
+	             if ( inputStream != null ) 
+	            	 inputStream.close();
 	        } catch ( IOException e) {
 	        }
 	    }
-	    return ous.toByteArray();
+	    return outputStream.toByteArray();
 	}
 	
 	public void deleteExistingItem(String currentSelection)
 	{
-		JOptionPane.showMessageDialog(null, "Delete Item " + currentSelection + " from Existing Items List","Delete Existing Item",JOptionPane.WARNING_MESSAGE);
+		if (sqlUser.checkTestResultsForItem_ID(currentSelection))
+		{
+			JOptionPane.showMessageDialog(null, "Item " + currentSelection + " appears on 1 or more user test results and thus cannot be deleted.","Can't delete '" + currentSelection + "' - Test Results",JOptionPane.WARNING_MESSAGE);
+		}
+		else if (view.checkItemOnTestItemsList(currentSelection))
+		{
+			JOptionPane.showMessageDialog(null, "Item " + currentSelection + " appears on the test items list and thus cannot be deleted. Please remove the item from the test items list and try again.","Can't delete '" + currentSelection + " - Test Items List'",JOptionPane.WARNING_MESSAGE);
+
+//			sqlUser.deleteTestItem(currentSelection);
+//			view.enableFinishButton(true);
+//			model.removeItemFromTestItemsList(currentSelection);
+//			view.removeItemFromTestItemsList(currentSelection);
+		}
+		else
+		{
+			if (sqlUser.checkItemImagesForItem_ID(currentSelection))
+			{
+				sqlUser.deleteItemImage(currentSelection);
+			}
+			
+			sqlUser.deleteExistingItem(currentSelection);
+			model.removeItemFromExistingItemsList(currentSelection);
+			view.removeItemFromExistingItemsList(currentSelection);
+			
+		}
 	}
 }
