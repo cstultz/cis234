@@ -84,7 +84,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 		adminTestSetupPanel.addTestItemsListMouseListener(new MouseAdapter()
 		{
 			@Override
-			public void mousePressed(MouseEvent event)
+			public void mouseReleased(MouseEvent event)
 			{
 				String selectedValue = adminTestSetupPanel.getTestItemsListSelectedValue();
 				
@@ -116,7 +116,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 		adminTestSetupPanel.addExistingItemsListMouseListener(new MouseAdapter()
 		{
 			@Override
-			public void mousePressed(MouseEvent event)
+			public void mouseReleased(MouseEvent event)
 			{
 				String selectedValue = adminTestSetupPanel.getExistingItemsListSelectedValue();
 				
@@ -169,6 +169,62 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 					//ENTER KEY PRESSED - USER ATTEMPTS TO ADD A NEW ITEM TO THE EXISTING ITEMS LIST
 					adminTestSetupPanel.submitButtonClick();
 				}
+			}
+		});
+		
+		/**
+		 * listener for the 'Existing Items List' Enter key Up and Key Down.
+		 */
+		adminTestSetupPanel.addAddExistingItemsListKeyListener(new KeyAdapter()
+		{
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				int key = e.getKeyCode();
+				
+				if (key == KeyEvent.VK_UP)
+				{
+					String selectedValue = adminTestSetupPanel.getAboveExistingItemsListSelectedValue();
+					adminTestSetupPanel.setEditButtonCurrentState(true);
+					adminTestSetupPanel.clearTestItemsListSelection();
+					controller.updateItemImage(selectedValue);
+				}
+				if (key == KeyEvent.VK_DOWN)
+				{
+					String selectedValue = adminTestSetupPanel.getBelowExistingItemsListSelectedValue();
+					adminTestSetupPanel.setEditButtonCurrentState(true);
+					adminTestSetupPanel.clearTestItemsListSelection();
+					controller.updateItemImage(selectedValue);
+				}
+
+			}
+		});
+		
+		/**
+		 * listener for the 'Existing Items List' Enter key Up and Key Down.
+		 */
+		adminTestSetupPanel.addAddTestItemsListKeyListener(new KeyAdapter()
+		{
+			@Override
+			public void keyPressed(KeyEvent e) 
+			{
+				int key = e.getKeyCode();
+				
+				if (key == KeyEvent.VK_UP)
+				{
+					String selectedValue = adminTestSetupPanel.getAboveTestItemsListSelectedValue();
+					adminTestSetupPanel.setEditButtonCurrentState(true);
+					adminTestSetupPanel.clearExistingItemsListSelection();
+					controller.updateItemImage(selectedValue);
+				}
+				if (key == KeyEvent.VK_DOWN)
+				{
+					String selectedValue = adminTestSetupPanel.getBelowTestItemsListSelectedValue();
+					adminTestSetupPanel.setEditButtonCurrentState(true);
+					adminTestSetupPanel.clearExistingItemsListSelection();
+					controller.updateItemImage(selectedValue);
+				}
+
 			}
 		});
 		

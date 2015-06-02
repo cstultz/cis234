@@ -314,11 +314,11 @@ public class AdminTestSetupController {
 	{
 		if (sqlUser.checkTestResultsForItem_ID(currentSelection))
 		{
-			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' appears on 1 or more user test results and thus cannot be deleted.","Item '" + currentSelection + "' appears on Test Results",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' is associated on 1 or more user test results and thus cannot be deleted.","Item '" + currentSelection + "' appears on Test Results",JOptionPane.WARNING_MESSAGE);
 		}
 		else if (view.checkItemOnTestItemsList(currentSelection))
 		{
-			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' appears on the test items list. \nPlease remove the item from the test items list and try again.","Item '" + currentSelection + "' appears on Test Items List'",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' appears on the test items list. \nPlease remove the item from the Test Items List and try again.","Item '" + currentSelection + "' appears on Test Items List",JOptionPane.WARNING_MESSAGE);
 
 //			sqlUser.deleteTestItem(currentSelection);
 //			view.enableFinishButton(true);

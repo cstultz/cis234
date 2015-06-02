@@ -268,6 +268,34 @@ public class AdminTestSetupPanel extends JPanel
 		return existingItemsList.getSelectedValue();
 	}
 	
+	public String getAboveExistingItemsListSelectedValue()
+	{
+		int index = existingItemsList.getSelectedIndex();
+		String value = existingItemsListModel.get(index - 1);
+		return value;
+	}
+	
+	public String getBelowExistingItemsListSelectedValue()
+	{
+		int index = existingItemsList.getSelectedIndex();
+		String value = existingItemsListModel.get(index + 1);
+		return value;
+	}
+	
+	public String getAboveTestItemsListSelectedValue()
+	{
+		int index = testItemsList.getSelectedIndex();
+		String value = testItemsListModel.get(index - 1);
+		return value;
+	}
+	
+	public String getBelowTestItemsListSelectedValue()
+	{
+		int index = testItemsList.getSelectedIndex();
+		String value = testItemsListModel.get(index + 1);
+		return value;
+	}
+	
 	/**
 	 * add a action listener to the 'Finish' button
 	 * 
@@ -318,6 +346,16 @@ public class AdminTestSetupPanel extends JPanel
 		addItemTextField.addKeyListener(kl);
 	}
 	
+	public void addAddExistingItemsListKeyListener(KeyListener kl)
+	{
+		existingItemsList.addKeyListener(kl);
+	}
+	
+	public void addAddTestItemsListKeyListener(KeyListener kl)
+	{
+		testItemsList.addKeyListener(kl);
+	}
+
 	/**
 	 * simulates a 'Submit' button click
 	 */
