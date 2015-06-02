@@ -94,9 +94,8 @@ public class AdminTestSetupController {
 			Item item = new Item();                                     //create the new Item
 			item.setValue(selectedValue);                               //set the value of the item
 			
+			view.addItemToTestItemsList(selectedValue);                    //update the view
 			model.addExistingItemToTestItemsList(selectedValue);        //update the model
-			
-			view.updateTestItemsList(selectedValue);                    //update the view
 		}
 		else
 		{
@@ -315,11 +314,11 @@ public class AdminTestSetupController {
 	{
 		if (sqlUser.checkTestResultsForItem_ID(currentSelection))
 		{
-			JOptionPane.showMessageDialog(null, "Item " + currentSelection + " appears on 1 or more user test results and thus cannot be deleted.","Can't delete '" + currentSelection + "' - Test Results",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' appears on 1 or more user test results and thus cannot be deleted.","Item '" + currentSelection + "' appears on Test Results",JOptionPane.WARNING_MESSAGE);
 		}
 		else if (view.checkItemOnTestItemsList(currentSelection))
 		{
-			JOptionPane.showMessageDialog(null, "Item " + currentSelection + " appears on the test items list and thus cannot be deleted. Please remove the item from the test items list and try again.","Can't delete '" + currentSelection + " - Test Items List'",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' appears on the test items list. \nPlease remove the item from the test items list and try again.","Item '" + currentSelection + "' appears on Test Items List'",JOptionPane.WARNING_MESSAGE);
 
 //			sqlUser.deleteTestItem(currentSelection);
 //			view.enableFinishButton(true);

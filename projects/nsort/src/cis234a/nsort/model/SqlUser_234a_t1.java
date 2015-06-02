@@ -148,7 +148,10 @@ public enum SqlUser_234a_t1 {
 				Item item = new Item();
 				item.setValue(input);
 				item.setValueImage(image);
-				itemList.addItem(item);
+				if (itemList.getItem(input) == null)
+				{
+					itemList.addItem(item);	
+				}
 			}
 		}
 		catch (SQLException e)

@@ -129,7 +129,6 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	            }
 				else if (event.getClickCount() == 1)  //double click
 				{
-				currentSelection = adminTestSetupPanel.getExistingItemsListSelectedValue();
 				adminTestSetupPanel.setEditButtonCurrentState(true);
 				adminTestSetupPanel.clearTestItemsListSelection();
 				controller.updateItemImage(selectedValue);
@@ -316,9 +315,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	 * @param selectedValue of the item being added to the list.
 	 */
 	@Override
-	public void updateTestItemsList(String selectedValue) 
+	public void addItemToTestItemsList(String selectedValue) 
 	{
-		adminTestSetupPanel.updateTestItemsList(selectedValue);
+		adminTestSetupPanel.addItemToTestItemsList(selectedValue);
 	}
 
 	/**

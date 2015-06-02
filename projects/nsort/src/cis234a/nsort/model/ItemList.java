@@ -75,7 +75,7 @@ public class ItemList
     {
         for (Item item : items)
         {
-            if (item.getValue().equalsIgnoreCase(value))
+            if (item.getValue().trim().equalsIgnoreCase(value))
             {
                 return item;
             }

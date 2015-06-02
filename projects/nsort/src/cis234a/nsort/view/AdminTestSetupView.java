@@ -37,7 +37,7 @@ public interface AdminTestSetupView {
 	 * 
 	 * @param selectedValue of the item being added to the test items list.
 	 */
-	public void updateTestItemsList(String selectedValue);
+	public void addItemToTestItemsList(String selectedValue);
 	
 	/**
 	 * show the duplicate message of an item on the test items list to the user

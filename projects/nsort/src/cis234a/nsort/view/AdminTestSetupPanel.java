@@ -397,16 +397,6 @@ public class AdminTestSetupPanel extends JPanel
 	}
 	
 	/**
-	 * add an existing items list item to the test items list
-	 * 
-	 * @param selectedValue of the item being added to the test
-	 */
-	public void addSelectedExistingItemTotestItemsList(String selectedValue)
-	{
-		testItemsListModel.addElement(selectedValue);
-	}
-	
-	/**
 	 * show the duplicate message of an item on the test items list to the user
 	 * 
 	 * @param selectedValue of the item already on the test items list.
@@ -443,7 +433,7 @@ public class AdminTestSetupPanel extends JPanel
 	 * 
 	 * @param selectedValue of the item being added to the test items list.
 	 */
-	public void updateTestItemsList(String selectedValue)
+	public void addItemToTestItemsList(String selectedValue)
 	{
 		testItemsListModel.addElement(selectedValue);
 	}
