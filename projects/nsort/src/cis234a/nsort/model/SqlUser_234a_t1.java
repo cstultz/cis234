@@ -62,6 +62,7 @@ public enum SqlUser_234a_t1 {
 	private final static String queryGetImageByName = "SELECT [graphic] FROM [Image] WHERE [name] = ?;";
 	private final static String queryGetItemImagesByItemID = "SELECT TOP 1 [graphic] FROM [Image] JOIN ItemImages ON Image.imageID = ItemImages.image_ID WHERE ItemImages.item_ID = ?;";
 	private final static String queryImageIDByName = "SELECT imageID FROM [Image] WHERE [Image].name = ?;";
+	@SuppressWarnings("unused")
 	private final static String queryImageIDByNameFromItemImages = "SELECT image_ID FROM [ItemImages] JOIN [Item] ON ItemImages.item_ID = Item.itemID WHERE value = ?;";
 	private final static String queryupdateImage = "UPDATE [Image] SET [graphic] = ? WHERE name = ?;";
 	private final static String queryDeleteItemImage = "DELETE FROM ItemImages WHERE item_ID =?;";
@@ -70,6 +71,7 @@ public enum SqlUser_234a_t1 {
 	private final static String queryCheckItemOnTestResults = "SELECT COUNT(*) AS 'Count' FROM TestResults WHERE item_ID = ?;";
 	private final static String queryCheckItemOnItemImages = "SELECT COUNT(*) AS 'Count' FROM ItemImages WHERE item_ID = ?;";
 	private final static String queryCheckItemOnTestItems = "SELECT COUNT(*) AS 'Count' FROM TestItems WHERE item_ID = ?;";
+	@SuppressWarnings("unused")
 	private final static String queryCheckNameOnImage = "SELECT COUNT(*) AS 'Count' FROM Image WHERE name = ?;";
 	private final static String queryPullAllImages = "SELECT [name] FROM [Image]";
 	/*************************************queries for Ranking System*************************************/
