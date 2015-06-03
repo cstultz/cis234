@@ -338,6 +338,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			{
 				//'Delete Item' BUTTON CLICKED - USER ATTEMPTS TO DELETE AN EXISTING ITEMS LIST ITEM
 				controller.deleteExistingItem(currentSelection);
+				controller.updateItemImage(currentSelection);
 			}
 		});
 		
