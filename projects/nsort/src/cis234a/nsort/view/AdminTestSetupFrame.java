@@ -87,6 +87,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			public void mouseReleased(MouseEvent event)
 			{
 				String selectedValue = adminTestSetupPanel.getTestItemsListSelectedValue();
+				currentSelection = selectedValue;
 				
 				if (SwingUtilities.isRightMouseButton(event))
 	            {
@@ -119,6 +120,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			public void mouseReleased(MouseEvent event)
 			{
 				String selectedValue = adminTestSetupPanel.getExistingItemsListSelectedValue();
+				currentSelection = selectedValue;
 				
 				if (SwingUtilities.isRightMouseButton(event))
 	            {
