@@ -281,6 +281,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 //					controller.associateExistingImageToExistingItem(adminTestSetupPanel.getComboBoxImageSelected(), currentSelection);
 //					controller.updateItemImage(currentSelection);
+					
+					controller.updateItemImageAssociation(currentSelection, adminTestSetupPanel.getComboBoxImageSelected());
+					controller.updateItemImage(currentSelection);
 				}
 				
 			}

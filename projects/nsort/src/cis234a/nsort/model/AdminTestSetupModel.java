@@ -29,6 +29,7 @@ public class AdminTestSetupModel {
 	{
 		progressMeter = new ProgressMeter();
 		setAdminTestSetupState(false);
+		imagesList = new ArrayList<String>();
 	}
 
 	/**
@@ -277,6 +278,7 @@ public class AdminTestSetupModel {
 	
 	public void setImagesList(ArrayList<String> imageList)
 	{
+		imagesList.clear();
 		this.imagesList = imageList;
 	}
 	

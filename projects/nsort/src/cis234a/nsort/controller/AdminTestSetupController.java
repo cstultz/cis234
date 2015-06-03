@@ -296,6 +296,7 @@ public class AdminTestSetupController {
 				e.printStackTrace();
 			}
 			
+			//if Image table does not have a name match 
 			if (sqlUser.getValueImageByteArray(currentSelection) == null)
 			{
 				sqlUser.addImage(currentSelection, data);
@@ -303,7 +304,18 @@ public class AdminTestSetupController {
 			}
 			else
 			{
+				
 				sqlUser.updateImage(currentSelection, data);
+
+				//if Image table does not have a name match
+				if (sqlUser.getValueImageByteArrayFromItemImages(currentSelection) == null)
+				{
+					sqlUser.associateImageToExistingItem(currentSelection);
+				}
+				else
+				{
+					sqlUser.updateItemImageAssociation(currentSelection, currentSelection);
+				}
 			}
 		}
 	}
@@ -368,5 +380,10 @@ public class AdminTestSetupController {
 			view.removeItemFromExistingItemsList(currentSelection);
 			
 		}
+	}
+	
+	public void updateItemImageAssociation(String value, String name)
+	{
+		sqlUser.updateItemImageAssociation(value, name);
 	}
 }

@@ -84,10 +84,12 @@ public class AdminTestSetupPanel extends JPanel
 		
 		existingImagesComboBox = new JComboBox<String>();
 		existingImagesComboBox.setEnabled(false);
+		existingImagesComboBox.setVisible(false);                               
 		
 		lblNewLabel = new JLabel("Existing Database Images:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		lblNewLabel.setVisible(false);
 
 		browseButton = new JButton("Browse Images On Disk...");
 		browseButton.setEnabled(false);

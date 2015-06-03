@@ -959,4 +959,20 @@ public enum SqlUser_234a_t1 {
 			e1.printStackTrace();
 		}
     }
+    
+    public void updateItemImageAssociation(String value, String name)
+    {
+    	int itemID = pullTestItemIDByValue(value);
+		int imageID = getImageIDByName(name);
+		try {
+    		connect();
+    		PreparedStatement preparedStmt = conn.prepareStatement(queryUpdateItemToImage);
+			preparedStmt.setInt(1, imageID);
+			preparedStmt.setInt(2, itemID);
+			preparedStmt.execute();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+    }
 }
