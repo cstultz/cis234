@@ -135,7 +135,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 					currentSelection = adminTestSetupPanel.existingItemListRightClickMenu(event);	                
 					//currentSelection = adminTestSetupPanel.getExistingItemsListSelectedValue();
 					adminTestSetupPanel.clearTestItemsListSelection();
-					controller.updateItemImage(currentSelection);
+					//controller.updateItemImage(currentSelection);
 	            }
 				else if (event.getClickCount() == 1)  //double click
 				{
@@ -338,7 +338,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			{
 				//'Delete Item' BUTTON CLICKED - USER ATTEMPTS TO DELETE AN EXISTING ITEMS LIST ITEM
 				controller.deleteExistingItem(currentSelection);
-				adminTestSetupPanel.updateItemImageToBlank();
+				
 			}
 		});
 		
@@ -476,6 +476,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	public void removeItemFromExistingItemsList(String value) 
 	{
 		adminTestSetupPanel.removeItemFromExistingItemsList(value);
+		adminTestSetupPanel.updateItemImageToBlank();
 	}
 	
 	public boolean checkItemOnTestItemsList(String value)

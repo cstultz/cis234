@@ -118,8 +118,7 @@ public class LoginFrame extends JFrame implements LoginView
 				JOptionPane.showMessageDialog(null,"Welcome, " + controller.getFullUserName().trim() +
                         "\r\n\r\n This test compares items in groups of 2." +
                         "\r\n Each item on the test will be compared to every other item on the test." + 
-                        "\r\n You must complete the test in order to save the results. " + 
-                        "\r\n Click OK to start the test.","User Test - Welcome Message",JOptionPane.INFORMATION_MESSAGE);
+                        "\r\n You must complete the test in order to save the test results.", "User Test - Welcome Message",JOptionPane.INFORMATION_MESSAGE);
 				controller.launchUserTestFrame();
 			}
 		}

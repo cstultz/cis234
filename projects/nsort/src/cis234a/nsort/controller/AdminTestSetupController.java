@@ -263,6 +263,10 @@ public class AdminTestSetupController {
 				sqlUser.associateExistingItemToExistingImage(value, "no-image");
 				data = sqlUser.getValueImageByteArrayFromItemImages(value);
 			}
+			else
+			{
+				sqlUser.associateExistingItemToExistingImage(value, value);
+			}
 		}
 		view.updateImage(data);
 	}

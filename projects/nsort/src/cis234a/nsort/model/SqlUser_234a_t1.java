@@ -946,6 +946,7 @@ public enum SqlUser_234a_t1 {
     	return imagesList;
     }
     
+    //create ItemImages association
     public void associateExistingItemToExistingImage(String value, String name)
     {
     	int itemID = pullTestItemIDByValue(value);
