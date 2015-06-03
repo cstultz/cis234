@@ -41,7 +41,7 @@ public enum SqlUser_234a_t1 {
 	private final static String queryDeleteTestItems = "DELETE FROM TestItems WHERE TestItems.test_ID = ?;";
 	private final static String queryPullItemIDsByValue = "SELECT itemID FROM Item WHERE value = ?;";
 	private final static String queryInsertTestItems = "INSERT INTO TestItems(test_ID, item_ID) VALUES (?, ?);";
-	private final static String queryPullExistingItems = "SELECT [value] FROM [234a_t1].dbo.Item ORDER BY itemID;";
+	private final static String queryPullExistingItems = "SELECT [value] FROM [234a_t1].dbo.Item ORDER BY value;";
 	private final static String queryPullTestItemsAndImages= "SELECT [value], [graphic] FROM Item JOIN TestItems ON Item.itemID = TestItems.item_ID JOIN [Image] ON Item.value = Image.name WHERE TestItems.test_ID = "+ theOneTheOnlyTestID + " Order By Item.itemID;";
 	private final static String queryCheckUser = "SELECT username FROM [User] WHERE username = ?;";
 	private final static String queryGetUser = "SELECT firstName, lastName, eMail FROM [User] WHERE username = ?;";
