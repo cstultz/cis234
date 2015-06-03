@@ -93,7 +93,7 @@ public class AdminTestSetupPanel extends JPanel
 
 		browseButton = new JButton("Browse Local Pictures...");
 		browseButton.setEnabled(false);
-		browseButton.setBounds(457, 293, 163, 27);
+		browseButton.setBounds(450, 293, 176, 27);
 		
 		deleteMenuItem = new JMenuItem("Delete Item", new ImageIcon("resources/delete.jpg"));
 

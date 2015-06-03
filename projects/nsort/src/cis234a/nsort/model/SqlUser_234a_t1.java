@@ -42,7 +42,7 @@ public enum SqlUser_234a_t1 {
 	private final static String queryPullItemIDsByValue = "SELECT itemID FROM Item WHERE value = ?;";
 	private final static String queryInsertTestItems = "INSERT INTO TestItems(test_ID, item_ID) VALUES (?, ?);";
 	private final static String queryPullExistingItems = "SELECT [value] FROM [234a_t1].dbo.Item ORDER BY value;";
-	private final static String queryPullTestItemsAndImages= "SELECT [value], [graphic] FROM Item JOIN TestItems ON Item.itemID = TestItems.item_ID JOIN [Image] ON Item.value = Image.name WHERE TestItems.test_ID = "+ theOneTheOnlyTestID + " Order By Item.itemID;";
+	private final static String queryPullTestItemsAndImages= "SELECT [value], [graphic] FROM Item FULL OUTER JOIN TestItems ON Item.itemID = TestItems.item_ID FULL OUTER JOIN [Image] ON Item.value = Image.name WHERE TestItems.test_ID = "+ theOneTheOnlyTestID + " Order By Item.itemID;";
 	private final static String queryCheckUser = "SELECT username FROM [User] WHERE username = ?;";
 	private final static String queryGetUser = "SELECT firstName, lastName, eMail FROM [User] WHERE username = ?;";
 	private final static String queryAddNewItem = "INSERT INTO Item(value) VALUES (?);";
@@ -150,9 +150,18 @@ public enum SqlUser_234a_t1 {
 			{
 				String input = rs.getString("value");
 				byte[] data = rs.getBytes("graphic");
-				Image image = Toolkit.getDefaultToolkit().createImage(data);
 				Item item = new Item();
 				item.setValue(input);
+				if (data == null)
+				{
+					try {
+						data = getValueImageByteArray("no-image");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				Image image = Toolkit.getDefaultToolkit().createImage(data);
 				item.setValueImage(image);
 				if (itemList.getItem(input) == null)
 				{
