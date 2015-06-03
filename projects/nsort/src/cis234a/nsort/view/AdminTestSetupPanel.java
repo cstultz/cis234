@@ -271,28 +271,62 @@ public class AdminTestSetupPanel extends JPanel
 	public String getAboveExistingItemsListSelectedValue()
 	{
 		int index = existingItemsList.getSelectedIndex();
-		String value = existingItemsListModel.get(index - 1);
+		String value = existingItemsListModel.get(index);
+		if (index == 0)
+		{
+			//do nothing
+		}
+		else
+		{
+			value = existingItemsListModel.get(index - 1);
+		}
 		return value;
 	}
 	
 	public String getBelowExistingItemsListSelectedValue()
 	{
 		int index = existingItemsList.getSelectedIndex();
-		String value = existingItemsListModel.get(index + 1);
+		String value = existingItemsListModel.get(index);
+		if (index == existingItemsListModel.getSize() - 1)
+		{
+			//do nothing
+		}
+		else
+		{
+			value = existingItemsListModel.get(index + 1);
+		}
 		return value;
 	}
 	
 	public String getAboveTestItemsListSelectedValue()
 	{
 		int index = testItemsList.getSelectedIndex();
-		String value = testItemsListModel.get(index - 1);
+		String value = testItemsListModel.get(index);
+		if (index == 0)
+		{
+			//do nothing
+		}
+		else
+		{
+			value = testItemsListModel.get(index - 1);
+		}
+		
 		return value;
 	}
 	
 	public String getBelowTestItemsListSelectedValue()
 	{
 		int index = testItemsList.getSelectedIndex();
-		String value = testItemsListModel.get(index + 1);
+		String value = testItemsListModel.get(index);
+		if (index == testItemsListModel.getSize() - 1)
+		{
+			//do nothing
+		}
+		else
+		{
+			value = testItemsListModel.get(index + 1);
+		}
+		
 		return value;
 	}
 	
