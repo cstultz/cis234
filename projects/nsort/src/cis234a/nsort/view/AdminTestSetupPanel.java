@@ -3,9 +3,11 @@ package cis234a.nsort.view;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
@@ -25,6 +27,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
 import cis234a.nsort.model.*;
+
+import javax.swing.JComboBox;
 /**
  * The LoginPanel Class contains the components for the LoginFrame.
  *  
@@ -35,7 +39,7 @@ import cis234a.nsort.model.*;
 public class AdminTestSetupPanel extends JPanel
 {
 
-	private static final Dimension DIM = new Dimension(700, 404);
+	private static final Dimension DIM = new Dimension(680, 453);
 	
 	private JLabel existingItemsLabel;
 	protected JList<String> existingItemsList;
@@ -61,7 +65,13 @@ public class AdminTestSetupPanel extends JPanel
 	private JCheckBox progressMeterCheckBox;
 	
 	private ImagePanel imagePanel;
-	private JButton editButton;
+	private JButton browseButton;
+
+	private JComboBox<String> existingImagesComboBox;
+	
+	private JLabel lblNewLabel;
+	
+	private ArrayList<String> imagesList;
 	
 	/**
 	 * Constructor for the AdminTestSetupPanel.
@@ -69,12 +79,21 @@ public class AdminTestSetupPanel extends JPanel
 	public AdminTestSetupPanel()
 	{
 		imagePanel = new ImagePanel();
-		imagePanel.setSize(250, 264);
-		imagePanel.setLocation(417, 32);
+		imagePanel.setSize(250, 250);
+		imagePanel.setLocation(413, 32);
+		
+		existingImagesComboBox = new JComboBox<String>();
+		existingImagesComboBox.setEnabled(false);
+		existingImagesComboBox.setVisible(false);                               
+		
+		lblNewLabel = new JLabel("Existing Database Images:");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
+		lblNewLabel.setVisible(false);
 
-		editButton = new JButton("Edit");
-		editButton.setEnabled(false);
-		editButton.setBounds(498, 304, 89, 23);
+		browseButton = new JButton("Browse Images On Disk...");
+		browseButton.setEnabled(false);
+		browseButton.setBounds(429, 293, 219, 27);
 		
 		deleteMenuItem = new JMenuItem("Delete Item", new ImageIcon("resources/delete.jpg"));
 
@@ -115,21 +134,24 @@ public class AdminTestSetupPanel extends JPanel
 		submitButton.setBounds(288, 307, 77, 23);
 		reportButton = new JButton("Test Results Reporting");
 		reportButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		reportButton.setBounds(454, 360, 180, 34);
+		reportButton.setBounds(109, 371, 189, 22);
 		progressMeterCheckBox = new JCheckBox("Display progress indicator during the User Test?");
 		progressMeterCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
 		progressMeterCheckBox.setFont(new Font("Arial", Font.PLAIN, 12));
 		progressMeterCheckBox.setBounds(54, 341, 292, 23);
 		finishButton = new JButton("Finish");
 		finishButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		finishButton.setBounds(105, 371, 77, 23);
+		finishButton.setBounds(244, 412, 77, 23);
 		finishButton.setEnabled(false);                                             
 		lblOr = new JLabel("OR");
 		lblOr.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblOr.setBounds(192, 376, 15, 14);
+		lblOr.setBounds(331, 417, 15, 14);
 		cancelButton = new JButton("Cancel");
 		cancelButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		cancelButton.setBounds(217, 371, 77, 23);
+		cancelButton.setBounds(356, 412, 77, 23);
+		
+		existingImagesComboBox.setBounds(447, 358, 183, 20);
+		lblNewLabel.setBounds(430, 331, 216, 17);
 
 		setupLayout();
 		setupPanel();
@@ -178,8 +200,10 @@ public class AdminTestSetupPanel extends JPanel
 		add(lblOr);
 		add(cancelButton);
 		add(imagePanel);
-		add(editButton);
+		add(browseButton);
 		add(existingItemsListRightClickPopupMenu);
+		add(existingImagesComboBox);
+		add(lblNewLabel);
 	}
 
 	/**
@@ -338,6 +362,11 @@ public class AdminTestSetupPanel extends JPanel
 	public void addFinishButtonActionListener(ActionListener al) 
 	{
 		finishButton.addActionListener(al);
+	}
+	
+	public void addExistingImagesComboBoxItemListener(ItemListener il) 
+	{
+		existingImagesComboBox.addItemListener(il);
 	}
 	
 	/**
@@ -527,17 +556,27 @@ public class AdminTestSetupPanel extends JPanel
 	 */
 	public void addEditButtonActionListener(ActionListener al)
 	{
-		editButton.addActionListener(al);
+		browseButton.addActionListener(al);
 	}
 	
 	public boolean getEditButtonCurrentState()
 	{
-		return editButton.isEnabled();
+		return browseButton.isEnabled();
 	}
 	
 	public void setEditButtonCurrentState(boolean currentState)
 	{
-		editButton.setEnabled(currentState);
+		browseButton.setEnabled(currentState);
+	}
+	
+	public boolean getImagesComboBoxCurrentState()
+	{
+		return existingImagesComboBox.isEnabled();
+	}
+	
+	public void setImagesComboBoxCurrentState(boolean currentState)
+	{
+		existingImagesComboBox.setEnabled(currentState);
 	}
 
 	public void updateImage(byte[] data)
@@ -588,5 +627,53 @@ public class AdminTestSetupPanel extends JPanel
 		{
 			return false;
 		}
+	}
+	
+	public void setExistingImagesComboBox()
+	{
+		existingImagesComboBox.removeAll();
+		existingImagesComboBox.addItem("");
+		for (int i = 0; i < imagesList.size(); i++)
+		{
+			existingImagesComboBox.addItem(imagesList.get(i));
+		}
+	}
+	
+	public void setImagesList(ArrayList<String> imagesList)
+	{
+		this.imagesList = new ArrayList<String>();
+		this.imagesList = imagesList;
+	}
+	
+	public ArrayList<String> getImagesList()
+	{
+		return imagesList;
+	}
+	
+	public void clearExistingImagesComboBox()
+	{
+		existingImagesComboBox.removeAll();
+	}
+	
+	public String getComboBoxImageSelected()
+	{
+		String selectedItem = (String) existingImagesComboBox.getSelectedItem();
+		existingImagesComboBox.setSelectedIndex(0);
+		return selectedItem;
+	}
+	
+	public boolean checkExistingImagesComboBoxIsSelected()
+	{
+		return existingImagesComboBox.hasFocus();
+	}
+	
+	public void clearExistingItemComboBox()
+	{
+		existingImagesComboBox.setSelectedIndex(0);
+	}
+	
+	public int getComboBoxCurrentIndex()
+	{
+		return existingImagesComboBox.getSelectedIndex();
 	}
 }

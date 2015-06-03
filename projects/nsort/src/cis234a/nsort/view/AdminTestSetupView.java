@@ -1,5 +1,7 @@
 package cis234a.nsort.view;
 
+import java.util.ArrayList;
+
 import cis234a.nsort.model.*;
 import cis234a.nsort.controller.*;
 /**
@@ -89,4 +91,6 @@ public interface AdminTestSetupView {
 	public boolean checkItemOnTestItemsList(String value);
 	
 	public void enableFinishButton(boolean setState);
+	
+	public void setImagesList(ArrayList<String> imagesList);
 }

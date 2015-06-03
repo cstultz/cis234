@@ -46,6 +46,7 @@ public enum RankingSystemController {
 		AdminTestSetupModel model = new AdminTestSetupModel();
 		model.setExistingItemsList(sqlUser.pullExistingItems());
 		model.setTestItemsList(sqlUser.pullTestItemsAndImages());
+		model.setImagesList(sqlUser.pullAllImages());
 		model.setUser(user);
 		
 		AdminTestSetupView view = new AdminTestSetupFrame();

@@ -37,7 +37,7 @@ public class ReportFrame extends JFrame implements ReportView
 	
 	private ReportPanel createReportPanel()
 	{
-		ReportPanel reportPanel = new ReportPanel();
+		final ReportPanel reportPanel = new ReportPanel();
 	
 		reportPanel.addUserComboBoxItemListener(new ItemListener()
 		{	
