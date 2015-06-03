@@ -311,6 +311,7 @@ public class AdminTestSetupController {
 					sqlUser.updateItemImageAssociation(currentSelection, currentSelection);
 				}
 			}
+			view.updateImage(data);
 		}
 	}
 	
