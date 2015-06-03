@@ -1,5 +1,7 @@
 package cis234a.nsort.model;
 
+import java.util.ArrayList;
+
 /**
  * The AdminTestSetupModel class captures the behavior of the admin test setup independent of the user interface.   
  *  
@@ -12,6 +14,7 @@ public class AdminTestSetupModel {
 
 	private ItemList existingItemsList;
 	private ItemList testItemsList;
+	private ArrayList<String> imagesList;
 	
 	//private int progressMeterSelectedState;
 	
@@ -26,6 +29,7 @@ public class AdminTestSetupModel {
 	{
 		progressMeter = new ProgressMeter();
 		setAdminTestSetupState(false);
+		imagesList = new ArrayList<String>();
 	}
 
 	/**
@@ -270,5 +274,16 @@ public class AdminTestSetupModel {
 	public ItemList getTestItemsList()
 	{
 		return testItemsList;
+	}
+	
+	public void setImagesList(ArrayList<String> imageList)
+	{
+		imagesList.clear();
+		this.imagesList = imageList;
+	}
+	
+	public ArrayList<String> getImagesList()
+	{
+		return imagesList;
 	}
 }

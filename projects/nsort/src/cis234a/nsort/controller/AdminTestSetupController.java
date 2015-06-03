@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
@@ -52,6 +51,7 @@ public class AdminTestSetupController {
 	{
 		populateExistingItemsToTheDefaultListModel();
 		populateTestItemsToTheDefaultListModel();
+		populateImagesList();
 		updateProgressMeterCheckBoxSetSelected();
 		view.updateAdminTestSetupFrame(model.getAdminTestSetupState());
 	}
@@ -72,6 +72,10 @@ public class AdminTestSetupController {
 		view.setTestItemsList(model.getTestItemsList());
 	}
 
+	public void populateImagesList()
+	{
+		view.setImagesList(model.getImagesList());
+	}
 	/**
 	 * remove an item from the Test Items list.
 	 * 
@@ -243,7 +247,23 @@ public class AdminTestSetupController {
 	
 	public void updateItemImage(String value)
 	{
-		byte[] data = sqlUser.getValueImageByteArray(value);
+		//get graphic based on the Item_ID associated to the ImageID on the ItItemImages table 
+		byte[] data = sqlUser.getValueImageByteArrayFromItemImages(value);
+		
+		//if the Item_ID on the ItemImages table does not have an association to an image
+		if (data == null)
+		{
+			//get graphic from Images table based on image name equaling the item value
+			data = sqlUser.getValueImageByteArray(value);
+
+			//if no Image matches the image name in database
+			if (data == null)
+			{
+				//associate no-image to item value in ItemImages table
+				sqlUser.associateExistingItemToExistingImage(value, "no-image");
+				data = sqlUser.getValueImageByteArrayFromItemImages(value);
+			}
+		}
 		view.updateImage(data);
 	}
 	
@@ -270,6 +290,7 @@ public class AdminTestSetupController {
 				e.printStackTrace();
 			}
 			
+			//if Image table does not have a name match 
 			if (sqlUser.getValueImageByteArray(currentSelection) == null)
 			{
 				sqlUser.addImage(currentSelection, data);
@@ -277,7 +298,18 @@ public class AdminTestSetupController {
 			}
 			else
 			{
+				
 				sqlUser.updateImage(currentSelection, data);
+
+				//if Image table does not have a name match
+				if (sqlUser.getValueImageByteArrayFromItemImages(currentSelection) == null)
+				{
+					sqlUser.associateImageToExistingItem(currentSelection);
+				}
+				else
+				{
+					sqlUser.updateItemImageAssociation(currentSelection, currentSelection);
+				}
 			}
 		}
 	}
@@ -314,11 +346,11 @@ public class AdminTestSetupController {
 	{
 		if (sqlUser.checkTestResultsForItem_ID(currentSelection))
 		{
-			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' is associated on 1 or more user test results and thus cannot be deleted.","Item '" + currentSelection + "' appears on Test Results",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' is associated to 1 or more user test results and thus cannot be deleted.","Item '" + currentSelection + "' appears on Test Results",JOptionPane.WARNING_MESSAGE);
 		}
 		else if (view.checkItemOnTestItemsList(currentSelection))
 		{
-			JOptionPane.showMessageDialog(null, "Item '" + currentSelection + "' is currently listed on the test items list. \nPlease remove the item from the Test Items List and try again.","Item '" + currentSelection + "' appears on Test Items List",JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Please remove the item from the Test Items List and try again.","Item '" + currentSelection + "' appears on Test Items List",JOptionPane.WARNING_MESSAGE);
 
 //			sqlUser.deleteTestItem(currentSelection);
 //			view.enableFinishButton(true);
@@ -332,10 +364,20 @@ public class AdminTestSetupController {
 				sqlUser.deleteItemImage(currentSelection);
 			}
 			
+			if (! view.checkItemOnTestItemsList(currentSelection) && sqlUser.checkTestItemsForItem_ID(currentSelection))
+			{
+				sqlUser.deleteTestItem(currentSelection);
+			}
+			
 			sqlUser.deleteExistingItem(currentSelection);
 			model.removeItemFromExistingItemsList(currentSelection);
 			view.removeItemFromExistingItemsList(currentSelection);
 			
 		}
+	}
+	
+	public void updateItemImageAssociation(String value, String name)
+	{
+		sqlUser.updateItemImageAssociation(value, name);
 	}
 }
