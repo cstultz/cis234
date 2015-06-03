@@ -116,17 +116,17 @@ public class UserTestFrame extends JFrame implements UserTestView
 			}
 		});
 		
-		userTestPanel.addCurrentResultsButtonActionListener(new ActionListener()
-		{
-
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				// currentResultsButton selected
-				
-				
-			}
-			
-		});
+//		userTestPanel.addCurrentResultsButtonActionListener(new ActionListener()
+//		{
+//
+//			@Override
+//			public void actionPerformed(ActionEvent ae) {
+//				// currentResultsButton selected
+//				
+//				
+//			}
+//			
+//		});
 		return userTestPanel;
 	}
 	

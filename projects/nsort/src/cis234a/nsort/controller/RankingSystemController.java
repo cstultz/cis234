@@ -74,7 +74,6 @@ public enum RankingSystemController {
 	public void launchRegistration()
 	{
 		RegistrationModel model = new RegistrationModel();
-		
 		RegistrationView view = new RegistrationFrame();
 		RegistrationController controller = new RegistrationController(this, model, view);   
 		view.registerController(controller);      

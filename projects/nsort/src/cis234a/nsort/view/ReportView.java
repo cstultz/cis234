@@ -19,15 +19,41 @@ public interface ReportView {
 	 */
 	public boolean updateReportFrameState(boolean reportFrameState);
 	
+	/**
+	 * sets the userList
+	 * @param value return List
+	 */
 	public void setUserList(List value);
 	
+	/**
+	 * gets the user selected location to prevent button from appearing too early
+	 * @return value int
+	 */
+	public int getUserLoc();
+	/**
+	 * sets the UserTestList
+	 * @param value return List
+	 */
 	public void setUserTestList(List value);
 	
+	/**
+	 * returns the selected user
+	 * @return returns the selected user
+	 */
 	public String getUsers();
 	
+	/**
+	 * returns the selected test id
+	 * @return the selected test id
+	 */
 	public int getTestID();
 	
-	public void getReportTable(String[] strValue , Object[][] objValue);
+	/**
+	 * gets the report table set up
+	 * @param strValue columns for table
+	 * @param objValue rows for table
+	 */
+	public void setReportTable(String[] strValue , Object[][] objValue);
 	/**
 	 * Register the given controller with this view.
 	 * Methods on the controller are invoked when events in the view occur that could change the model.

@@ -51,11 +51,20 @@ public class ReportController
 		return x;
 	}
 	
+	/**
+	 * returns the data for the report table
+	 * @param x user ID for query
+	 * @param y test id for query
+	 * @return object filled with results
+	 */
 	public Object[] queryColumnData(String x, int y) 
 	{
 		return tempObject = model.queryColumnData(x, y);
 	}
 	
+	/**
+	 * sets the user list to the frame.
+	 */
 	public void getUserListData()
 	{
 		tempUserList = new List();
@@ -63,6 +72,9 @@ public class ReportController
 		view.setUserList(tempUserList);
 	}
 	
+	/**
+	 * sets the Test ID list to the frame
+	 */
 	public void getUserTestData()
 	{
 		tempUserTestList = new List();
@@ -70,11 +82,14 @@ public class ReportController
 		view.setUserTestList(tempUserTestList);
 	}
 	
+	/**
+	 * sets the report table to the frame
+	 */
 	public void getReportTableData()
 	{
 		tableColumns = model.getColumnData();
 		tableRows = model.queryColumnData(view.getUsers(), view.getTestID());
-		view.getReportTable(tableColumns, tableRows);
+		view.setReportTable(tableColumns, tableRows);
 		
 	}
 }

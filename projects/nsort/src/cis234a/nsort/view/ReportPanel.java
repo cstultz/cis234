@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import org.w3c.dom.events.EventException;
+
 import java.awt.GridBagConstraints;
 import java.awt.List;
 /**
@@ -27,6 +29,7 @@ public class ReportPanel extends JPanel
 	private JComboBox<String> userTestComboBox;
 	private JButton reportButton;
 	private JButton userTestButton;
+	private JButton startOverButton;
 	private JTable table;
 	private Object[][] data;
 	private String[] columns;
@@ -104,6 +107,15 @@ public class ReportPanel extends JPanel
 		c.anchor = GridBagConstraints.NORTH;
 		add(reportButton, c);
 		
+		/**
+		 * set up startOverButton
+		 */
+		startOverButton = new JButton("Restart Reporting");
+		c.gridx = 0;
+		c.gridy = 3;
+		c.anchor = GridBagConstraints.BASELINE;
+		add(startOverButton, c);
+		
 		setInitialVisibility();
 	}
 	
@@ -142,6 +154,11 @@ public class ReportPanel extends JPanel
 	{
 		userTestComboBox.addItemListener(il);
 	}
+
+	public void addStartOverButton(ActionListener al)
+	{
+		startOverButton.addActionListener(al);
+	}
 	
 	/**
 	 *Sets the initial visibility of items
@@ -153,6 +170,7 @@ public class ReportPanel extends JPanel
 		userTestButton.setVisible(true);
 		userTestComboBox.setVisible(false);
 		reportButton.setVisible(false);
+		startOverButton.setVisible(false);
 	}
 	
 	/**
@@ -271,7 +289,7 @@ public class ReportPanel extends JPanel
 	public void panelRefresh() 
 	{
 		revalidate();
-		repaint();		
+		repaint();	
 	}
 
 	/**
@@ -312,5 +330,45 @@ public class ReportPanel extends JPanel
 	public void switchReportButton(Boolean x) 
 	{
 		reportButton.setEnabled(x);
+	}
+	
+	/**
+	 * Enable or Disable startOverButton
+	 * @param x true/false input
+	 */
+	public void switchStartOverButton(Boolean x)
+	{
+		startOverButton.setVisible(x);
+	}
+	/**
+	 * gets the current user location
+	 * @return int of current user
+	 */
+	public int getCurrentUserLoc()
+	{
+		int tempInt = userComboBox.getSelectedIndex();
+		return tempInt;
+	}
+	
+	/**
+	 * clears all boxes and tables of data for restarting or reports
+	 */
+	public void startOver()
+	{
+		try
+		{
+			this.remove(scrollPane);
+		}
+		catch(EventException e)
+		{
+			
+		}
+		finally
+		{
+			if (userTestComboBox.isVisible())
+			{
+				userTestComboBox.removeAllItems();
+			}		
+		}
 	}
 }

@@ -33,7 +33,7 @@ public class UserTestPanel extends JPanel
 	private JButton leftChoiceButton;
 	private JButton iCantDecideButton;
 	private JButton rightChoiceButton;
-	private JButton currentResultsButton;
+//	private JButton currentResultsButton;
 	private JLabel leftItemLabel;
 	private JLabel rightItemLabel;
 //	private JLabel lblReportItem;
@@ -49,7 +49,7 @@ public class UserTestPanel extends JPanel
 	private GridBagConstraints gbc_IcantDecide;
 	private GridBagConstraints gbc_rightChoice;
 	private GridBagConstraints gbc_lblChooseEitherItem;
-	private GridBagConstraints gbc_currentResults;
+//	private GridBagConstraints gbc_currentResults;
 //	private GridBagConstraints gbc_lblReportItem;
 	private GridBagConstraints gbc_imagePanelLeft;
 	private GridBagConstraints gbc_imagePanelRight;
@@ -74,7 +74,7 @@ public class UserTestPanel extends JPanel
 		leftChoiceButton = new JButton("Choose left");
 		iCantDecideButton = new JButton("I can't decide");
 		rightChoiceButton = new JButton("Choose right");
-		currentResultsButton = new JButton("View Results So Far");
+//		currentResultsButton = new JButton("View Results So Far");
 		
 		lblVs = new JLabel("Vs.");
 
@@ -103,7 +103,7 @@ public class UserTestPanel extends JPanel
 		gbc_imagePanelRight.gridheight = 3;
 //		gbc_lblReportItem = new GridBagConstraints();
 //		gbc_lblReportItem.insets = new Insets(0, 0, 5, 5);
-		gbc_currentResults = new GridBagConstraints();
+//		gbc_currentResults = new GridBagConstraints();
 		
 
 		setupPanel();
@@ -124,7 +124,7 @@ public class UserTestPanel extends JPanel
 		rightItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		leftChoiceButton.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		currentResultsButton.setHorizontalAlignment(SwingConstants.CENTER);
+//		currentResultsButton.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		leftItemLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblVs.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -187,10 +187,10 @@ public class UserTestPanel extends JPanel
 		gbc_lblChooseEitherItem.gridx = 0;
 		gbc_lblChooseEitherItem.gridy = 6;
 
-		gbc_currentResults.gridwidth = 8;
-		gbc_currentResults.insets = new Insets(0, 0, 5, 0);
-		gbc_currentResults.gridx = 0;
-		gbc_currentResults.gridy = 7;
+//		gbc_currentResults.gridwidth = 8;
+//		gbc_currentResults.insets = new Insets(0, 0, 5, 0);
+//		gbc_currentResults.gridx = 0;
+//		gbc_currentResults.gridy = 7;
 		
 //		gbc_lblReportItem.gridwidth = 4;
 //		gbc_lblReportItem.gridx = 0;
@@ -233,7 +233,7 @@ public class UserTestPanel extends JPanel
 		add(imagePanelRight, gbc_imagePanelRight);
 		
 //		add(lblReportItem, gbc_lblReportItem);
-		add(currentResultsButton, gbc_currentResults);
+//		add(currentResultsButton, gbc_currentResults);
 	}
 	
 	/**
@@ -279,10 +279,10 @@ public class UserTestPanel extends JPanel
 	 * 
 	 * @param al user clicked the button
 	 */
-	public void addCurrentResultsButtonActionListener(ActionListener al)
-	{
-		currentResultsButton.addActionListener(al);
-	}
+//	public void addCurrentResultsButtonActionListener(ActionListener al)
+//	{
+//		currentResultsButton.addActionListener(al);
+//	}
 	
 	/**
 	 * set the left item label with the value
