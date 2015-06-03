@@ -1,11 +1,16 @@
 package cis234a.nsort.controller;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
@@ -248,7 +253,23 @@ public class AdminTestSetupController {
 	
 	public void updateItemImage(String value)
 	{
+		//get graphic based on the Item_ID associated to the ImageID on the ItItemImages table 
 		byte[] data = sqlUser.getValueImageByteArrayFromItemImages(value);
+		
+		//if the Item_ID on the ItemImages table does not have an association to an image
+		if (data == null)
+		{
+			//get graphic from Images table based on image name equaling the item value
+			data = sqlUser.getValueImageByteArray(value);
+
+			//if no Image matches the image name in database
+			if (data == null)
+			{
+				//associate no-image to item value in ItemImages table
+				sqlUser.associateExistingItemToExistingImage(value, "no-image");
+				data = sqlUser.getValueImageByteArrayFromItemImages(value);
+			}
+		}
 		view.updateImage(data);
 	}
 	

@@ -944,10 +944,10 @@ public enum SqlUser_234a_t1 {
     	return imagesList;
     }
     
-    public void associateExistingItemToExistingImage(String value)
+    public void associateExistingItemToExistingImage(String value, String name)
     {
     	int itemID = pullTestItemIDByValue(value);
-		int imageID = getImageIDByName(value);
+		int imageID = getImageIDByName(name);
 		try {
     		connect();
     		PreparedStatement preparedStmt = conn.prepareStatement(queryAddItemToImage);
