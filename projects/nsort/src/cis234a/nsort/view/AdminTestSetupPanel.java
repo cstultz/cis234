@@ -631,7 +631,7 @@ public class AdminTestSetupPanel extends JPanel
 	
 	public void setExistingImagesComboBox()
 	{
-		existingImagesComboBox.removeAll();
+		existingImagesComboBox.removeAllItems();
 		existingImagesComboBox.addItem("");
 		for (int i = 0; i < imagesList.size(); i++)
 		{
