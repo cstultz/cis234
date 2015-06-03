@@ -86,14 +86,14 @@ public class AdminTestSetupPanel extends JPanel
 		existingImagesComboBox.setEnabled(false);
 		//existingImagesComboBox.setVisible(false);                               
 		
-		lblNewLabel = new JLabel("Database Pictures:");
+		lblNewLabel = new JLabel("Browse Database Pictures:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
 		//lblNewLabel.setVisible(false);
 
-		browseButton = new JButton("Browse Pictures...");
+		browseButton = new JButton("Browse Local Pictures...");
 		browseButton.setEnabled(false);
-		browseButton.setBounds(451, 293, 174, 27);
+		browseButton.setBounds(457, 293, 163, 27);
 		
 		deleteMenuItem = new JMenuItem("Delete Item", new ImageIcon("resources/delete.jpg"));
 
@@ -150,7 +150,7 @@ public class AdminTestSetupPanel extends JPanel
 		cancelButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		cancelButton.setBounds(356, 412, 77, 23);
 		
-		existingImagesComboBox.setBounds(447, 358, 183, 20);
+		existingImagesComboBox.setBounds(444, 358, 189, 20);
 		lblNewLabel.setBounds(430, 331, 216, 17);
 
 		setupLayout();
@@ -652,7 +652,7 @@ public class AdminTestSetupPanel extends JPanel
 	
 	public void clearExistingImagesComboBox()
 	{
-		existingImagesComboBox.removeAll();
+		existingImagesComboBox.removeAllItems();
 	}
 	
 	public String getComboBoxImageSelected()
