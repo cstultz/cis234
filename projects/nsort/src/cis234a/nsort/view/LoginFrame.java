@@ -116,10 +116,9 @@ public class LoginFrame extends JFrame implements LoginView
 			if (controller.checkUserAccessRoleForUser())
 			{
 				JOptionPane.showMessageDialog(null,"Welcome, " + controller.getFullUserName().trim() +
-                        "\r\n\r\n Next you will take a test whereby you will compare items in groups of 2." +
-                        "\r\n Every item on the test will be compared to every other item on the test." + 
+                        "\r\n\r\n This test compares items in groups of 2." +
+                        "\r\n Each item on the test will be compared to every other item on the test." + 
                         "\r\n You must complete the test in order to save the results. " + 
-                        "\r\n Close the window at anytime during the test to exit without saving. " + 
                         "\r\n Click OK to start the test.","User Test - Welcome Message",JOptionPane.INFORMATION_MESSAGE);
 				controller.launchUserTestFrame();
 			}
