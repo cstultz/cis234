@@ -2,6 +2,8 @@ package cis234a.nsort.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -16,6 +18,7 @@ import cis234a.nsort.controller.*;
 import cis234a.nsort.model.*;
 
 import java.awt.BorderLayout;
+import java.util.ArrayList;
 
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
@@ -97,6 +100,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 				currentSelection = adminTestSetupPanel.getTestItemsListSelectedValue();
 				adminTestSetupPanel.setEditButtonCurrentState(true);
+				adminTestSetupPanel.clearExistingImagesComboBox();
+				adminTestSetupPanel.setExistingImagesComboBox();
+				adminTestSetupPanel.setImagesComboBoxCurrentState(true);
 				adminTestSetupPanel.clearExistingItemsListSelection();
 				controller.updateItemImage(selectedValue);
 				}
@@ -104,6 +110,8 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 					adminTestSetupPanel.updateItemImageToBlank();
 					adminTestSetupPanel.setEditButtonCurrentState(false);
+					adminTestSetupPanel.clearExistingImagesComboBox();
+					adminTestSetupPanel.setImagesComboBoxCurrentState(false);
 					controller.removeItemFromTestItemList(selectedValue);
 					adminTestSetupPanel.removeItemFromTestItemList(selectedValue);
 					adminTestSetupPanel.setFinishButtonEnabled(controller.checkItemsListMeetsMinimumRequirements());
@@ -132,6 +140,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				else if (event.getClickCount() == 1)  //double click
 				{
 				adminTestSetupPanel.setEditButtonCurrentState(true);
+				adminTestSetupPanel.clearExistingImagesComboBox();
+				adminTestSetupPanel.setExistingImagesComboBox();
+				adminTestSetupPanel.setImagesComboBoxCurrentState(true);
 				adminTestSetupPanel.clearTestItemsListSelection();
 				controller.updateItemImage(selectedValue);
 				}
@@ -188,6 +199,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 					String selectedValue = adminTestSetupPanel.getAboveExistingItemsListSelectedValue();
 					adminTestSetupPanel.setEditButtonCurrentState(true);
+					adminTestSetupPanel.clearExistingImagesComboBox();
+					adminTestSetupPanel.setExistingImagesComboBox();
+					adminTestSetupPanel.setImagesComboBoxCurrentState(true);
 					adminTestSetupPanel.clearTestItemsListSelection();
 					controller.updateItemImage(selectedValue);
 				}
@@ -195,6 +209,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 					String selectedValue = adminTestSetupPanel.getBelowExistingItemsListSelectedValue();
 					adminTestSetupPanel.setEditButtonCurrentState(true);
+					adminTestSetupPanel.clearExistingImagesComboBox();
+					adminTestSetupPanel.setExistingImagesComboBox();
+					adminTestSetupPanel.setImagesComboBoxCurrentState(true);
 					adminTestSetupPanel.clearTestItemsListSelection();
 					controller.updateItemImage(selectedValue);
 				}
@@ -216,6 +233,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 					String selectedValue = adminTestSetupPanel.getAboveTestItemsListSelectedValue();
 					adminTestSetupPanel.setEditButtonCurrentState(true);
+					adminTestSetupPanel.clearExistingImagesComboBox();
+					adminTestSetupPanel.setExistingImagesComboBox();
+					adminTestSetupPanel.setImagesComboBoxCurrentState(true);
 					adminTestSetupPanel.clearExistingItemsListSelection();
 					controller.updateItemImage(selectedValue);
 				}
@@ -223,6 +243,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 					String selectedValue = adminTestSetupPanel.getBelowTestItemsListSelectedValue();
 					adminTestSetupPanel.setEditButtonCurrentState(true);
+					adminTestSetupPanel.clearExistingImagesComboBox();
+					adminTestSetupPanel.setExistingImagesComboBox();
+					adminTestSetupPanel.setImagesComboBoxCurrentState(true);
 					adminTestSetupPanel.clearExistingItemsListSelection();
 					controller.updateItemImage(selectedValue);
 				}
@@ -246,6 +269,20 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				
 				controller.hideAdminTestSetup();
 
+			}
+		});
+		
+		adminTestSetupPanel.addExistingImagesComboBoxItemListener(new ItemListener()
+		{
+			@Override
+			public void itemStateChanged(ItemEvent ie) 
+			{
+				if (adminTestSetupPanel.getComboBoxCurrentIndex() > 0)
+				{
+//					controller.associateExistingImageToExistingItem(adminTestSetupPanel.getComboBoxImageSelected(), currentSelection);
+//					controller.updateItemImage(currentSelection);
+				}
+				
 			}
 		});
 		
@@ -458,5 +495,9 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	@Override
 	public void enableFinishButton(boolean setState) {
 		adminTestSetupPanel.setFinishButtonEnabled(setState);
+	}
+	public void setImagesList(ArrayList<String> imagesList)
+	{
+		adminTestSetupPanel.setImagesList(imagesList);
 	}
 }
