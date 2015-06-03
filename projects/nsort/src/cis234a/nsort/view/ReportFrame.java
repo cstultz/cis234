@@ -38,14 +38,20 @@ public class ReportFrame extends JFrame implements ReportView
 	private ReportPanel createReportPanel()
 	{
 		ReportPanel reportPanel = new ReportPanel();
-		//Listeners go here		
-		
+	
 		reportPanel.addUserComboBoxItemListener(new ItemListener()
 		{	
 			@Override
 			public void itemStateChanged(ItemEvent e) 
 			{
-				reportPanel.switchUserTestButton(true);
+				if (getUserLoc() == 0)
+				{
+					reportPanel.switchUserTestButton(false);
+				}
+				else
+				{
+					reportPanel.switchUserTestButton(true);
+				}
 			}
 		});
 		
@@ -55,7 +61,6 @@ public class ReportFrame extends JFrame implements ReportView
 			@Override
 			public void actionPerformed(ActionEvent e) 
 			{
-//				reportPanel.setUserTestComboBox();
 				controller.getUserTestData();
 				reportPanel.setSecondVisibility();
 				reportPanel.panelRefresh();
@@ -68,6 +73,8 @@ public class ReportFrame extends JFrame implements ReportView
 			public void itemStateChanged(ItemEvent e) 
 			{
 				reportPanel.switchReportButton(true);
+				reportPanel.switchStartOverButton(true);
+				reportPanel.panelRefresh();
 			}
 			
 		});
@@ -79,6 +86,18 @@ public class ReportFrame extends JFrame implements ReportView
 			public void actionPerformed(ActionEvent e) {
 				controller.getReportTableData();
 				reportPanel.setThirdVisibility();
+				reportPanel.panelRefresh();
+			}
+			
+		});
+		
+		reportPanel.addStartOverButton(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				reportPanel.startOver();
+				reportPanel.setInitialVisibility();
 				reportPanel.panelRefresh();
 			}
 			
@@ -109,19 +128,27 @@ public class ReportFrame extends JFrame implements ReportView
 	public void registerController(ReportController controller) {
 		this.controller = controller;
 	}
-
+	/**
+	 *  set the userComboBox with list 
+	 */
 	@Override
 	public void setUserList(List value) 
 	{
 		reportPanel.setUsersComboBox(value);
 	}
 	
+	/**
+	 * sets the userTestComboBox with list
+	 */
 	@Override
 	public void setUserTestList(List value)
 	{
 		reportPanel.setUserTestComboBox(value);
 	}
 	
+	/**
+	 * returns the selected user
+	 */
 	@Override
 	public String getUsers()
 	{
@@ -129,6 +156,9 @@ public class ReportFrame extends JFrame implements ReportView
 		return user;
 	}
 	
+	/**
+	 * returns the selected test id
+	 */
 	@Override
 	public int getTestID()
 	{
@@ -136,9 +166,21 @@ public class ReportFrame extends JFrame implements ReportView
 		return testID;
 	}
 
+	/**
+	 * prepares the table for the report panel
+	 */
 	@Override
-	public void getReportTable(String[] strValue, Object[][] objValue) 
+	public void setReportTable(String[] strValue, Object[][] objValue) 
 	{
 		reportPanel.setReportTable(strValue, objValue);
+	}
+	
+	/**
+	 * returns the current int selected
+	 */
+	@Override
+	public int getUserLoc() {
+		int userLoc = reportPanel.getCurrentUserLoc();
+		return userLoc;
 	}
 }

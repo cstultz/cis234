@@ -98,6 +98,7 @@ public class Report
 					userNames.add(value);
 				}
 			}
+			
 		}
 		catch (Exception e)
 		{
@@ -117,7 +118,14 @@ public class Report
 					System.err.println(e.getMessage());
 			}
 		}
-		userNames.add("Please select a user", 0);
+		if (userNames.getItemCount() == 0)
+		{
+			userNames.add("No users have taken a test", 0);
+		}
+		else
+		{
+			userNames.add("Please select a user", 0);
+		}
 		return userNames;
 	}
 
@@ -165,7 +173,14 @@ public class Report
 					System.err.println(e.getMessage());
 			}
 		}
-		userTestID.add("Please select a TestID", 0);
+		if (userTestID.getItemCount() == 0)
+		{
+			userTestID.add("User has not taken any tests.  Please try again", 0);
+		}
+		else
+		{
+			userTestID.add("Please select a TestID", 0);
+		}
 		return userTestID;
 	}
 }
