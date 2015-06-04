@@ -154,11 +154,19 @@ public enum SqlUser_234a_t1 {
 				item.setValue(input);
 				if (data == null)
 				{
-					try {
-						data = getValueImageByteArray("no-image");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					//if itemID has a ImageID associated to it
+					if (checkItemImagesForItem_ID(input))
+					{
+						data = getValueImageByteArrayFromItemImages(input); 
+					}
+					else
+					{
+						try {
+							data = getValueImageByteArray("no-image");
+						} catch (Exception e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				}
 				Image image = Toolkit.getDefaultToolkit().createImage(data);
