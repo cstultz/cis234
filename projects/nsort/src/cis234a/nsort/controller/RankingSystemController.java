@@ -63,7 +63,7 @@ public enum RankingSystemController {
 		model.setTestItemsList(sqlUser.pullTestItemsAndImages());
 		model.setUserTest();
 		model.setUser(user);
-		
+		model.setTestSessionID(sqlUser.getTestSessionIDScopeIdentity());		
 		UserTestView view = new UserTestFrame();
 		UserTestController controller = new UserTestController(this, model, view);    
 		view.registerController(controller);          

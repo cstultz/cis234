@@ -15,6 +15,7 @@ public class UserTestController {
 	private UserTestModel model;
 	private UserTestView view;
 	private SqlUser_234a_t1 sqlUser;
+	private int testSessionID = 0;
 
 	/**
 	 * Constructor for the class.
@@ -122,7 +123,6 @@ public class UserTestController {
 			calculateItemRankingsToTestItemsListItems();
 			int userID = sqlUser.getUserID(model.getUsername());
 			sqlUser.createUserNewTestSessionID(userID);
-			int testSessionID = sqlUser.getTestSessionIDScopeIdentity();
 			model.setTestSessionID(testSessionID);
 			sqlUser.saveTestResults(model.getTestItemsList(), model.getTestSessionID());
 			return false;

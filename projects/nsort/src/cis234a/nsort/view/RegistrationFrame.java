@@ -27,7 +27,7 @@ public class RegistrationFrame extends JFrame implements RegistrationView
 		super("Ranking System - Registration"); 
 		registrationPanel = createRegistrationPanel();
 		getContentPane().add(registrationPanel);
-		
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		pack();
 		setVisible(false);    

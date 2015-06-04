@@ -50,7 +50,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 		super("Ranking System - Admin Test Setup"); 
 		adminTestSetupPanel = createAdminTestSetupPanel();
 		getContentPane().add(adminTestSetupPanel, BorderLayout.CENTER);
-		
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setVisible(false);    

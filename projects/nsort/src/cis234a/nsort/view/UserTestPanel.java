@@ -53,6 +53,8 @@ public class UserTestPanel extends JPanel
 //	private GridBagConstraints gbc_lblReportItem;
 	private GridBagConstraints gbc_imagePanelLeft;
 	private GridBagConstraints gbc_imagePanelRight;
+	private JLabel usernameLabel;
+	private JLabel testSessionIDLabel;
 	
 	/**
 	 * Constructor for the UserTestPanel. Must pass a parameter reference of the UserTestController to the panel
@@ -81,7 +83,6 @@ public class UserTestPanel extends JPanel
 		gridBagLayout = new GridBagLayout();
 		gbc_progressMeterPanel = new GridBagConstraints();
 		gbc_progressMeterPanel.anchor = GridBagConstraints.NORTH;
-		gbc_progressMeterPanel.insets = new Insets(0, 0, 0, 5);
 		gbc_leftItemLabel = new GridBagConstraints();
 		gbc_lblVs = new GridBagConstraints();
 		gbc_lblVs.gridwidth = 2;
@@ -134,58 +135,58 @@ public class UserTestPanel extends JPanel
 //		lblReportItem.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		gridBagLayout.columnWidths = new int[]{75, 75, 75, 75, 75, 75, 75, 75};
-		gridBagLayout.rowHeights = new int[]{27, 75, 75, 75, 75, 36, 48, 48, 37};
+		gridBagLayout.rowHeights = new int[]{0, 27, 75, 75, 75, 75, 36, 48, 48, 27, 52};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		gbc_progressMeterPanel.gridwidth = 8;
 		gbc_progressMeterPanel.gridx = 0;
-		gbc_progressMeterPanel.gridy = 8;
+		gbc_progressMeterPanel.gridy = 10;
 		
 		gbc_imagePanelLeft.fill = GridBagConstraints.BOTH;
 		gbc_imagePanelLeft.gridwidth = 3;
 		gbc_imagePanelLeft.gridx = 0;
-		gbc_imagePanelLeft.gridy = 1;
+		gbc_imagePanelLeft.gridy = 2;
 		
 		gbc_imagePanelRight.fill = GridBagConstraints.BOTH;
 		gbc_imagePanelRight.gridwidth = 3;
 		gbc_imagePanelRight.gridx = 5;
-		gbc_imagePanelRight.gridy = 1;
+		gbc_imagePanelRight.gridy = 2;
 		
 		gbc_leftItemLabel.fill = GridBagConstraints.BOTH;
 		gbc_leftItemLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_leftItemLabel.gridwidth = 3;
 		gbc_leftItemLabel.gridx = 0;
-		gbc_leftItemLabel.gridy = 4;
+		gbc_leftItemLabel.gridy = 5;
 		
 		gbc_lblVs.insets = new Insets(0, 0, 5, 5);
 		gbc_lblVs.gridx = 3;
-		gbc_lblVs.gridy = 4;
+		gbc_lblVs.gridy = 5;
 		
 		
 		gbc_rightItemLabel.fill = GridBagConstraints.BOTH;
 		gbc_rightItemLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_rightItemLabel.gridwidth = 3;
 		gbc_rightItemLabel.gridx = 5;
-		gbc_rightItemLabel.gridy = 4;
+		gbc_rightItemLabel.gridy = 5;
 		
 		gbc_leftChoice.gridwidth = 3;
 		gbc_leftChoice.insets = new Insets(0, 0, 5, 5);
 		gbc_leftChoice.gridx = 0;
-		gbc_leftChoice.gridy = 5;
+		gbc_leftChoice.gridy = 6;
 		
 		gbc_IcantDecide.insets = new Insets(0, 0, 5, 5);
 		gbc_IcantDecide.gridx = 3;
-		gbc_IcantDecide.gridy = 5;
+		gbc_IcantDecide.gridy = 6;
 		
 		gbc_rightChoice.gridwidth = 3;
 		gbc_rightChoice.insets = new Insets(0, 0, 5, 0);
 		gbc_rightChoice.gridx = 5;
-		gbc_rightChoice.gridy = 5;
+		gbc_rightChoice.gridy = 6;
 		
 		gbc_lblChooseEitherItem.gridwidth = 8;
 		gbc_lblChooseEitherItem.gridx = 0;
-		gbc_lblChooseEitherItem.gridy = 6;
+		gbc_lblChooseEitherItem.gridy = 7;
 
 //		gbc_currentResults.gridwidth = 8;
 //		gbc_currentResults.insets = new Insets(0, 0, 5, 0);
@@ -217,7 +218,7 @@ public class UserTestPanel extends JPanel
 		gbc_lblNewLabel.gridwidth = 8;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 0;
+		gbc_lblNewLabel.gridy = 1;
 		add(lblNewLabel, gbc_lblNewLabel);
 		add(leftItemLabel, gbc_leftItemLabel);
 		add(lblVs, gbc_lblVs);
@@ -227,6 +228,25 @@ public class UserTestPanel extends JPanel
 		add(leftChoiceButton, gbc_leftChoice);	
 		add(iCantDecideButton, gbc_IcantDecide);
 		add(rightChoiceButton, gbc_rightChoice);
+		
+		usernameLabel = new JLabel("Username: ");
+		usernameLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		GridBagConstraints gbc_usernameLabel = new GridBagConstraints();
+		gbc_usernameLabel.anchor = GridBagConstraints.SOUTH;
+		gbc_usernameLabel.gridwidth = 2;
+		gbc_usernameLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_usernameLabel.gridx = 3;
+		gbc_usernameLabel.gridy = 8;
+		add(usernameLabel, gbc_usernameLabel);
+		
+		testSessionIDLabel = new JLabel("Unique Test Session ID:");
+		testSessionIDLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
+		GridBagConstraints gbc_testSessionIDLabel = new GridBagConstraints();
+		gbc_testSessionIDLabel.gridwidth = 2;
+		gbc_testSessionIDLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_testSessionIDLabel.gridx = 3;
+		gbc_testSessionIDLabel.gridy = 9;
+		add(testSessionIDLabel, gbc_testSessionIDLabel);
 		
 		add(progressMeterPanel, gbc_progressMeterPanel);
 		add(imagePanelLeft, gbc_imagePanelLeft);
@@ -362,5 +382,17 @@ public class UserTestPanel extends JPanel
 	public void setProgressMeterSelectedState(boolean progressMeterSelectedState)
 	{
 		progressMeterPanel.setSelectedState(progressMeterSelectedState);
+	}
+	
+	public void setUsername(String username)
+	{
+		String text = usernameLabel.getText();
+		usernameLabel.setText(text + " " + username);
+	}
+	
+	public void setTestSessionID(int testSessionID)
+	{
+		String text = testSessionIDLabel.getText();
+		testSessionIDLabel.setText(text + " " + testSessionID);
 	}
 }

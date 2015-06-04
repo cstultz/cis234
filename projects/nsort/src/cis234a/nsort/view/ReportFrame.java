@@ -30,6 +30,7 @@ public class ReportFrame extends JFrame implements ReportView
 		reportPanel = createReportPanel();
 		getContentPane().add(reportPanel);
 		setSize(400,400);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);    
 		setLocationRelativeTo(null);

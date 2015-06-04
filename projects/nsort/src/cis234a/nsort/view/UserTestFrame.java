@@ -31,7 +31,7 @@ public class UserTestFrame extends JFrame implements UserTestView
 		super("Ranking System - UserTest"); 
 		userTestPanel = createUserTestPanel();
 		getContentPane().add(userTestPanel);
-		
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
 		setVisible(false);   
