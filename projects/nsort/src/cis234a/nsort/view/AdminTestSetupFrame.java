@@ -168,7 +168,6 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				adminTestSetupPanel.clearAddAnItemTextField();
 				adminTestSetupPanel.addItemToImagesList(value);
 				adminTestSetupPanel.selectNewItem(value);
-				controller.updateItemImageAssociation(value, value);
 				adminTestSetupPanel.showNoImage();
 			}
 		});
