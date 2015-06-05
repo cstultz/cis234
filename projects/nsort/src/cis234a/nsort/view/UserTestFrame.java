@@ -206,6 +206,7 @@ public class UserTestFrame extends JFrame implements UserTestView
 	public void updateProgressMeterSelectedState(boolean progressMeterSelectedState)
 	{
 		userTestPanel.setProgressMeterSelectedState(progressMeterSelectedState);
+		pack();
 	}
 	
 	/**

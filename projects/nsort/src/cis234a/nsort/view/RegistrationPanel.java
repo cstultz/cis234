@@ -3,7 +3,6 @@ package cis234a.nsort.view;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -62,8 +61,8 @@ public class RegistrationPanel extends JPanel
 	public void setupLayout()
 	{
         // set border for the panel
-		setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createEtchedBorder(), "Registration Panel"));
+//		setBorder(BorderFactory.createTitledBorder(
+//                BorderFactory.createEtchedBorder(), "Registration Panel"));
 	}
 	
 	/**

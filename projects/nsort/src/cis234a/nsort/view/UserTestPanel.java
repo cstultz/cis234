@@ -8,7 +8,6 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -82,6 +81,8 @@ public class UserTestPanel extends JPanel
 
 		gridBagLayout = new GridBagLayout();
 		gbc_progressMeterPanel = new GridBagConstraints();
+		gbc_progressMeterPanel.insets = new Insets(0, 0, 5, 0);
+		gbc_progressMeterPanel.gridheight = 2;
 		gbc_progressMeterPanel.anchor = GridBagConstraints.NORTH;
 		gbc_leftItemLabel = new GridBagConstraints();
 		gbc_lblVs = new GridBagConstraints();
@@ -118,8 +119,8 @@ public class UserTestPanel extends JPanel
 	public void setupLayout()
 	{
 		// set border for the panel
-		setBorder(BorderFactory.createTitledBorder(
-				BorderFactory.createEtchedBorder(), "User Test Panel"));
+//		setBorder(BorderFactory.createTitledBorder(
+//				BorderFactory.createEtchedBorder(), "User Test Panel"));
 		
 		leftItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		rightItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -135,13 +136,13 @@ public class UserTestPanel extends JPanel
 //		lblReportItem.setFont(new Font("Tahoma", Font.BOLD, 12));
 
 		gridBagLayout.columnWidths = new int[]{75, 75, 75, 75, 75, 75, 75, 75};
-		gridBagLayout.rowHeights = new int[]{0, 27, 75, 75, 75, 75, 36, 48, 48, 27, 52};
+		gridBagLayout.rowHeights = new int[]{0, 27, 75, 75, 75, 75, 36, 48, 48, 27, 25, 18};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 		setLayout(gridBagLayout);
 		gbc_progressMeterPanel.gridwidth = 8;
 		gbc_progressMeterPanel.gridx = 0;
-		gbc_progressMeterPanel.gridy = 10;
+		gbc_progressMeterPanel.gridy = 8;
 		
 		gbc_imagePanelLeft.fill = GridBagConstraints.BOTH;
 		gbc_imagePanelLeft.gridwidth = 3;
@@ -215,10 +216,12 @@ public class UserTestPanel extends JPanel
 		JLabel lblNewLabel = new JLabel("Which Do You Prefer?");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel.gridheight = 2;
 		gbc_lblNewLabel.gridwidth = 8;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 0);
 		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 1;
+		gbc_lblNewLabel.gridy = 0;
 		add(lblNewLabel, gbc_lblNewLabel);
 		add(leftItemLabel, gbc_leftItemLabel);
 		add(lblVs, gbc_lblVs);
@@ -229,28 +232,29 @@ public class UserTestPanel extends JPanel
 		add(iCantDecideButton, gbc_IcantDecide);
 		add(rightChoiceButton, gbc_rightChoice);
 		
+		add(progressMeterPanel, gbc_progressMeterPanel);
+		add(imagePanelLeft, gbc_imagePanelLeft);
+		add(imagePanelRight, gbc_imagePanelRight);
+		
 		usernameLabel = new JLabel("Username: ");
 		usernameLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_usernameLabel = new GridBagConstraints();
-		gbc_usernameLabel.anchor = GridBagConstraints.SOUTH;
+		gbc_usernameLabel.anchor = GridBagConstraints.WEST;
 		gbc_usernameLabel.gridwidth = 2;
 		gbc_usernameLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_usernameLabel.gridx = 3;
-		gbc_usernameLabel.gridy = 8;
+		gbc_usernameLabel.gridx = 0;
+		gbc_usernameLabel.gridy = 10;
 		add(usernameLabel, gbc_usernameLabel);
 		
 		testSessionIDLabel = new JLabel("Unique Test Session ID:");
 		testSessionIDLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_testSessionIDLabel = new GridBagConstraints();
+		gbc_testSessionIDLabel.anchor = GridBagConstraints.WEST;
 		gbc_testSessionIDLabel.gridwidth = 2;
-		gbc_testSessionIDLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_testSessionIDLabel.gridx = 3;
-		gbc_testSessionIDLabel.gridy = 9;
+		gbc_testSessionIDLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_testSessionIDLabel.gridx = 0;
+		gbc_testSessionIDLabel.gridy = 11;
 		add(testSessionIDLabel, gbc_testSessionIDLabel);
-		
-		add(progressMeterPanel, gbc_progressMeterPanel);
-		add(imagePanelLeft, gbc_imagePanelLeft);
-		add(imagePanelRight, gbc_imagePanelRight);
 		
 //		add(lblReportItem, gbc_lblReportItem);
 //		add(currentResultsButton, gbc_currentResults);

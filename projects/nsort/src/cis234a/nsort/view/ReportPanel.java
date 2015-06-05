@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -61,8 +60,8 @@ public class ReportPanel extends JPanel
 	public void setupLayout()
 	{
         // set border for the panel
-		setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createEtchedBorder(), "Report Panel"));
+//		setBorder(BorderFactory.createTitledBorder(
+//                BorderFactory.createEtchedBorder(), "Report Panel"));
 	}
 	
 	/**
