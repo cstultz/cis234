@@ -8,8 +8,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,11 +23,8 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-
 import cis234a.nsort.model.*;
-
 import javax.swing.JComboBox;
-import java.awt.event.ActionEvent;
 /**
  * The LoginPanel Class contains the components for the LoginFrame.
  *  
@@ -40,7 +35,7 @@ import java.awt.event.ActionEvent;
 public class AdminTestSetupPanel extends JPanel
 {
 
-	private static final Dimension DIM = new Dimension(680, 453);
+	//private static final Dimension DIM = new Dimension(680, 453);
 	
 	private JLabel existingItemsLabel;
 	protected JList<String> existingItemsList;
@@ -631,6 +626,8 @@ public class AdminTestSetupPanel extends JPanel
 	{
 		this.imagesList = new ArrayList<String>();
 		this.imagesList = imagesList;
+		setExistingImagesComboBox();
+		clearExistingItemComboBox();
 	}
 	
 	public ArrayList<String> getImagesList()
@@ -663,5 +660,15 @@ public class AdminTestSetupPanel extends JPanel
 	public int getComboBoxCurrentIndex()
 	{
 		return existingImagesComboBox.getSelectedIndex();
+	}
+	
+	public void addItemToImagesList(String newItemValue)
+	{
+		if (!imagesList.contains(newItemValue))
+		{
+			imagesList.add(newItemValue);
+		}
+		setExistingImagesComboBox();
+		clearExistingItemComboBox();
 	}
 }

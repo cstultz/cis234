@@ -1,10 +1,15 @@
 package cis234a.nsort.controller;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
@@ -192,6 +197,13 @@ public class AdminTestSetupController {
 			{
 				model.addNewItemToExistingItemsList(newItemValue);
 				sqlUser.addNewItem(newItemValue);
+				byte[] data = sqlUser.getValueImageByteArray("no-image");
+				
+				if (sqlUser.getValueImageByteArray(newItemValue) == null)
+				{
+					sqlUser.addImage(newItemValue, data);
+				}
+				sqlUser.associateImageToExistingItem(newItemValue);
 				view.updateExistingItemsList(newItemValue);
 			}
 			else
@@ -372,6 +384,7 @@ public class AdminTestSetupController {
 			if (! view.checkItemOnTestItemsList(currentSelection) && sqlUser.checkTestItemsForItem_ID(currentSelection))
 			{
 				sqlUser.deleteTestItem(currentSelection);
+				model.removeItemFromTestItemsList(currentSelection);
 			}
 			
 			sqlUser.deleteExistingItem(currentSelection);

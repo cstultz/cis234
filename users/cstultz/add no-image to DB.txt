@@ -1,0 +1,13 @@
+File fnew=new File("resources/no-image.png");
+		BufferedImage originalImage;
+		
+		try {
+			originalImage = ImageIO.read(fnew);
+			ByteArrayOutputStream baos=new ByteArrayOutputStream();
+			ImageIO.write(originalImage, "jpg", baos );
+			byte[] imageInByte=baos.toByteArray();
+			sqlUser.addImage("no-image", imageInByte);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}

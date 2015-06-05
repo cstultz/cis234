@@ -15,7 +15,6 @@ public class UserTestController {
 	private UserTestModel model;
 	private UserTestView view;
 	private SqlUser_234a_t1 sqlUser;
-	private int testSessionID = 0;
 
 	/**
 	 * Constructor for the class.

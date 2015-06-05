@@ -3,14 +3,11 @@ package cis234a.nsort.view;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
@@ -25,7 +22,7 @@ import java.awt.Color;
 @SuppressWarnings("serial")
 public class LoginPanel extends JPanel 
 {
-	private static final Dimension DIM = new Dimension(320, 104);
+	//private static final Dimension DIM = new Dimension(320, 104);
 	
 	private JTextField usernameTextField;
 	private JLabel usernameLabel;

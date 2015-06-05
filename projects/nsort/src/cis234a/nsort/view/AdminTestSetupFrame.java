@@ -165,6 +165,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				//'SUBMIT' BUTTON CLICKED - USER ATTEMPTS TO ADD A NEW ITEM TO THE EXISTING ITEMS LIST
 				controller.addNewItemToExistingItemsList(adminTestSetupPanel.getAddAnItemTextField());
 				adminTestSetupPanel.clearAddAnItemTextField();
+				adminTestSetupPanel.addItemToImagesList(adminTestSetupPanel.getAddAnItemTextField());
 			}
 		});
 		
@@ -182,6 +183,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 				{
 					//ENTER KEY PRESSED - USER ATTEMPTS TO ADD A NEW ITEM TO THE EXISTING ITEMS LIST
 					adminTestSetupPanel.submitButtonClick();
+					adminTestSetupPanel.updateItemImageToBlank();
 				}
 			}
 		});
@@ -339,6 +341,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			{
 				//'Delete Item' BUTTON CLICKED - USER ATTEMPTS TO DELETE AN EXISTING ITEMS LIST ITEM
 				controller.deleteExistingItem(currentSelection);
+				adminTestSetupPanel.setImagesComboBoxCurrentState(false);
 				
 			}
 		});
@@ -455,6 +458,7 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 	public void updateExistingItemsList(String newItemValue)
 	{
 		adminTestSetupPanel.addNewItemToExistingItemsList(newItemValue);
+		//adminTestSetupPanel.addNewItemToImagesList(newItemValue);
 	}
 	
 	/**
