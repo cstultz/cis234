@@ -676,4 +676,9 @@ public class AdminTestSetupPanel extends JPanel
 	{
 		existingItemsList.setSelectedValue(value, true);
 	}
+	
+	public void showNoImage()
+	{
+		imagePanel.showNoImage();
+	}
 }

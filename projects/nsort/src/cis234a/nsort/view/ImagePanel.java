@@ -107,5 +107,11 @@ import javax.swing.JPanel;
     	this.graphic = graphic;
     	imageLabel.setIcon(new ImageIcon(this.graphic));
     	setupLayout();
-    	paintComponent(getGraphics());    }
+    	paintComponent(getGraphics());    
+	}
+    
+    public void showNoImage()
+    {
+    	updateImage(noImage);
+    }
 }
