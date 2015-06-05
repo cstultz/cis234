@@ -671,4 +671,9 @@ public class AdminTestSetupPanel extends JPanel
 		setExistingImagesComboBox();
 		clearExistingItemComboBox();
 	}
+	
+	public void selectNewItem(String value)
+	{
+		existingItemsList.setSelectedValue(value, true);
+	}
 }

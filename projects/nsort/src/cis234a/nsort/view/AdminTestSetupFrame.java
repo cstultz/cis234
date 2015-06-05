@@ -163,9 +163,11 @@ public class AdminTestSetupFrame extends JFrame implements AdminTestSetupView
 			public void actionPerformed(ActionEvent ae) 
 			{
 				//'SUBMIT' BUTTON CLICKED - USER ATTEMPTS TO ADD A NEW ITEM TO THE EXISTING ITEMS LIST
-				controller.addNewItemToExistingItemsList(adminTestSetupPanel.getAddAnItemTextField());
+				String value = adminTestSetupPanel.getAddAnItemTextField();
+				controller.addNewItemToExistingItemsList(value);
 				adminTestSetupPanel.clearAddAnItemTextField();
-				adminTestSetupPanel.addItemToImagesList(adminTestSetupPanel.getAddAnItemTextField());
+				adminTestSetupPanel.addItemToImagesList(value);
+				adminTestSetupPanel.selectNewItem(value);
 			}
 		});
 		
