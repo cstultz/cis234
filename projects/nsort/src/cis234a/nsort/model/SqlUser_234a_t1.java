@@ -603,7 +603,7 @@ public enum SqlUser_234a_t1 {
 			while (rs.next())
 			{
 				testSessionID = rs.getInt("Test Session ID");
-				return testSessionID;
+				return testSessionID + 1;
 			}
 		}
 		catch (SQLException e)

@@ -123,7 +123,6 @@ public class UserTestController {
 			calculateItemRankingsToTestItemsListItems();
 			int userID = sqlUser.getUserID(model.getUsername());
 			sqlUser.createUserNewTestSessionID(userID);
-			model.setTestSessionID(testSessionID);
 			sqlUser.saveTestResults(model.getTestItemsList(), model.getTestSessionID());
 			return false;
 		}
