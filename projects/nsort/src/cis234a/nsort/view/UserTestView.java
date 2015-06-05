@@ -51,4 +51,7 @@ public interface UserTestView {
 	 */
 	public void registerController(UserTestController controller);
 	
+	public void setUsername(String username);
+	public void setTestSessionID(int testSessionID);
+	
 }

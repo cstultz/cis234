@@ -3,8 +3,10 @@ package cis234a.nsort.view;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import cis234a.nsort.model.*;
 import cis234a.nsort.controller.*;
 
@@ -212,5 +214,14 @@ public class UserTestFrame extends JFrame implements UserTestView
 	public void incrementProgressMeter()
 	{
 		userTestPanel.incrementProgressMeter();
+	}
+	
+	public void setUsername(String username)
+	{
+		userTestPanel.setUsername(username);
+	}
+	public void setTestSessionID(int testSessionID)
+	{
+		userTestPanel.setTestSessionID(testSessionID);
 	}
 }

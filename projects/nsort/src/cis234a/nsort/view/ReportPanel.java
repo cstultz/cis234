@@ -193,6 +193,7 @@ public class ReportPanel extends JPanel
 	{
 		userTestComboBox.setVisible(false);
 		reportButton.setVisible(false);
+		switchStartOverButton(true);
 	}
 	
 	/**

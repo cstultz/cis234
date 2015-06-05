@@ -74,7 +74,7 @@ public class ReportFrame extends JFrame implements ReportView
 			public void itemStateChanged(ItemEvent e) 
 			{
 				reportPanel.switchReportButton(true);
-				reportPanel.switchStartOverButton(true);
+				//reportPanel.switchStartOverButton(true);
 				reportPanel.panelRefresh();
 			}
 			
