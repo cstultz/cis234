@@ -198,6 +198,10 @@ public class AdminTestSetupController {
 				{
 					sqlUser.addImage(newItemValue, data);
 				}
+				else
+				{
+					//updateItemImageview.updateImage(data);
+				}
 				sqlUser.associateImageToExistingItem(newItemValue);
 				view.updateExistingItemsList(newItemValue);
 			}

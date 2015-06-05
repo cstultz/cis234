@@ -680,6 +680,5 @@ public class AdminTestSetupPanel extends JPanel
 	public void showNoImage()
 	{
 		imagePanel.showNoImage();
-		
 	}
 }
