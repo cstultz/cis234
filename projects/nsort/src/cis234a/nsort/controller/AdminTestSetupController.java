@@ -298,7 +298,7 @@ public class AdminTestSetupController {
 			if (sqlUser.getValueImageByteArray(currentSelection) == null)
 			{
 				sqlUser.addImage(currentSelection, data);
-				sqlUser.associateImageToExistingItem(currentSelection);
+				sqlUser.updateItemImageAssociation(currentSelection, currentSelection);
 			}
 			else
 			{

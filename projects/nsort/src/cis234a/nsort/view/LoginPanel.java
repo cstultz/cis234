@@ -60,17 +60,18 @@ public class LoginPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(new Dimension(284, 101));
+		setPreferredSize(new Dimension(280, 101));
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{40, 40, 40, 40, 40};
+		gridBagLayout.columnWidths = new int[]{40, 40, 40, 40, 40, 40};
 		gridBagLayout.rowHeights = new int[]{44, 40};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0};
 		setLayout(gridBagLayout);
 		usernameLabel = new JLabel("Enter username:");
 		
 		GridBagConstraints gbc_usernameLabel = new GridBagConstraints();
-		gbc_usernameLabel.anchor = GridBagConstraints.SOUTH;
+		gbc_usernameLabel.gridwidth = 2;
+		gbc_usernameLabel.anchor = GridBagConstraints.SOUTHEAST;
 		gbc_usernameLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_usernameLabel.gridx = 0;
 		gbc_usernameLabel.gridy = 0;
@@ -81,23 +82,24 @@ public class LoginPanel extends JPanel
 		gbc_usernameTextField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_usernameTextField.insets = new Insets(0, 0, 5, 0);
 		gbc_usernameTextField.gridwidth = 4;
-		gbc_usernameTextField.gridx = 1;
+		gbc_usernameTextField.gridx = 2;
 		gbc_usernameTextField.gridy = 0;
 		add(usernameTextField, gbc_usernameTextField);
 		
 		loginButton = new JButton("Login");
 		GridBagConstraints gbc_loginButton = new GridBagConstraints();
+		gbc_loginButton.anchor = GridBagConstraints.WEST;
 		gbc_loginButton.insets = new Insets(0, 0, 0, 5);
 		gbc_loginButton.gridwidth = 2;
-		gbc_loginButton.gridx = 1;
+		gbc_loginButton.gridx = 2;
 		gbc_loginButton.gridy = 1;
 		add(loginButton, gbc_loginButton);
 		
 		registerButton = new JButton("Register");
 		GridBagConstraints gbc_btnRegister = new GridBagConstraints();
+		gbc_btnRegister.anchor = GridBagConstraints.EAST;
 		gbc_btnRegister.gridwidth = 2;
-		gbc_btnRegister.insets = new Insets(0, 0, 0, 5);
-		gbc_btnRegister.gridx = 3;
+		gbc_btnRegister.gridx = 4;
 		gbc_btnRegister.gridy = 1;
 		add(registerButton, gbc_btnRegister);
 		

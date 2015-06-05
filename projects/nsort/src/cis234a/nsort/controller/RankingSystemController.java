@@ -1,5 +1,7 @@
 package cis234a.nsort.controller;
 
+import java.util.ArrayList;
+
 import cis234a.nsort.model.*;
 import cis234a.nsort.view.*;
 /**
@@ -14,8 +16,8 @@ public enum RankingSystemController {
 	INSTANCE();
 	
 	private User user;
-	private SqlUser_234a_t1 sqlUser;             
-
+	private SqlUser_234a_t1 sqlUser;    
+	
 	/**
 	 * Constructor for the class.
 	 */
@@ -35,7 +37,7 @@ public enum RankingSystemController {
 		
 		LoginView view = new LoginFrame();
 		LoginController controller = new LoginController(this, model, view);   
-		view.registerController(controller);                                        
+		view.registerController(controller);
 	}
 	
 	/**
@@ -43,6 +45,7 @@ public enum RankingSystemController {
 	 */
 	public void launchAdminTestSetup()
 	{
+
 		AdminTestSetupModel model = new AdminTestSetupModel();
 		model.setExistingItemsList(sqlUser.pullExistingItems());
 		model.setTestItemsList(sqlUser.pullTestItemsAndImages());

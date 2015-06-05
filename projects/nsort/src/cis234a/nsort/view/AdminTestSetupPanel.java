@@ -78,9 +78,10 @@ public class AdminTestSetupPanel extends JPanel
 	{
 		imagePanel = new ImagePanel();
 		imagePanel.setSize(250, 250);
-		imagePanel.setLocation(288, 52);
+		imagePanel.setLocation(288, 40);
 		
 		existingImagesComboBox = new JComboBox<String>();
+		existingImagesComboBox.setMaximumRowCount(4);
 		existingImagesComboBox.setEnabled(false);
 		//existingImagesComboBox.setVisible(false);                               
 		
@@ -91,7 +92,7 @@ public class AdminTestSetupPanel extends JPanel
 
 		browseButton = new JButton("Edit");
 		browseButton.setEnabled(false);
-		browseButton.setBounds(388, 313, 51, 23);
+		browseButton.setBounds(382, 301, 63, 23);
 		
 		deleteMenuItem = new JMenuItem("Delete Item", new ImageIcon("resources/delete.jpg"));
 
@@ -107,7 +108,7 @@ public class AdminTestSetupPanel extends JPanel
 		existingItemsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		existingItemsLabel.setBounds(10, 11, 129, 22);
 		existingItemsScrollPane = new JScrollPane();
-		existingItemsScrollPane.setBounds(10, 44, 129, 267);
+		existingItemsScrollPane.setBounds(10, 44, 129, 243);
 		existingItemsList = new JList<String>(existingItemsListModel);
 		existingItemsScrollPane.setViewportView(existingItemsList);
 		existingItemsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -118,15 +119,15 @@ public class AdminTestSetupPanel extends JPanel
 		testItemsLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		testItemsLabel.setBounds(149, 11, 129, 22);
 		testItemsScrollPane = new JScrollPane();
-		testItemsScrollPane.setBounds(149, 44, 129, 267);
+		testItemsScrollPane.setBounds(149, 44, 129, 243);
 		testItemsList = new JList<String>(testItemsListModel);
 		testItemsScrollPane.setViewportView(testItemsList);
 		testItemsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addItemTextField = new JTextField();
-		addItemTextField.setBounds(10, 323, 129, 20);
+		addItemTextField.setBounds(10, 302, 129, 20);
 		submitButton = new JButton("Add");
 		submitButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		submitButton.setBounds(149, 322, 63, 23);
+		submitButton.setBounds(149, 301, 63, 23);
 		reportButton = new JButton("Test Results");
 		reportButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		reportButton.setBounds(544, 100, 129, 23);
@@ -167,7 +168,7 @@ public class AdminTestSetupPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(new Dimension(686, 360));
+		setPreferredSize(new Dimension(683, 334));
 	}
 	
 	/**

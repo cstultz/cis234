@@ -6,6 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import cis234a.nsort.controller.*;
@@ -111,7 +112,7 @@ public class LoginFrame extends JFrame implements LoginView
 			controller.login();
 			if(controller.checkUserAccessRoleForAdmin())
 			{
-				JOptionPane.showMessageDialog(null,"Welcome, " + controller.getFullUserName().trim() + "!","Login Successful - Administrator",JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null,new JLabel("Welcome, " + controller.getFullUserName().trim() + "!", JLabel.CENTER),"Login Successful - Administrator",JOptionPane.PLAIN_MESSAGE);
 				controller.launchAdminTestSetup();
 			}
 			if (controller.checkUserAccessRoleForUser())
