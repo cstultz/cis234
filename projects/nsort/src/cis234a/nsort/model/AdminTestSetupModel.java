@@ -1,7 +1,6 @@
 package cis234a.nsort.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The AdminTestSetupModel class captures the behavior of the admin test setup independent of the user interface.   
