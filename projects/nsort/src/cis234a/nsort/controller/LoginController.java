@@ -53,8 +53,8 @@ public class LoginController {
 		if (sqlUser.validateUser(username))                                     //successful login      
 		{
 			model.setValidatedUser(sqlUser.getUser(username));                  //get the user from the database and set the model
-			model.setLoginState(true);                                          //login the user
 			model.setUserAccessRole(sqlUser.getUserAccessRole(username));       //get userAccessRole from the database and set the model
+			model.setLoginState(true);                                          //login the user
 			return true;
 		}
 		else                                                                    //failed login

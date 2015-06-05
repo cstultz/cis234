@@ -60,7 +60,7 @@ public class LoginPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(new Dimension(320, 101));
+		setPreferredSize(new Dimension(284, 101));
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{40, 40, 40, 40, 40};
 		gridBagLayout.rowHeights = new int[]{44, 40};
@@ -95,6 +95,7 @@ public class LoginPanel extends JPanel
 		
 		registerButton = new JButton("Register");
 		GridBagConstraints gbc_btnRegister = new GridBagConstraints();
+		gbc_btnRegister.gridwidth = 2;
 		gbc_btnRegister.insets = new Insets(0, 0, 0, 5);
 		gbc_btnRegister.gridx = 3;
 		gbc_btnRegister.gridy = 1;

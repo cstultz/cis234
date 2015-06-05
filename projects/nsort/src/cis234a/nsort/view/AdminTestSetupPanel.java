@@ -29,6 +29,7 @@ import javax.swing.border.BevelBorder;
 import cis234a.nsort.model.*;
 
 import javax.swing.JComboBox;
+import java.awt.event.ActionEvent;
 /**
  * The LoginPanel Class contains the components for the LoginFrame.
  *  
@@ -48,8 +49,6 @@ public class AdminTestSetupPanel extends JPanel
 	
 	private JPopupMenu existingItemsListRightClickPopupMenu;
 	private JMenuItem deleteMenuItem;
-
-	private JLabel addItemLabel;
 	private JTextField addItemTextField;
 	private JButton submitButton;
 	
@@ -59,7 +58,6 @@ public class AdminTestSetupPanel extends JPanel
 	private JScrollPane testItemsScrollPane;
 	
 	private JButton finishButton;
-	private JLabel lblOr;
 	private JButton cancelButton;
 	private JButton reportButton;
 	private JCheckBox progressMeterCheckBox;
@@ -80,20 +78,20 @@ public class AdminTestSetupPanel extends JPanel
 	{
 		imagePanel = new ImagePanel();
 		imagePanel.setSize(250, 250);
-		imagePanel.setLocation(413, 32);
+		imagePanel.setLocation(288, 52);
 		
 		existingImagesComboBox = new JComboBox<String>();
 		existingImagesComboBox.setEnabled(false);
 		//existingImagesComboBox.setVisible(false);                               
 		
-		lblNewLabel = new JLabel("Browse Database Pictures:");
+		lblNewLabel = new JLabel("Existing Images:");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 14));
 		//lblNewLabel.setVisible(false);
 
-		browseButton = new JButton("Browse Local Pictures...");
+		browseButton = new JButton("Edit");
 		browseButton.setEnabled(false);
-		browseButton.setBounds(450, 293, 176, 27);
+		browseButton.setBounds(388, 313, 51, 23);
 		
 		deleteMenuItem = new JMenuItem("Delete Item", new ImageIcon("resources/delete.jpg"));
 
@@ -107,9 +105,9 @@ public class AdminTestSetupPanel extends JPanel
 
 		existingItemsLabel = new JLabel("Existing Items");
 		existingItemsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		existingItemsLabel.setBounds(0, 25, 200, 22);
+		existingItemsLabel.setBounds(10, 11, 129, 22);
 		existingItemsScrollPane = new JScrollPane();
-		existingItemsScrollPane.setBounds(36, 53, 129, 243);
+		existingItemsScrollPane.setBounds(10, 44, 129, 267);
 		existingItemsList = new JList<String>(existingItemsListModel);
 		existingItemsScrollPane.setViewportView(existingItemsList);
 		existingItemsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -118,40 +116,34 @@ public class AdminTestSetupPanel extends JPanel
 
 		testItemsLabel = new JLabel("Test Items");
 		testItemsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		testItemsLabel.setBounds(200, 25, 200, 22);
+		testItemsLabel.setBounds(149, 11, 129, 22);
 		testItemsScrollPane = new JScrollPane();
-		testItemsScrollPane.setBounds(236, 53, 129, 243);
+		testItemsScrollPane.setBounds(149, 44, 129, 267);
 		testItemsList = new JList<String>(testItemsListModel);
 		testItemsScrollPane.setViewportView(testItemsList);
 		testItemsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		addItemLabel = new JLabel("Add an item");
-		addItemLabel.setBounds(36, 309, 83, 17);
 		addItemTextField = new JTextField();
-		addItemTextField.setBounds(129, 308, 149, 20);
-		submitButton = new JButton("Submit");
+		addItemTextField.setBounds(10, 323, 129, 20);
+		submitButton = new JButton("Add");
 		submitButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		submitButton.setBounds(288, 307, 77, 23);
-		reportButton = new JButton("Test Results Reporting");
+		submitButton.setBounds(149, 322, 63, 23);
+		reportButton = new JButton("Test Results");
 		reportButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		reportButton.setBounds(109, 371, 189, 22);
-		progressMeterCheckBox = new JCheckBox("Display progress indicator during the User Test?");
-		progressMeterCheckBox.setHorizontalAlignment(SwingConstants.CENTER);
+		reportButton.setBounds(544, 100, 129, 23);
+		progressMeterCheckBox = new JCheckBox("Progress Meter");
+		progressMeterCheckBox.setHorizontalAlignment(SwingConstants.LEFT);
 		progressMeterCheckBox.setFont(new Font("Arial", Font.PLAIN, 12));
-		progressMeterCheckBox.setBounds(54, 341, 292, 23);
+		progressMeterCheckBox.setBounds(544, 70, 129, 23);
 		finishButton = new JButton("Finish");
 		finishButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		finishButton.setBounds(244, 412, 77, 23);
-		finishButton.setEnabled(false);                                             
-		lblOr = new JLabel("OR");
-		lblOr.setFont(new Font("Arial", Font.PLAIN, 11));
-		lblOr.setBounds(331, 417, 15, 14);
+		finishButton.setBounds(544, 134, 129, 23);
+		finishButton.setEnabled(false);
 		cancelButton = new JButton("Cancel");
 		cancelButton.setFont(new Font("Arial", Font.PLAIN, 12));
-		cancelButton.setBounds(356, 412, 77, 23);
+		cancelButton.setBounds(544, 168, 129, 23);
 		
-		existingImagesComboBox.setBounds(444, 358, 189, 20);
-		lblNewLabel.setBounds(430, 331, 216, 17);
+		existingImagesComboBox.setBounds(544, 227, 129, 20);
+		lblNewLabel.setBounds(544, 202, 129, 17);
 
 		setupLayout();
 		setupPanel();
@@ -164,13 +156,10 @@ public class AdminTestSetupPanel extends JPanel
 	public void setupLayout()
 	{
 		// set border for the panel
-		setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createEtchedBorder(), "Admin Setup Panel"));
+//		setBorder(BorderFactory.createTitledBorder(
+//                BorderFactory.createEtchedBorder(), "Admin Setup Panel"));
 		existingItemsLabel.setFont(new Font("Arial", Font.BOLD, 16));
 		testItemsLabel.setFont(new Font("Arial", Font.BOLD, 16));
-		addItemLabel.setFont(new Font("Arial", Font.BOLD, 14));
-		
-		lblOr.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 	
 	/**
@@ -178,7 +167,7 @@ public class AdminTestSetupPanel extends JPanel
 	 */
 	public void setupPanel()
 	{
-		setPreferredSize(new Dimension(DIM));
+		setPreferredSize(new Dimension(686, 360));
 	}
 	
 	/**
@@ -191,13 +180,11 @@ public class AdminTestSetupPanel extends JPanel
 		add(testItemsLabel);
 		add(existingItemsScrollPane);
 		add(testItemsScrollPane);
-		add(addItemLabel);
 		add(addItemTextField);
 		add(submitButton);
 		add(reportButton);
 		add(progressMeterCheckBox);
 		add(finishButton);
-		add(lblOr);
 		add(cancelButton);
 		add(imagePanel);
 		add(browseButton);
