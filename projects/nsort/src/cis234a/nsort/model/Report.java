@@ -138,7 +138,7 @@ public class Report
 	public List getUsersTestID(String user)
 	{
 		userTestID = new List();
-		String query = "SELECT (testSessionID) AS 'TESTID' " + 
+		String query = "SELECT (CONVERT(VARCHAR, testSessionID, 0) + ' - ' + CONVERT(VARCHAR,insertDate, 0)) AS 'TESTID' " + 
 						"FROM dbo.TestSessions AS X INNER JOIN dbo.[User] AS Y " +
 				        "ON X.user_ID = Y.userID "+
 				        "WHERE (Y.firstName + ' ' + Y.lastName) = " + "'" + user + "'" +";";
@@ -179,7 +179,7 @@ public class Report
 		}
 		else
 		{
-			userTestID.add("Please select a TestID", 0);
+			userTestID.add("Please select a TestID and Date", 0);
 		}
 		return userTestID;
 	}

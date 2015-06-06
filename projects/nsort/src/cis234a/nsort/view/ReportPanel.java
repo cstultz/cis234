@@ -12,6 +12,7 @@ import javax.swing.JTable;
 
 import org.w3c.dom.events.EventException;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.List;
 /**
@@ -110,9 +111,9 @@ public class ReportPanel extends JPanel
 		 * set up startOverButton
 		 */
 		startOverButton = new JButton("Restart Reporting");
-		c.gridx = 0;
-		c.gridy = 3;
-		c.anchor = GridBagConstraints.BASELINE;
+		c.gridx = 2;
+		c.gridy = 4;
+		c.anchor = GridBagConstraints.SOUTH;
 		add(startOverButton, c);
 		
 		setInitialVisibility();
@@ -183,6 +184,7 @@ public class ReportPanel extends JPanel
 		userTestComboBox.setVisible(true);
 		reportButton.setVisible(true);
 		reportButton.setEnabled(false);
+		switchStartOverButton(true);
 	}
 	
 	/**
@@ -192,7 +194,7 @@ public class ReportPanel extends JPanel
 	{
 		userTestComboBox.setVisible(false);
 		reportButton.setVisible(false);
-		switchStartOverButton(true);
+		//switchStartOverButton(true);
 	}
 	
 	/**
@@ -265,7 +267,7 @@ public class ReportPanel extends JPanel
 	 */
 	public int setTest()
 	{
-		return selectedTest = Integer.parseInt(userTestComboBox.getSelectedItem().toString());
+		return selectedTest = stripTestID(userTestComboBox.getSelectedItem().toString());
 	}
 	
 	/**
@@ -355,20 +357,42 @@ public class ReportPanel extends JPanel
 	 */
 	public void startOver()
 	{
-		try
+		if (isActiveComponent(scrollPane))
 		{
 			this.remove(scrollPane);
 		}
-		catch(EventException e)
+		if (userTestComboBox.isVisible())
 		{
-			
-		}
-		finally
-		{
-			if (userTestComboBox.isVisible())
-			{
-				userTestComboBox.removeAllItems();
-			}		
-		}
+			userTestComboBox.removeAllItems();
+		}		
+	}
+	
+	/**
+	 * checks to see if a component has been instantiated inside the jPanel or not
+	 * @param c the component in question
+	 * @return true/false response
+	 */
+	private boolean isActiveComponent(Component c)
+	{
+	    Component[] components = this.getComponents();
+	    for (Component component : components) {
+	    	if (c== component) 
+	    	{
+	                return true;
+	    	}
+	    }
+	    return false;
+	}
+	
+	/**
+	 * strips TestID of all characters
+	 * @param x input string of selected testID
+	 * @return int of TestID
+	 */
+	private int stripTestID(String x)
+	{
+		String tempInt = x.split("-")[0].replaceAll("\\s", "");
+		int i = Integer.parseInt(tempInt); 
+		return i;		
 	}
 }
