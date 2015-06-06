@@ -3,15 +3,11 @@ package cis234a.nsort.view;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemListener;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
-import org.w3c.dom.events.EventException;
-
 import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.List;
