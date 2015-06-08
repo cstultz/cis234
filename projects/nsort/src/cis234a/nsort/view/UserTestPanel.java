@@ -236,7 +236,7 @@ public class UserTestPanel extends JPanel
 		add(imagePanelLeft, gbc_imagePanelLeft);
 		add(imagePanelRight, gbc_imagePanelRight);
 		
-		usernameLabel = new JLabel("Username: ");
+		usernameLabel = new JLabel("User: ");
 		usernameLabel.setFont(new Font("Tahoma", Font.BOLD, 11));
 		GridBagConstraints gbc_usernameLabel = new GridBagConstraints();
 		gbc_usernameLabel.anchor = GridBagConstraints.WEST;

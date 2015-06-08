@@ -30,7 +30,7 @@ public class Report
 					   "JOIN dbo.Item on dbo.TestResults.item_ID = Item.itemID " +
 					   "WHERE (dbo.[User].firstName + ' ' + dbo.[User].lastName) = " + "'" + name + "'" + 
 					   "AND dbo.TestResults.testSession_ID = " + testID + 
-					   "ORDER BY WINS DESC, TIES DESC, LOSSES DESC;";
+					   "ORDER BY Item.[value], WINS DESC, TIES DESC, LOSSES DESC;";
 		try
 		{
 			int counter = 0;

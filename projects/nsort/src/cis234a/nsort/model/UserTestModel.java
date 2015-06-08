@@ -159,6 +159,11 @@ public class UserTestModel {
 		return user.getUsername();
 	}
 	
+	public String getFullName()
+	{
+		return (user.getFirstName() + " " + user.getLastName());
+	}
+	
 	/**
 	 * set the unique test session ID for the test
 	 * 

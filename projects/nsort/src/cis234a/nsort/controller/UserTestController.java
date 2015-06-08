@@ -41,7 +41,7 @@ public class UserTestController {
 		updateTotalQuestions();
 		updateProgressMeterSelectedState();
 		view.updateUserTestFrame(model.getUserTestFrameState()); 
-		view.setUsername(model.getUsername());
+		view.setUsername(model.getFullName());
 		view.setTestSessionID(model.getTestSessionID());
 	}
 	
