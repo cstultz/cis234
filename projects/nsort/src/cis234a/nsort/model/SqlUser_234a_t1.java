@@ -19,12 +19,17 @@ public enum SqlUser_234a_t1 {
 	private Connection conn = null;
 	
 	/**********************************database connection URL*******************************************/
-	private final static String url = "jdbc:sqlserver://cisdbss.pcc.edu;"
-			                        + " databaseName=234a_t1; "
-			                        + "user=234a_t1; "
-			                        + "password=1t_a432@#";
+//	private final static String url = "jdbc:sqlserver://cisdbss.pcc.edu;"
+//			                        + " databaseName=234a_t1; "
+//			                        + "user=234a_t1; "
+//			                        + "password=1t_a432@#";
 	/**********************************database connection URL*******************************************/
 	
+	/**********************************database connection URL*******************************************/
+	private final static String url = "jdbc:sqlserver://server1:1433;AuthenticationMethod=auto;"
+			                        + " databaseName=234a_t1; ";
+	/**********************************database connection URL*******************************************/
+
 	/***********************************The One, The Only Test*******************************************/
 	private final static int theOneTheOnlyTestID = 1;
 	/***********************************The One, The Only Test*******************************************/
@@ -93,6 +98,7 @@ public enum SqlUser_234a_t1 {
     {
 		try
 		{
+			DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
 			conn = DriverManager.getConnection(url);
     	}
 		catch (Exception e)
