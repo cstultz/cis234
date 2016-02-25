@@ -22,7 +22,7 @@ public class Main {
 		
 		controller = RankingSystemController.INSTANCE;
 		
-		javax.swing.SwingUtilities.invokeLater(new Runnable()   //                                      
+		javax.swing.SwingUtilities.invokeLater(new Runnable()                                      
 		{
 			public void run() {
 				try 

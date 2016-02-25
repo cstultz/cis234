@@ -26,7 +26,7 @@ public enum SqlUser_234a_t1 {
 	/**********************************database connection URL*******************************************/
 	
 	/**********************************database connection URL*******************************************/
-	private final static String url = "jdbc:sqlserver://server1:1433;AuthenticationMethod=auto;"
+	private final static String url = "jdbc:sqlserver://localhost:1433;AuthenticationMethod=type4;"
 			                        + " databaseName=234a_t1; ";
 	/**********************************database connection URL*******************************************/
 
